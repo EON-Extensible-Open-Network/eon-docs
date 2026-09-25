@@ -3,7 +3,7 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.3 · **Son güncelleme:** 25 Eylül 2026
+> **Durum:** Taslak v0.4 · **Son güncelleme:** 25 Eylül 2026
 >
 > **Doküman kuralları**
 > - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir.
@@ -76,13 +76,24 @@ v1, şu listenin **tamamı** bittiğinde ve fazlası yapılmadığında yayınla
 
 ## A. Temel mimari (1–5)
 
-**1. Protokol katmanı. [A]**
-Eklenti protokolü sıfırdan yazılır mı yazılmaz mı — bu Faz 0'ın ilk kararıdır. İki seçenek somut olarak karşılaştırılır:
+**1. Protokol katmanı: kendimiz yazıyoruz — (b). [K — v0.4'te karara bağlandı]**
 
-- **(a) stremio-core kütüphane olarak.** Stremio'nun Rust ile yazılmış, MIT lisanslı çekirdeği. Avantaj: protokol davranışı birebir uyumlu. Risk: stremio-core sadece protokol değil; Stremio'nun kendi durum modeli, kütüphane senkronizasyonu ve hesap API istemcisini de taşıyan görüşlü bir katman. Kütüphane olarak almak, Stremio'nun ürün kararlarını da içeri almak demektir.
-- **(b) Protokolü kendimiz yazmak.** Eklenti protokolü küçüktür: manifest + `catalog` / `meta` / `stream` / `subtitles` uçları, düz HTTP + JSON. stremio-core yalnızca tip ve davranış referansı olarak okunur, bağımlılık olarak alınmaz.
+Karar ölçütü şuydu: (b) yoluyla popüler eklentiler uçtan uca çözümlenebiliyorsa (b) seçilir. **Çözümlendi**, ve karar (b) oldu: protokol istemcisi `eon-stream-core` içinde bize ait koddur; `stremio-core` bağımlılık olarak alınmaz.
 
-**Karar ölçütü:** Faz 0'da (b) yoluyla bir hafta içinde 5 popüler eklenti uçtan uca çözümlenebiliyorsa (b) seçilir; çözülemeyen kenar durumlar (a) gerektiriyorsa (a) seçilir. Karar verildiğinde bu madde güncellenir.
+Deneyin sonucu (`eon-stream-core`, `examples/browse.rs`):
+
+- **Cinemeta** (`com.linvo.cinemeta`, Stremio'nun resmi metadata eklentisi) — manifest, 8 katalog, `top` kataloğu, arama (`search=blade runner`), film metadata'sı, dizi metadata'sı + sezon/bölüm listesi: hepsi çalışıyor.
+- **OpenSubtitles v3** (`org.stremio.opensubtitlesv3`) — altyazı kaynağı, 38 gerçek altyazı izi döndü.
+- Protokolün tamamı: manifest + `catalog` / `meta` / `stream` / `subtitles` uçları, `extra` parametre kodlaması, `idPrefixes` filtrelemesi, ayrıntılı `resources` formu.
+
+Gerekçe (b)'nin lehine, deneyden sonra daha da net: protokol gerçekten küçük — dört uç ve düz JSON. Buna karşılık `stremio-core` protokolün yanında Stremio'nun durum modelini, kütüphane senkronizasyonunu ve hesap API istemcisini de taşıyor; bunları içeri almak Stremio'nun ürün kararlarını da içeri almak olurdu. Kendi kodumuz **~1.300 satır** ve dört bağımlılık (`serde`, `serde_json`, `thiserror` + örnek için `ureq`).
+
+`stremio-core` yine de değerli: **davranış referansı** olarak okunuyor, bağımlılık olarak değil.
+
+**Deneyin ortaya çıkardığı iki şey (ikisi de kayda değer):**
+
+1. **Gerçek eklentiler `null` gönderiyor.** Cinemeta dizi metadata'sında `videos`, `genres`, `cast` alanlarına dizi yerine `null` koyuyor. `serde`'nin `default` özelliği yalnızca alan **yoksa** devreye giriyor, açıkça `null` ise değil — yani katı bir okuyucu, var olan en yaygın eklentiyi reddediyor. Her koleksiyon alanı artık `null`'ı boş kabul ediyor (`src/serde_lax.rs`). Çizgi şurada: **yanlış tipte** bir değer hâlâ hata. `null`'a toleranslı olmak uyumluluk; bozuk veriyi tahmin etmek hata saklamak olurdu.
+2. **Kimlik bilgisi path'te duruyor, host'ta değil.** Eklenti adresi `https://host/c/<token>/manifest.json` biçiminde olabiliyor. "URL'yi loglamayın" kuralı yetersizdi: path'i loglamak da aynı şeyi sızdırıyor. Bunu yazdığım bir test yakaladı (`errors_never_carry_the_addon_address`) ve hata mesajlarından path de çıkarıldı.
 
 Arayüz her iki durumda da tamamen bize aittir ve proje lisansı serbestçe seçilir (madde 33).
 
