@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.4 · **Son güncelleme:** 25 Eylül 2026
+> **Durum:** Taslak v0.5 · **Son güncelleme:** 4 Ekim 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir.
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor.
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -101,7 +101,19 @@ Arayüz her iki durumda da tamamen bize aittir ve proje lisansı serbestçe seç
 
 "İstisnasız uyum" hareketli bir hedeftir. Yapısal olarak uyumsuz kalacak eklenti sınıfları baştan kabul edilir ve dokümante edilir: Stremio hesabına bağlı kataloglar, Stremio streaming server'ının özel uçlarına (ör. HLS transcode) dayanan akışlar, Stremio istemcisine özgü davranış bekleyen eklentiler.
 
-**Torrent motoru [A]:** Stremio'nun streaming server'ı (server.js) kapalı kaynak olduğu için açık kaynak bir Rust alternatifi kullanılır; ilk aday **librqbit** (MIT, aktif, kütüphane olarak gömülebilir). v0.1'de yazılmayan gerekçe: Stremio'nun server'ı sadece torrent değil **transcode/HLS** de yapar. mpv kullandığımız için transcode katmanına hiç ihtiyacımız yok — sıralı indirme + yerel HTTP sunucu yeterli. Bu, madde 2'deki mpv riskini almanın asıl karşılığıdır.
+**Torrent motoru: librqbit. [K — v0.5'te karara bağlandı]**
+
+İlk aday seçildi ve bağımlılık oldu (`eon-stream-engine`, `src/torrent.rs`). Stremio'nun streaming server'ı (server.js) kapalı kaynak olduğu için açık kaynak bir Rust alternatifi gerekiyordu; librqbit Apache-2.0, aktif ve kütüphane olarak gömülebilir.
+
+Kararı belirleyen şey BitTorrent'in tamamı değil, bu projenin gerçekten ihtiyaç duyduğu **tek** davranıştı: `ManagedTorrent::stream`, okuma başının **önünde** bir parça penceresi tutuyor ve bir atlamada (seek) pencereyi yeniden kuruyor. Bunu kendimiz yazmak, aynı yere varmak için önce DHT, uTP, web seed ve tracker protokollerini yazmak anlamına gelirdi. Parça seçimini yeniden yazan hiçbir kod yok; eklediğimiz şey senkron bir yüzey, oynatıcının aç kalmayacağı bir ön bellek ve insanın okuyabileceği bir ilerleme bilgisi.
+
+Yapılandırma: `default-features = false, features = ["rust-tls"]` — native TLS yerine rustls, böylece Windows derlemesi OpenSSL istemiyor ve sabitlenmiş araç zinciri gerçekten araç zincirinin tamamı oluyor (madde 22).
+
+v0.1'de yazılmayan gerekçe hâlâ geçerli ve artık ölçülebilir: Stremio'nun server'ı sadece torrent değil **transcode/HLS** de yapar. mpv kullandığımız için transcode katmanına hiç ihtiyacımız yok — sıralı indirme + yerel HTTP sunucu yetti. Bu, madde 2'deki mpv riskini almanın asıl karşılığıdır.
+
+**Yerel HTTP sunucusu [K]:** Loopback'e bağlı, oturum başına 32 baytlık bir jetonla korunuyor, yalnızca `GET`/`HEAD` ve range isteklerini yanıtlıyor. Jetonu yanlış olan istek `403` değil **`404`** alıyor: `403`, yolun var olduğunu doğrulayıp portu "ne izleniyor" sorusunun oracle'ına çevirirdi. `Access-Control-Allow-Origin` yok — bir tarayıcı sayfası buraya istek gönderebilir ama yanıtı okuyamaz.
+
+Açık sorunun diğer yarısı — sunucunun torrent olmayan HTTP kaynaklarını da sunup sunmayacağı — **sunmayarak** kapatıldı: bir HTTP kaynağı zaten atlanabilir durumda, onu loopback üzerinden geçirmek mpv'nin kendiliğinden yaptığı şeyin yerine bir sıçrama, bir tampon ve bozulabilecek ikinci bir şey koymak olurdu.
 
 **2. Masaüstü: Tauri (Rust). [K]**
 Gerekçe (düzeltildi): asıl kazanç indirme boyutu değil — libmpv ve torrent motoru gömüldükten sonra boyut avantajının büyük kısmı kaybolur. Asıl kazanç **tek dilde (Rust) core + protokol + torrent + istemci**, düşük bellek tüketimi, hızlı açılış ve Tauri 2 ile Android'e aynı çatıdan uzanma imkânıdır.
@@ -445,6 +457,18 @@ v0.1'de imza her yerde geçiyordu (madde 3, 15c, 22, 25, 27c) ama anahtarların 
 - **İptal (revocation) — v0.1'de tamamen eksikti.** Kötü niyetli veya güvenliği bozulmuş bir eklenti/modül **sürümü**, istemcilerin reddedeceği şekilde işaretlenebilir: imzalı bir iptal listesi, istemcinin düzenli aralıklarla çektiği bir uçtan yayınlanır; çekemediğinde son bilinen listeyi kullanır (fail-closed değil, fail-last-known). Kapsam **sürüm bazındadır** — tüm eklentiyi değil, kötü sürümü iptal et.
 - **Acil durum prosedürü:** kim, hangi gerekçeyle, kaç kişinin onayıyla iptal yayınlayabilir. İptal kararı da denetim kaydına girer (madde 6).
 
+**Uygulandı (v0.5).** Hiyerarşinin istemci tarafı yazıldı ve çalışıyor: `eon-stream-core/src/signature.rs` (Ed25519 doğrulama, geçerlilik pencereli çok anahtarlı güven kümesi, derleme profiline göre anahtar amacı), `src/revocation.rs` (sürüm bazlı iptal, son bilinen liste, geri alma reddi, tazelik), `src/modules.rs` (kurulu modüllere uygulama).
+
+Üç şey karara bağlandı:
+
+1. **Kanonik serileştirme: JCS (RFC 8785).** Sözleşmede açık bırakılmıştı ve yanında şu uyarı duruyordu: iki uygulama bayt sırasında anlaşmazsa, bir istemcide doğrulanan imza diğerinde başarısız olur. Bu uyarı doğruydu, dolayısıyla **hiçbir anahtar yokken** sabitlendi — en ucuz an buydu. İmzalanan nesne üç dizge alanından oluştuğu için kanonik biçim tek bir satır: `{"id":...,"sha256":...,"version":...}`. Herhangi bir uygulama bunu dizge birleştirmeyle üretebilir.
+2. **Doğrulayıcı konuyu (subject) zarftan okumaz.** Kendi okuduğu manifestten ve kendi hesapladığı özetten yeniden kurar; böylece uydurulmuş bir subject alanının tutunacağı bir yer kalmıyor.
+3. **`eon-stream-core` doğrular, asla imzalamaz.** Bağımlılığın imzalama yarısı kapatıldı: aynı zamanda imzalayabilen bir istemci, ele geçirildiğinde geçerli eser üreten bir istemcidir.
+
+**Durum: hiçbir anahtar yok.** Hiyerarşide tek bir anahtar üretilmedi. Sahiplik tüzel kişiliğe ait (madde 30) ve o kurulmadan kök anahtarı bir kişinin dizüstünde tutmak, hiç anahtar olmamasından **daha kötü** olurdu — gerçeğine benzeyen imzalar üretirdi. Dolayısıyla her yapı **boş bir güven kümesiyle** dağıtılıyor ve boş güven kümesi hiçbir şey kurmuyor. İstemci bunu belirsiz bir hatayla değil, açıkça söylüyor.
+
+Mekanizma kuramsal değil, çalışır durumda: istemci güven kümesini çalıştırılabilir dosyanın yanındaki `eon-trust.json`'dan okuyor, yani isteyen bir anahtar üretip bir modül imzalayıp zinciri uçtan uca işletebiliyor (imza doğrulandı, içerik özeti yeniden hesaplandı, izinler gösterildi, oynanmış içerik reddedildi, sürüm düşürme reddedildi). Bu dosya tek bir makinenin neye güvendiğinin beyanıdır — kurumun kendi anahtarını kaydettireceği mekanizmanın aynısı. Doğrulamayı atlayan bir bayrak **yok**.
+
 **35. Erişilebilirlik. [K]**
 
 Kamu eğitim ürünü için pazarlık konusu değildir ve v0.1'de tek satır yoktu. **v1'in çıkış ölçütlerine dahildir** (bkz. v1 tanımı, madde 8):
@@ -592,14 +616,29 @@ Madde 10, 14.
 - [ ] Madde 13'teki 8 soruluk listeyi avukata gönderilecek biçimde hazırla
 
 **Faz 0 çıktıları:**
-- [ ] mpv + Tauri IPC prototipi (madde 2)
-- [ ] Protokol kararı: stremio-core mu, kendimiz mi (madde 1)
-- [ ] Torrent motoru seçimi ve sıralı akış prototipi (madde 1)
-- [ ] Modül manifesti ve izin sistemi `v0` taslağı (madde 3, 4, 5, 22, 27 buna bağlı)
-- [ ] Paket formatı + `mirrors` / web seed + creator-core sözleşmesi `v0` (madde 15, 16, 28)
-- [ ] İmza ve iptal formatı taslağı (madde 34)
+- [x] mpv IPC prototipi (madde 2) — ayrı süreç + JSON IPC çalışıyor. Tauri kabuğu **bilerek** yok: arayüz `v1`'e kadar eklenmiyor, bütün alfa hattı uçbirimde yürüyor.
+- [x] Protokol kararı: kendimiz (madde 1) — Cinemeta ve OpenSubtitles v3'e karşı doğrulandı.
+- [x] Torrent motoru seçimi ve sıralı akış prototipi (madde 1) — librqbit; magnet → üstveri → ön bellek → loopback HTTP → mpv zinciri gerçek bir sürüye karşı uçtan uca test edildi.
+- [x] Modül manifesti ve izin sistemi `v0` taslağı (madde 3, 4, 5, 22, 27 buna bağlı) — şema yazıldı **ve** uygulandı; bildirimsel modülün izin isteyemeyeceği kuralı artık şemada zorlanıyor, yalnızca temada değil.
+- [x] Paket formatı + `mirrors` / web seed + creator-core sözleşmesi `v0` (madde 15, 16, 28) — şema yazıldı; uygulaması Faz 2.
+- [x] İmza ve iptal formatı taslağı (madde 34) — taslak çıktı, kanonik serileştirme (JCS) sabitlendi ve istemci tarafı uygulandı. Anahtar **yok**: madde 34'teki duruma bakın.
 - [ ] Tehdit modeli dokümanı (madde 37)
-- [ ] Erişilebilirlik kontrol listesi (madde 35) — v1 çıkış ölçütü olarak
+- [x] Erişilebilirlik kontrol listesi (madde 35) — v1 çıkış ölçütü olarak. Kontrastın **ölçülebilir** kısmı artık otomatik: tema belgeleri WCAG 2.1 oranlarına karşı denetleniyor ve iki yerleşik palet kendi denetiminden geçiyor (CI'da adlandırılmış bir kontrol). Klavye ve ekran okuyucu ölçütleri arayüzle birlikte, `v1`'de.
+
+**v1 tanımındaki sekiz kalemin durumu (v0.12 itibarıyla):**
+
+| # | Kalem | Durum |
+|---|---|---|
+| 1 | Masaüstü, tek dosya kurulum, imzalı, otomatik güncellemeli | kısmen — güncelleyici ve imza doğrulama var; kurulum paketi ve anahtarlar yok |
+| 2 | Video modülü: katalog/meta/stream, mpv, altyazı, devam | bitti |
+| 3 | URL ile eklenti ekleme, listeleme, kaldırma, sıralama | bitti |
+| 4 | Torrent akışı: sıralı indirme + yerel HTTP sunucu → oynatıcı | bitti |
+| 5 | Modül yöneticisi, imza doğrulama | bitti — anahtar olmadığı için hiçbir şey kurmuyor, tasarım gereği |
+| 6 | Bildirimsel tema desteği | bitti |
+| 7 | Uyumluluk test seti CI'da yeşil | bitti — CI'da adlandırılmış bir kontrol |
+| 8 | Türkçe + İngilizce; temel erişilebilirlik | arayüz dışındaki yarısı bitti |
+
+Kalan: **arayüz, kurulum paketi ve imzalama anahtarları.**
 
 **Karara bağlanacak, aceleci olmayan:**
 - [ ] Yerel kod eklentileri için sandbox tasarımı: WASM mı, izole webview mı (madde 4)
