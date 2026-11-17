@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.5 · **Son güncelleme:** 4 Ekim 2026
+> **Durum:** Taslak v0.6 · **Son güncelleme:** 17 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor.
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor.
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -117,6 +117,10 @@ Açık sorunun diğer yarısı — sunucunun torrent olmayan HTTP kaynaklarını
 
 **2. Masaüstü: Tauri (Rust). [K]**
 Gerekçe (düzeltildi): asıl kazanç indirme boyutu değil — libmpv ve torrent motoru gömüldükten sonra boyut avantajının büyük kısmı kaybolur. Asıl kazanç **tek dilde (Rust) core + protokol + torrent + istemci**, düşük bellek tüketimi, hızlı açılış ve Tauri 2 ile Android'e aynı çatıdan uzanma imkânıdır.
+
+**Arayüzün zamanlaması — değişti (plan v0.6) [K]:** Önceki karar: arayüz `v1`'e kadar eklenmez, bütün alfa hattı uçbirimde yürür; gerekçe, yarım bir Tauri iskeletinin çürümesi ve hangi kararların gerçekten verildiğini gizlemesiydi. Yeni karar: **arayüz alfa hattında, `v0.14`'te geldi** — proje sahibinin kararı. Gerekçenin korumak istediği şey duruyor: pencere, uçbirimde çalıştığı kanıtlanmış bir sistemin üzerine yazıldı ve uçbirim sürümü `eon-stream-cli` olarak yanında yayımlanmaya devam ediyor.
+
+**Maliyeti, açıkça:** `v1`'e kadar bakılacak ikinci bir yüzey var — her davranış değişikliği iki yerde karşılanıyor ve modüller, güncelleme denetimi, altyazı arama ve derin bağlantılar şimdilik yalnızca uçbirimde. Arayüzün erişilebilirlik ölçütleri (madde 35: klavye, ekran okuyucu) artık ertelenmiş bir iş değil, **ölçülmesi gereken açık bir iş**: kontrast ve metin ölçeklenmesi karşılanıyor, klavye ve ekran okuyucu denetimi `v1` çıkış ölçütü olarak duruyor.
 
 **Oynatıcı stratejisi [K]:** Faz 0'ın en riskli işi mpv'yi derlemek değil, sistem webview'ının üstünde/altında native bir video yüzeyi (Windows'ta child HWND, macOS'ta NSView, Linux'ta X11/Wayland) yönetip arayüzü ona bindirmektir; z-order ve şeffaflık bilinen bir çiledir. Aşamalı gidilir:
 
@@ -616,7 +620,7 @@ Madde 10, 14.
 - [ ] Madde 13'teki 8 soruluk listeyi avukata gönderilecek biçimde hazırla
 
 **Faz 0 çıktıları:**
-- [x] mpv IPC prototipi (madde 2) — ayrı süreç + JSON IPC çalışıyor. Tauri kabuğu **bilerek** yok: arayüz `v1`'e kadar eklenmiyor, bütün alfa hattı uçbirimde yürüyor.
+- [x] mpv IPC prototipi (madde 2) — ayrı süreç + JSON IPC çalışıyor. Tauri kabuğu `v0.14`'te geldi: arayüz, uçbirimde çalıştığı kanıtlanmış bir sistemin üzerine yazıldı (bkz. madde 2, arayüzün zamanlaması).
 - [x] Protokol kararı: kendimiz (madde 1) — Cinemeta ve OpenSubtitles v3'e karşı doğrulandı.
 - [x] Torrent motoru seçimi ve sıralı akış prototipi (madde 1) — librqbit; magnet → üstveri → ön bellek → loopback HTTP → mpv zinciri gerçek bir sürüye karşı uçtan uca test edildi.
 - [x] Modül manifesti ve izin sistemi `v0` taslağı (madde 3, 4, 5, 22, 27 buna bağlı) — şema yazıldı **ve** uygulandı; bildirimsel modülün izin isteyemeyeceği kuralı artık şemada zorlanıyor, yalnızca temada değil.
@@ -625,7 +629,7 @@ Madde 10, 14.
 - [ ] Tehdit modeli dokümanı (madde 37)
 - [x] Erişilebilirlik kontrol listesi (madde 35) — v1 çıkış ölçütü olarak. Kontrastın **ölçülebilir** kısmı artık otomatik: tema belgeleri WCAG 2.1 oranlarına karşı denetleniyor ve iki yerleşik palet kendi denetiminden geçiyor (CI'da adlandırılmış bir kontrol). Klavye ve ekran okuyucu ölçütleri arayüzle birlikte, `v1`'de.
 
-**v1 tanımındaki sekiz kalemin durumu (v0.12 itibarıyla):**
+**v1 tanımındaki sekiz kalemin durumu (v0.14 itibarıyla):**
 
 | # | Kalem | Durum |
 |---|---|---|
@@ -636,9 +640,9 @@ Madde 10, 14.
 | 5 | Modül yöneticisi, imza doğrulama | bitti — anahtar olmadığı için hiçbir şey kurmuyor, tasarım gereği |
 | 6 | Bildirimsel tema desteği | bitti |
 | 7 | Uyumluluk test seti CI'da yeşil | bitti — CI'da adlandırılmış bir kontrol |
-| 8 | Türkçe + İngilizce; temel erişilebilirlik | arayüz dışındaki yarısı bitti |
+| 8 | Türkçe + İngilizce; temel erişilebilirlik | iki dil bitti (arayüz dahil, yeniden başlatmadan); erişilebilirliğin klavye ve ekran okuyucu yarısı açık |
 
-Kalan: **arayüz, kurulum paketi ve imzalama anahtarları.**
+Kalan: **kurulum paketi, imzalama anahtarları** ve arayüzün hâlâ uçbirime yolladığı işler — modüller, güncelleme denetimi, altyazı arama, derin bağlantılar.
 
 **Karara bağlanacak, aceleci olmayan:**
 - [ ] Yerel kod eklentileri için sandbox tasarımı: WASM mı, izole webview mı (madde 4)

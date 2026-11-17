@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+### Plan v0.6 — 17 November 2026
+
+No new item numbers. v0.6 changes the timing half of one decision and updates the status
+table under it.
+
+- **madde 2, when the interface arrives: during the alpha, not at `v1`.** The previous
+  decision was that the window came last and the whole alpha ran in a terminal, because a
+  half-generated Tauri scaffold rots and hides which decisions are real. It shipped at
+  `v0.14` instead, at the owner's decision. What the old reasoning was protecting still
+  holds and is recorded as such: the window was written against a system already proven at
+  a prompt, and the headless build is still published beside it as `eon-stream-cli`.
+- **What it costs, stated in the item.** A second surface to maintain until `v1`: every
+  behaviour change is now answered twice, and modules, the update check, subtitle search
+  and deep links live only at the prompt for now. madde 35's keyboard and screen-reader
+  criteria stop being deferred work and become open work that has to be measured — the
+  contrast and text-scaling half is met, the other half is a `v1` exit criterion.
+- **The eight-item table is now as of `v0.14`:** item 8 (Turkish and English) is done
+  including the interface; what is left is the installer, the signing keys, and the parts
+  of the window that still send a person to the prompt.
+
 ### Plan v0.5 — 4 October 2026
 
 No new item numbers. v0.5 closes items that were open and marks the Faz 0 outputs; a number
