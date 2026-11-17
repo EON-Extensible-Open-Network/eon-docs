@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.6 · **Son güncelleme:** 17 Kasım 2026
+> **Durum:** Taslak v0.7 · **Son güncelleme:** 17 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor.
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde).
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -124,8 +124,12 @@ Gerekçe (düzeltildi): asıl kazanç indirme boyutu değil — libmpv ve torren
 
 **Oynatıcı stratejisi [K]:** Faz 0'ın en riskli işi mpv'yi derlemek değil, sistem webview'ının üstünde/altında native bir video yüzeyi (Windows'ta child HWND, macOS'ta NSView, Linux'ta X11/Wayland) yönetip arayüzü ona bindirmektir; z-order ve şeffaflık bilinen bir çiledir. Aşamalı gidilir:
 
-- **v1:** mpv **ayrı süreç** olarak çalışır, `--input-ipc-server` üzerinden JSON IPC ile kontrol edilir. Arayüz kontrolleri EON Stream penceresinde, görüntü mpv penceresinde. Düşük risk, hızlı sonuç.
-- **v1 sonrası:** libmpv gömme (tek pencere, arayüzün video üzerine binmesi) ayrı bir dilim olarak denenir; başarısız olursa v1 davranışı geçerli kalır.
+- **v1:** mpv **ayrı süreç** olarak çalışır, `--input-ipc-server` üzerinden JSON IPC ile kontrol edilir. ~~Arayüz kontrolleri EON Stream penceresinde, görüntü mpv penceresinde.~~ Görüntü de kontroller de EON Stream penceresinde (plan v0.7, aşağıda). Düşük risk, hızlı sonuç.
+- **v1 sonrası:** libmpv gömme ayrı bir dilim olarak kalıyor — artık tek pencere için değil, `--wid`'in çalışmadığı yerler (Android, gerekirse macOS/Wayland) ve tek süreç istenirse diye. Başarısız olursa bugünkü davranış geçerli kalır.
+
+**Oynatıcının yeri — değişti (plan v0.7) [K]:** Önceki karar: `v1`'de görüntü mpv'nin kendi penceresinde, arayüzün videonun üzerine binmesi `v1` sonrasında libmpv gömmeyle. Yeni karar: **görüntü `v0.16`'dan itibaren EON Stream penceresinin içinde** — proje sahibinin kararı. Yol libmpv gömme değil ve `v1` kararının asıl yarısı duruyor: mpv hâlâ **ayrı süreç**, hâlâ JSON IPC ile sürülüyor; yalnızca `--wid` ile pencerenin tutamacı veriliyor ve resmini pencerenin çocuğu olarak çiziyor. Oynatıcı denetimleri, mpv yüzeyinden **sonra** eklenen şeffaf ikinci bir webview (`player.html`); katalog webview'ı oynatma süresince gizleniyor. z-order sorunu Win32 API'ye inmeden sıralamayla çözüldü, uygulama kodunda `unsafe` yok. Bir film açık değilken hiçbir oynatma denetimi görünmüyor.
+
+**Maliyeti, açıkça:** Yalnızca Windows'ta ölçüldü (alt pencere sırası oynatma sırasında gerçekten okunarak). macOS (NSView) ve Linux'ta (X11/Wayland) `--wid` ayrı ayrı doğrulanmadan bu karar oralara taşınmış sayılmaz; tutamaç alınamayan platformda mpv eskisi gibi kendi penceresini açar. Tauri'nin **`unstable` özelliği** açıldı (bir pencerede iki webview için): kararlı olmayan bir API'ye bağımlılık, Tauri sürüm yükseltmelerinde kırılabilir ve her yükseltmede elle denenmesi gerekir. Madde 4'teki "arayüzün erişebildiği her şey bir modülün erişebileceği şeydir" yüzeyi bir sayfa büyüdü; aynı komut kümesini kullanıyor, yeni ağ izni yok. Oynatıcının pencere içi davranışının otomatik testi yok: ekran yakalamayla doğrulanıyor.
 - **Android [E]:** libmpv'nin Android derleme zinciri ayrı bir projedir. Mobilde `media3` / ExoPlayer değerlendirilir; oynatıcı soyutlaması (`PlayerBackend` arayüzü) baştan iki implementasyonu kaldıracak şekilde yazılır.
 
 **3. Her şey modül. [K]**
@@ -620,7 +624,7 @@ Madde 10, 14.
 - [ ] Madde 13'teki 8 soruluk listeyi avukata gönderilecek biçimde hazırla
 
 **Faz 0 çıktıları:**
-- [x] mpv IPC prototipi (madde 2) — ayrı süreç + JSON IPC çalışıyor. Tauri kabuğu `v0.14`'te geldi: arayüz, uçbirimde çalıştığı kanıtlanmış bir sistemin üzerine yazıldı (bkz. madde 2, arayüzün zamanlaması).
+- [x] mpv IPC prototipi (madde 2) — ayrı süreç + JSON IPC çalışıyor. Tauri kabuğu `v0.14`'te geldi: arayüz, uçbirimde çalıştığı kanıtlanmış bir sistemin üzerine yazıldı (bkz. madde 2, arayüzün zamanlaması). `v0.16`'dan beri görüntü de pencerenin içinde (bkz. madde 2, oynatıcının yeri).
 - [x] Protokol kararı: kendimiz (madde 1) — Cinemeta ve OpenSubtitles v3'e karşı doğrulandı.
 - [x] Torrent motoru seçimi ve sıralı akış prototipi (madde 1) — librqbit; magnet → üstveri → ön bellek → loopback HTTP → mpv zinciri gerçek bir sürüye karşı uçtan uca test edildi.
 - [x] Modül manifesti ve izin sistemi `v0` taslağı (madde 3, 4, 5, 22, 27 buna bağlı) — şema yazıldı **ve** uygulandı; bildirimsel modülün izin isteyemeyeceği kuralı artık şemada zorlanıyor, yalnızca temada değil.

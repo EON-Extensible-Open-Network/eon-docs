@@ -2,6 +2,23 @@
 
 ## [Unreleased]
 
+### Plan v0.7 — 17 November 2026
+
+No new item numbers. v0.7 changes the player-strategy half of madde 2.
+
+- **madde 2, where the picture goes: inside the EON Stream window from `v0.16`.** The
+  previous decision put the picture in mpv's own window for `v1` and left a single window to
+  a later libmpv slice. The owner asked for it now. It is not libmpv: mpv is still a
+  separate process driven over JSON IPC, handed the window's handle with `--wid`. The
+  controls are a transparent second webview added after mpv's surface, and the catalogue's
+  webview is hidden while something plays — z-order solved by sequencing, with no `unsafe`.
+- **What it costs, stated in the item.** Measured on Windows only; macOS and Linux need
+  their own check before the claim extends to them, and fall back to mpv's own window
+  until then. Tauri's `unstable` feature is now on (two webviews in one window), which can
+  break on a Tauri upgrade. The interface surface madde 4 watches grew by one page, with
+  the same commands and no network permission. The in-window behaviour has no automated
+  test; it is checked by screen capture.
+
 ### Plan v0.6 — 17 November 2026
 
 No new item numbers. v0.6 changes the timing half of one decision and updates the status
