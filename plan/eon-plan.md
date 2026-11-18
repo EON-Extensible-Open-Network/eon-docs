@@ -168,6 +168,9 @@ v0.2'de eklenen kurallar:
 **7. Hesaplar isteğe bağlı. [K]**
 Görüntüleyici hesapsız çalışır ve hesapsız **tam işlevlidir**. Your feed, puanlama ve yayınlama, marketplace modülüyle gelen ayrı bir girişle yapılır. Hesap sistemi, veri koruma yükümlülüğünün fiilen başladığı noktadır (madde 31).
 
+- **a) Puan ve yorum önce cihazda. [K]** Görüntüleyici bir yapımı 10 üzerinden puanlar ve isteğe bağlı yorum yazar; bunlar yalnızca cihazda tutulur (`eon-ratings.json`) ve "Profilim" sayfası bunlardan oluşur. Hesap gerekmez, hiçbir şey dışarı çıkmaz (EON Stream `v0.26`).
+- **b) Topluluk (puan paylaşımı, yorumlar, arkadaşlar, akış) [A].** Sözleşme taslağı `eon-stream-spec/docs/community-api.md`'de; istemci, kullanıcı bir sunucu adresi girene kadar hiçbir şey yapmaz. **Projenin işlettiği bir sunucu madde 30'daki Faz L1 kapısı karşılanmadan açılmaz.** Açık sorular: (1) kullanıcı yorumu barındırmak bizi 5651 kapsamında yer sağlayıcı yapar — bildirim-kaldırma süreci ve madde 12'deki insan cevabı hazır olmadan yorum açılmaz; (2) arkadaşlık ve akış "sosyal ağ sağlayıcı" eşiklerine (madde 30) yaklaştırır, eşik takibi bu özellik açıldığı gün başlar; (3) hesap verisi madde 31'deki sınırda kalır: kullanıcı adı + e-posta + parola özeti + kullanıcının yayınladıkları; izleme geçmişi sunucuya hiç gitmez.
+
 **8. Marketplace ucuz başlar. [K]**
 İlk aşamada index bir Git deposunda tutulur, yayın PR ile olur. Bu aşamada barındırma büyük ölçüde depo sağlayıcısındadır (madde 29, 30/L0). Puanlama, arama, öne çıkanlar, sıralama ve feed'ler (your feed / global feed) geldiğinde gerçek bir backend'e geçilir — ve o geçiş madde 30'daki kapıya tabidir.
 
