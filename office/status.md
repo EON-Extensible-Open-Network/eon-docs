@@ -24,7 +24,9 @@ Plan: [madde 43](../plan/eon-plan.md). Order of work: [roadmap.md](roadmap.md).
 |---|---|---|---|---|
 | `eon-office-spec` | 0.1.0 (contracts v0) | ✓ public | ✓ green | schemas + examples validated in Node; links checked |
 | `eon-office-core` | 0.1.0 | ✓ public | ✓ green (Windows, macOS, Linux; deny; REUSE; invariants; spec agreement) | 5 dependencies |
-| `eon-office-sdk` | 0.1.0 | ✓ public | ✓ green (reference integration on three OSes) | 1 dependency |
+| `eon-office-sdk` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (reference integration on three OSes) | release ships EON Hello and EON Caller for Windows, Linux, macOS |
+| `eon-office-launcher` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (three OSes; 30 window checks on Windows) | release downloaded, checksums verified, `--selftest` passed on the published binaries |
+| `eon-office-marketplace` | 0.1.0 (index v0) | ✓ public | — | lists Hello and Caller (preview, unsigned); artefacts verified by download |
 | `eon-docs` | plan v0.8 | branch `docs/madde-43-office`, PR #2 | — | awaiting the owner's merge |
 | everything else in the roadmap | — | not created | — | by rule: no empty repositories (madde 43d) |
 
@@ -36,6 +38,9 @@ Plan: [madde 43](../plan/eon-plan.md). Order of work: [roadmap.md](roadmap.md).
 | core protocol tests | 16 | the real binary over a bare socket: authentication, capabilities checked per call, storage isolation, declared events, calls between apps, a provider crashing mid-call, notifications, search, jobs, preferences, supervisor restarts and give-up, forced stop, sync between two cores, directory, oversized messages, uninstall, backup/restore and one-core-per-home |
 | core ↔ spec agreement | 2 | the spec's 25 examples mean the same to the Rust readers as to the JSON Schemas |
 | spec validation | 25 examples | 8 valid accepted, 17 invalid rejected |
+| core protocol tests (since) | 17 | + a relative `entry.command` found with the platform suffix |
+| launcher | 5 unit + 1 host-against-core + `--selftest` + 30 window checks | review, install, permissions, notifications, keyboard, search, open, preferences, activity, start, remove |
+| marketplace | 12 unit + 2 index | rules, deterministic build, install planning, signature verification; artefacts downloaded in CI |
 | SDK | 3 unit + 1 reference + 1 doctest | an app launched by the core, a second app reaching it only through the core, and graceful behaviour with it absent |
 | Mutation check (manual) | — | disabling capability enforcement in the core fails 3 protocol tests |
 
@@ -51,14 +56,20 @@ Plan: [madde 43](../plan/eon-plan.md). Order of work: [roadmap.md](roadmap.md).
 
 ## Current work
 
-Nothing is half-done in a repository. The next items, in order:
+Done since the first status: **EON Launcher 0.1** (Gate 0's first half) and the
+**marketplace** (index format, tooling, signature check, compatibility, first entries).
+Verified end to end with published files only: the released core read the live
+`index.json`, downloaded EON Hello, checked its size and SHA-256, installed and launched it;
+notifications, Turkish search and a call to `greet` worked.
 
-1. **EON Launcher** (`eon-office-launcher`) — the owner's shell, so nobody needs a terminal
-   to install or grant (Gate 0 → 1).
-2. **Marketplace** index format and signature checks (madde 34 mechanism; empty trust set).
-3. **Spec additions** for the launcher: the `activity.*` event convention (recent items,
-   activity feed) and the `eon-office://` deep-link format.
-4. **`eon-office-engine` spike**: `yrs` vs `automerge`, two weeks, measured.
+Next, in order:
+
+1. **Install from the marketplace in EON Launcher** — the last Wave 0 item: browse
+   `index.json`, show what a release asks for and that it is unsigned, download, verify,
+   install.
+2. **Spec additions:** the `activity.*` event convention and `eon-office://` deep links.
+3. **Core design notes:** encryption at rest; the sync transport for the server.
+4. **`eon-office-engine` spike:** `yrs` vs `automerge`.
 
 ## Blockers and open questions
 

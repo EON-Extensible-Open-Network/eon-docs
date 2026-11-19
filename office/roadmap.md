@@ -125,11 +125,11 @@ A wave starts when the gate before it is passed. Each gate is measurable.
 ### Wave 0 — foundation (in progress)
 
 - [x] Spec v0, core 0.1.0, SDK 0.1.0, reference integration, CI green on Windows, macOS, Linux.
-- [ ] **EON Launcher** 0.1: install from a manifest file, grant/revoke with the wording of
+- [x] **EON Launcher** 0.1 (released `v0.1.0`): install from a manifest file, grant/revoke with the wording of
   `capabilities.md`, launch/stop, notification centre, unified search, preferences.
-- [ ] **Marketplace** 0.1: Git index format, signature verification reusing madde 34's
+- [x] **Marketplace** 0.1: Git index format, signature verification reusing madde 34's
   mechanism (empty trust set until a legal entity exists, as in EON Stream), compatibility
-  check on `api` ranges, `eon-office-launcher` installs from it.
+  check on `api` ranges. *Remaining:* `eon-office-launcher` installs from it.
 - [ ] Core: encryption-at-rest design document; `sync` transport design for the server.
 
 **Gate 0 → 1:** a person can install, grant, run and remove an application without a
