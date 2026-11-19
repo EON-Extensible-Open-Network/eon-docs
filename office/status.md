@@ -22,14 +22,15 @@ Plan: [madde 43](../plan/eon-plan.md). Order of work: [roadmap.md](roadmap.md).
 
 | Repository | Version | Published | CI | Notes |
 |---|---|---|---|---|
-| `eon-office-spec` | 0.1.0 (contracts v0) | ✓ public | ✓ green | schemas + examples validated in Node; links checked |
-| `eon-office-core` | 0.1.0 | ✓ public | ✓ green (Windows, macOS, Linux; deny; REUSE; invariants; spec agreement) | 5 dependencies |
+| `eon-office-spec` | contracts v0: the shared-folder contract | ✓ public | ✓ green | replaced the core protocol (19 Nov) |
+| `eon-office-core` | 0.2.0 — a library, not a service | ✓ public | ✓ green (Windows, macOS, Linux; deny; REUSE; invariants) | [design](design/2026-11-19-library-core.md) |
 | `eon-office-sdk` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (reference integration on three OSes) | release ships EON Hello and EON Caller for Windows, Linux, macOS |
-| `eon-office-launcher` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (three OSes; 30 window checks on Windows) | release downloaded, checksums verified, `--selftest` passed on the published binaries |
+| `eon-office-launcher` | 0.2.0, releases `v0.1.0`, `v0.2.0` | ✓ public | ✓ green (three OSes; 30 window checks on Windows) | release downloaded, checksums verified, `--selftest` passed on the published binaries |
 | `eon-office-marketplace` | 0.1.0 (index v0) | ✓ public | ✓ green | lists Hello, Caller and Notes (preview, unsigned); artefacts verified by download in CI and weekly |
-| `eon-office-notes` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (three OSes; window checks on Windows) | in the marketplace |
-| `eon-office-tasks` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (three OSes; window checks on Windows) | |
-| `eon-office-contacts` | 0.1.0 | ✓ public | running | CardDAV moved to 0.2 |
+| `eon-office-notes` | 0.2.0, releases `v0.1.0`, `v0.2.0` | ✓ public | ✓ green (three OSes; window checks on Windows) | stands alone; in the marketplace (0.1.0) |
+| `eon-office-tasks` | 0.2.0, tag `v0.2.0` | ✓ public | ✓ green (three OSes; 22 window checks on Windows) | stands alone. `v0.1.0` was tagged but never published: GitHub never gave its macOS job a runner |
+| `eon-office-contacts` | 0.2.0, tag `v0.2.0` | ✓ public | ✓ green (three OSes; 20 window checks on Windows) | stands alone; CardDAV moved to 0.2 |
+| `eon-office-calendar` | 0.1.0 | ✓ public (created 19 Nov) | running | stands alone; CalDAV moved to 0.2 |
 | `eon-docs` | plan v0.8 | branch `docs/madde-43-office`, PR #2 | — | awaiting the owner's merge |
 | everything else in the roadmap | — | not created | — | by rule: no empty repositories (madde 43d) |
 
@@ -49,8 +50,10 @@ Plan: [madde 43](../plan/eon-plan.md). Order of work: [roadmap.md](roadmap.md).
 
 ## Technical decisions taken (and where they are argued)
 
-- The core is a **local service**, applications are **separate processes** — `eon-office-core/docs/architecture.md`.
-- **Loopback TCP + JSON-RPC 2.0, one object per line**; threads, no async runtime — same.
+- ~~The core is a local service~~ — replaced 19 Nov: **the core is a library every
+  application links, and every application stands alone**; shared needs go through files in
+  a known folder and through the operating system — [design](design/2026-11-19-library-core.md).
+  The loopback JSON-RPC protocol went with the service.
 - **SQLite**, one connection, WAL; migrations refuse newer schemas — same.
 - **Hybrid logical clocks, last-writer-wins per document, losers kept** — `eon-office-spec/docs/sync.md`.
 - **Home in the per-user data directory**, unlike EON Stream's beside-the-executable rule, because many programs must find one core — `eon-office-core/src/lib.rs`.
@@ -75,22 +78,46 @@ terminal — met. The madde 35 keyboard and screen-reader checklist: keyboard an
 machine-checkable half are met and tested; **a session with a real screen reader (NVDA or
 Narrator) is still owed** and is the one item that needs a person.
 
-**Wave 1 so far:** EON Notes, EON Tasks and EON Contacts each have a first version with the
-roadmap's acceptance criteria tested against a real core and through the real window
+**Wave 1:** EON Notes, EON Tasks and EON Contacts each have a first version with the
+roadmap's acceptance criteria tested on the core library and through the real window
 (Notes: a 1,000-note vault imports in about 3 s with every link to an existing note
 resolving; Tasks: RFC 5545 repetition including 29 February and months without a 31st,
-reminders through the core's scheduler, iCalendar round trips; Contacts: vCard 2.1/3.0/4.0
+reminders from the window's own timer, iCalendar round trips; Contacts: vCard 2.1/3.0/4.0
 including Outlook's quoted-printable, Turkish alphabetical order). Bugs the window checks
 caught before release: a hidden-attribute override, a startup focus race, search-box
 sizing, dynamic text not re-translated, subtasks filtered out of date views, a missing
 `search.query` capability in Notes' manifest.
 
+**EON Calendar 0.1** (the last Wave 1 application): several calendars, RFC 5545
+repetition with single occurrences changed or deleted from the window, IANA time zones
+(a weekly meeting keeps its wall time across daylight saving, tested), reminders, day,
+week, month and agenda views, people by address or through what EON Contacts publishes,
+iCalendar import and export that doubles nothing. 23 tests, `--selftest` (including the
+zone database) and 31 window checks. CalDAV moved to 0.2.
+
+**Found on the way, fixed, and now guarded:**
+
+- *Export and import did nothing in EON Tasks and EON Contacts windows.* The pages invoked
+  `exportIcs`/`exportVcf`; Tauri matches the Rust name, `export_ics`. Unit tests called the
+  library directly and the window checks never pressed those buttons. `--selftest` now fails
+  when a page invokes a command the host does not register, and the window checks export
+  and re-import through the forms. Fixed in both before their `v0.2.0` tags.
+- *A reminder firing made an open Tasks editor lose its save* (the shown-mark bumped the
+  task's revision). The mark now lives beside the task.
+- *Calendar*: deleting a changed occurrence brought the original back; re-importing a file
+  doubled it; a script ordering error stopped the whole page — caught by the window check
+  before any commit.
+- A forced shutdown on 19 Nov zeroed two uncommitted files and a linker database; nothing
+  committed was lost.
+
 Next, in order:
 
-1. **EON Calendar** — the last Wave 1 application: RFC 5545 events with recurrence
-   exceptions, IANA time zones, day/week/month/agenda views, ICS import/export.
-2. Keychain credential storage (for CalDAV/CardDAV and Mail), then CalDAV/CardDAV.
-3. Encrypted backups in the core (step 1 of `encryption-at-rest.md`).
+1. Keychain credential storage (for CalDAV/CardDAV and Mail), then CalDAV/CardDAV.
+2. Encrypted backups in the core (step 1 of `encryption-at-rest.md`).
+3. Small debts: the command-name guard in EON Notes and EON Launcher; `NOTICE` files in
+   Tasks, Contacts and Notes still list `eon-office-sdk`; the GitHub descriptions of Tasks,
+   Notes and Contacts still say "on the EON Office core"; marketplace entries for Tasks,
+   Contacts and Calendar.
 
 ## Blockers and open questions
 

@@ -223,7 +223,13 @@ reminders through core jobs and notifications; `provides: task.create, task.open
 **EON Calendar 0.1** — multiple calendars; events with full RFC 5545 recurrence including
 exceptions; time zones from the IANA database; reminders; day/week/month/agenda views;
 ICS import/export validated against a corpus of Outlook, Google and Apple exports;
-CalDAV read/write against Radicale and Nextcloud.
+CalDAV read/write against Radicale and Nextcloud. *Changed 19 Nov 2026:* CalDAV moves to
+`0.2` with the keychain credential storage, as Contacts' CardDAV did, for the same reason.
+`0.1` runs the rule parts real calendars produce (`INTERVAL`, `BYDAY` with ordinals,
+`BYMONTHDAY`, `COUNT`, `UNTIL`) and refuses the rest by name — `BYSETPOS`, `BYMONTH`,
+`BYWEEKNO`, `BYYEARDAY`, sub-daily frequencies — keeping the first occurrence; those and a
+real export corpus (`0.1` is tested on hand-written samples of each producer's quirks) are
+owed by `0.2`.
 
 **EON Contacts 0.1** — vCard 3.0/4.0 import/export (round-trip test corpus incl. Outlook
 exports); groups; search; `provides: contact.lookup`. *Changed 19 Nov 2026:* CardDAV sync
