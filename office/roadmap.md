@@ -53,9 +53,10 @@ manifest, unless it says *merged* — those decisions are explained in §3.
 `eon-office-engine` is justified (the prompt allows it "only if architecturally
 justified"): five applications need the same real-time co-editing model, and putting it in
 the core would violate madde 43c, while putting it in each application would fork it five
-ways. **[A]** Candidate libraries: `yrs` (Yjs port, MIT) and `automerge` (MIT); the decision
-is made by a two-week spike measuring rich-text and table merge quality, memory per
-document and sync payload size.
+ways. **Spike done (19 Nov 2026): yrs recommended** — about 7× faster merges, 11× smaller
+per-edit deltas and 10× faster loads than automerge, on the condition that the engine records
+the losing value of concurrent cell edits, which yrs drops silently and automerge keeps.
+See [research/engine-spike.md](research/engine-spike.md).
 
 ### Applications
 

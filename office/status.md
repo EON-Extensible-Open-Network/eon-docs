@@ -62,14 +62,22 @@ Verified end to end with published files only: the released core read the live
 `index.json`, downloaded EON Hello, checked its size and SHA-256, installed and launched it;
 notifications, Turkish search and a call to `greet` worked.
 
+Also done: install from the marketplace in EON Launcher (`0.2.0`, 36 window checks
+including an install from the live index); the `activity` event and `eon-office://` deep
+links in the spec; design notes for encryption at rest (core) and the sync relay (spec);
+the engine spike ([research/engine-spike.md](research/engine-spike.md)).
+
+**Gate 0 → 1 status:** a person can install, grant, run and remove an application without a
+terminal — met. The madde 35 keyboard and screen-reader checklist: keyboard and the
+machine-checkable half are met and tested; **a session with a real screen reader (NVDA or
+Narrator) is still owed** and is the one item that needs a person.
+
 Next, in order:
 
-1. **Install from the marketplace in EON Launcher** — the last Wave 0 item: browse
-   `index.json`, show what a release asks for and that it is unsigned, download, verify,
-   install.
-2. **Spec additions:** the `activity.*` event convention and `eon-office://` deep links.
-3. **Core design notes:** encryption at rest; the sync transport for the server.
-4. **`eon-office-engine` spike:** `yrs` vs `automerge`.
+1. Launcher: recent items and the activity feed from `activity` events; `eon-office://`
+   handling.
+2. **Wave 1: EON Notes** — the first application of its own, then Tasks, Calendar, Contacts.
+3. Encrypted backups in the core (step 1 of `encryption-at-rest.md`).
 
 ## Blockers and open questions
 
@@ -79,7 +87,7 @@ Next, in order:
 | madde 30 Faz L1 gate (legal entity) | any EON-operated Office service; application signing keys | project owner |
 | madde 32g name availability (`EON Notes`, `EON Writer`, …) | public launch of product names | project owner |
 | madde 33 licence confirmation | first outside contribution to Office repositories | project owner |
-| `eon-office-engine` library choice [A] | Writer, Sheets, Slides, Whiteboard, Loop | spike |
+| ~~`eon-office-engine` library choice~~ | answered by the spike: yrs, with a conflict-recording layer for cells ([research/engine-spike.md](research/engine-spike.md)) | owner to confirm |
 | LibreOffice as optional converter [A] | the long tail of DOCX/PPTX fidelity | formats research |
 
 ## Next milestone
