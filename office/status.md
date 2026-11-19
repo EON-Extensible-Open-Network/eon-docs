@@ -26,7 +26,10 @@ Plan: [madde 43](../plan/eon-plan.md). Order of work: [roadmap.md](roadmap.md).
 | `eon-office-core` | 0.1.0 | ✓ public | ✓ green (Windows, macOS, Linux; deny; REUSE; invariants; spec agreement) | 5 dependencies |
 | `eon-office-sdk` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (reference integration on three OSes) | release ships EON Hello and EON Caller for Windows, Linux, macOS |
 | `eon-office-launcher` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (three OSes; 30 window checks on Windows) | release downloaded, checksums verified, `--selftest` passed on the published binaries |
-| `eon-office-marketplace` | 0.1.0 (index v0) | ✓ public | — | lists Hello and Caller (preview, unsigned); artefacts verified by download |
+| `eon-office-marketplace` | 0.1.0 (index v0) | ✓ public | ✓ green | lists Hello, Caller and Notes (preview, unsigned); artefacts verified by download in CI and weekly |
+| `eon-office-notes` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (three OSes; window checks on Windows) | in the marketplace |
+| `eon-office-tasks` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (three OSes; window checks on Windows) | |
+| `eon-office-contacts` | 0.1.0 | ✓ public | running | CardDAV moved to 0.2 |
 | `eon-docs` | plan v0.8 | branch `docs/madde-43-office`, PR #2 | — | awaiting the owner's merge |
 | everything else in the roadmap | — | not created | — | by rule: no empty repositories (madde 43d) |
 
@@ -72,11 +75,21 @@ terminal — met. The madde 35 keyboard and screen-reader checklist: keyboard an
 machine-checkable half are met and tested; **a session with a real screen reader (NVDA or
 Narrator) is still owed** and is the one item that needs a person.
 
+**Wave 1 so far:** EON Notes, EON Tasks and EON Contacts each have a first version with the
+roadmap's acceptance criteria tested against a real core and through the real window
+(Notes: a 1,000-note vault imports in about 3 s with every link to an existing note
+resolving; Tasks: RFC 5545 repetition including 29 February and months without a 31st,
+reminders through the core's scheduler, iCalendar round trips; Contacts: vCard 2.1/3.0/4.0
+including Outlook's quoted-printable, Turkish alphabetical order). Bugs the window checks
+caught before release: a hidden-attribute override, a startup focus race, search-box
+sizing, dynamic text not re-translated, subtasks filtered out of date views, a missing
+`search.query` capability in Notes' manifest.
+
 Next, in order:
 
-1. Launcher: recent items and the activity feed from `activity` events; `eon-office://`
-   handling.
-2. **Wave 1: EON Notes** — the first application of its own, then Tasks, Calendar, Contacts.
+1. **EON Calendar** — the last Wave 1 application: RFC 5545 events with recurrence
+   exceptions, IANA time zones, day/week/month/agenda views, ICS import/export.
+2. Keychain credential storage (for CalDAV/CardDAV and Mail), then CalDAV/CardDAV.
 3. Encrypted backups in the core (step 1 of `encryption-at-rest.md`).
 
 ## Blockers and open questions

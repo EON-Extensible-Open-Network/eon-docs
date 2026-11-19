@@ -138,6 +138,9 @@ terminal, and the launcher passes the madde 35 keyboard and screen-reader checkl
 
 ### Wave 1 — personal productivity, no server
 
+**Progress (19 Nov 2026):** EON Notes 0.1, EON Tasks 0.1 and EON Contacts 0.1 written and
+published with the criteria below tested; EON Calendar is next.
+
 Notes, Tasks, Calendar, Contacts. Each is Tauri + the SDK, offline-first, local-only.
 Integrations: Notes ↔ Tasks (create task from a line), Calendar ↔ Tasks (due dates, time
 blocking), Contacts ↔ Calendar (attendees). All optional (`app_unavailable` handled).
@@ -223,7 +226,9 @@ ICS import/export validated against a corpus of Outlook, Google and Apple export
 CalDAV read/write against Radicale and Nextcloud.
 
 **EON Contacts 0.1** — vCard 3.0/4.0 import/export (round-trip test corpus incl. Outlook
-exports); groups; search; CardDAV sync; `provides: contact.lookup`.
+exports); groups; search; `provides: contact.lookup`. *Changed 19 Nov 2026:* CardDAV sync
+moves to `0.2`, together with the keychain credential storage EON Mail needs — a CardDAV
+password must not be stored in core storage, and that storage is designed once, for both.
 
 **EON Writer 0.1** — paragraphs, headings, lists, tables, images, footnotes, comments,
 tracked changes; DOCX and ODT open/save meeting the corpus thresholds; PDF export; version
