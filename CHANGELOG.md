@@ -21,6 +21,9 @@ One new item number: **madde 43**.
   there is no EON cloud until then. Microsoft parity is a direction, not a commitment.
 - **The vision line changes** from "one roof, one core, two products" to name Office's own
   core; the old line is recorded beside the new one.
+- **`office/`** holds the EON Office roadmap (products, merges and splits, waves with
+  measurable gates, acceptance criteria), the Microsoft audit with a coverage and parity
+  matrix whose every claim is labelled verified or not, and the project status.
 
 ### Plan v0.7 — 17 November 2026
 
