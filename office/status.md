@@ -26,11 +26,11 @@ Plan: [madde 43](../plan/eon-plan.md). Order of work: [roadmap.md](roadmap.md).
 | `eon-office-core` | 0.2.0 — a library, not a service | ✓ public | ✓ green (Windows, macOS, Linux; deny; REUSE; invariants) | [design](design/2026-11-19-library-core.md) |
 | `eon-office-sdk` | 0.1.0, release `v0.1.0` | ✓ public | ✓ green (reference integration on three OSes) | release ships EON Hello and EON Caller for Windows, Linux, macOS |
 | `eon-office-launcher` | 0.2.0, releases `v0.1.0`, `v0.2.0` | ✓ public | ✓ green (three OSes; 30 window checks on Windows) | release downloaded, checksums verified, `--selftest` passed on the published binaries |
-| `eon-office-marketplace` | 0.1.0 (index v0) | ✓ public | ✓ green | lists Hello, Caller and Notes (preview, unsigned); artefacts verified by download in CI and weekly |
-| `eon-office-notes` | 0.2.0, releases `v0.1.0`, `v0.2.0` | ✓ public | ✓ green (three OSes; window checks on Windows) | stands alone; in the marketplace (0.1.0) |
-| `eon-office-tasks` | 0.2.0, tag `v0.2.0` | ✓ public | ✓ green (three OSes; 22 window checks on Windows) | stands alone. `v0.1.0` was tagged but never published: GitHub never gave its macOS job a runner |
-| `eon-office-contacts` | 0.2.0, tag `v0.2.0` | ✓ public | ✓ green (three OSes; 20 window checks on Windows) | stands alone; CardDAV moved to 0.2 |
-| `eon-office-calendar` | 0.1.0 | ✓ public (created 19 Nov) | running | stands alone; CalDAV moved to 0.2 |
+| `eon-office-marketplace` | 0.1.0 (index v0) | ✓ public | ✓ green | lists Hello, Caller, Notes (0.1.0, 0.2.0), Tasks 0.2.0, Contacts 0.2.0, Calendar 0.1.0 (preview, unsigned); artefacts verified by download in CI and weekly |
+| `eon-office-notes` | 0.2.0, releases `v0.1.0`, `v0.2.0` | ✓ public | ✓ green (three OSes; window checks on Windows) | stands alone; in the marketplace |
+| `eon-office-tasks` | 0.2.0, release `v0.2.0` | ✓ public | ✓ green (three OSes; 22 window checks on Windows) | stands alone. `v0.1.0` was tagged but never published: GitHub never gave its macOS job a runner |
+| `eon-office-contacts` | 0.2.0, release `v0.2.0` | ✓ public | ✓ green (three OSes; 20 window checks on Windows) | stands alone; CardDAV moved to 0.2 |
+| `eon-office-calendar` | 0.1.0, release `v0.1.0` | ✓ public (created 19 Nov) | ✓ green (three OSes; 31 window checks on Windows) | stands alone; CalDAV moved to 0.2 |
 | `eon-docs` | plan v0.8 | branch `docs/madde-43-office`, PR #2 | — | awaiting the owner's merge |
 | everything else in the roadmap | — | not created | — | by rule: no empty repositories (madde 43d) |
 
@@ -114,10 +114,11 @@ Next, in order:
 
 1. Keychain credential storage (for CalDAV/CardDAV and Mail), then CalDAV/CardDAV.
 2. Encrypted backups in the core (step 1 of `encryption-at-rest.md`).
-3. Small debts: the command-name guard in EON Notes and EON Launcher; `NOTICE` files in
-   Tasks, Contacts and Notes still list `eon-office-sdk`; the GitHub descriptions of Tasks,
-   Notes and Contacts still say "on the EON Office core"; marketplace entries for Tasks,
-   Contacts and Calendar.
+3. Small debt: the command-name guard in EON Notes and EON Launcher (both match their
+   hosts today; the guard keeps it so).
+
+The three releases above were downloaded after publishing: every file matches
+`SHA256SUMS.txt` and each Windows binary passes `--selftest` and reports its version.
 
 ## Blockers and open questions
 
