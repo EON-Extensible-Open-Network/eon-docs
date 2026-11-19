@@ -594,7 +594,11 @@ Bunlar bu planın kapsamında **değil** ve bu maddenin amacı onları planlamak
 
 **Lisans (madde 33'ün kalıbı, onayı madde 33'e bağlı):** spec `Apache-2.0`, core `GPL-3.0-or-later` + EON Modül ABI İstisnası, SDK `MIT`, sunucu `AGPL-3.0-or-later`, uygulamalar `GPL-3.0-or-later`.
 
-**Teknoloji:** Rust; masaüstü uygulamalarda Tauri (madde 2'nin gerekçesi aynen geçerli); core, uygulamaların bağlandığı yerel bir hizmet sürecidir ve GUI bağımlılığı taşımaz. Ayrıntı ve gerekçe `eon-office-spec/docs/architecture.md`'de.
+**Teknoloji:** Rust; masaüstü uygulamalarda Tauri (madde 2'nin gerekçesi aynen geçerli). **`eon-office-core` bir kütüphanedir** — `eon-stream-core` gibi, uygulamaların bağladığı kodun çekirdeği; çalışan bir program değildir ve GUI bağımlılığı taşımaz. Her uygulama tek başına çalışır; ortak ihtiyaçlar (arama dizini, tercihler, uygulama kaydı, son kullanılanlar, yayımlanmış veriler) bilinen bir klasördeki paylaşılan dosyalardan, eylemler `eon-office://` bağlantılarından, bildirimler işletim sisteminin bildirim merkezinden geçer.
+
+> **Kayıt (19 Kasım 2026):** İlk tasarımda core, her uygulamanın bağlandığı yerel bir hizmet süreciydi; Notes'u çalıştırmak için bile core ve launcher gerekiyordu. Proje sahibi bunu reddetti ("core bir app değil, kodların çekirdeği olmalıydı"; "gerçekten modüler mi?"). Dört yol karşılaştırıldı (hizmet süreci, Stream modeli kütüphane, tek kabuk + eklentiler, sunucu merkezli) ve Stream modeli seçildi; gerekçe ve bedel `eon-docs/office/design/2026-11-19-library-core.md`'de. Bedeli: bir uygulama kapalıyken onun hatırlatmaları çalmaz (isteğe bağlı bir yardımcı ileride ayrıca kararlaştırılır); merkezi izin denetimi yerine izinler kurulumda gösterilen ve kütüphanenin uyguladığı beyanlardır — ilk tasarımın kendi güvenlik belgesinin de kabul ettiği gibi, aynı kullanıcının programına karşı hiçbiri gerçek sınır değildi.
+
+**Ölçüt:** EON Office uygulamalarından herhangi birini kullanan biri "Microsoft'unkinden iyi" diyebilmeli. Her uygulamanın kabul ölçütleri, Microsoft karşılığının herkesçe sevilen özelliklerini ve en çok şikâyet edilen yanlarının düzeltilmesini içerir.
 
 ---
 
