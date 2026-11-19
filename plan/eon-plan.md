@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.7 · **Son güncelleme:** 17 Kasım 2026
+> **Durum:** Taslak v0.8 · **Son güncelleme:** 19 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde).
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor.
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -14,7 +14,9 @@
 
 ## Vizyon
 
-**Tek çatı, tek core, iki ürün.**
+**Tek çatı; EON Stream ile EON Edu için tek core, EON Office için kendi core'u (madde 43).**
+
+> **Kayıt (v0.8):** Bu satır v0.7'ye kadar "Tek çatı, tek core, iki ürün" idi. EON Stream ve EON Edu için doğru olmaya devam ediyor; EON Office, aynı core'u paylaşmayan üçüncü bir ürün ailesi olarak eklendi.
 
 **EON** (*Extensible Open Network*) bir ürün değil, **çatıdır**. Sloganı projenin ne olduğunu tanımlar: *An open ecosystem for everyone.* Çatı bilerek ürün adından geniş tutuldu — ileride kendi kernel'i ya da kendi Linux dağıtımı gelirse bunlar yeniden markalaşmaya gerek kalmadan EON altına oturur (bkz. madde 32 ve 42).
 
@@ -22,6 +24,7 @@
 
 - **EON Stream:** Açık kaynak, kâr amacı gütmeyen, modüler bir görüntüleme uygulaması (video, dosya, müzik). Stremio eklenti protokolüyle uyumlu; community tabanlı eklenti sistemiyle genişler. **Core'un kendisi budur.**
 - **EON Edu:** Aynı core'un, aynı depodan derlenen kurumsal ürünü. Okullar ve uzaktan eğitim için sıkı kısıtlanmış; üzerine yalnızca Edu'ya özel modüller biner.
+- **EON Office:** Bağımsız uygulamalardan oluşan bir üretkenlik ve iş yazılımı ailesi (EON Notes, EON Writer, EON Sheets…). Uygulamalar tek bir pakete gömülmez; her biri ayrı depo, ayrı kurulum, ayrı sürüm. Ortak altyapı `eon-office-core`'dadır ve EON Stream'in core'una bağlı değildir (madde 43).
 
 ### Neden ortak çatı, ayrı ürün adı [K]
 
@@ -564,6 +567,34 @@ Bunlar bu planın kapsamında **değil** ve bu maddenin amacı onları planlamak
 - **a) Adlandırma alanı ayrılmıştır.** İsimlendirme kalıbı `eon-<ürün>-<bileşen>` (madde 32a). Gelecek bir ürün, mevcut depoların hiçbirini yeniden adlandırmaya gerek duymadan bu kalıba oturur. `eon-docs` ve `.github` bilinçli olarak ürün adı taşımaz; ilk günden çatı düzeyindedir.
 - **b) Çatı düzeyindeki kararlar ürüne özgü yazılmaz.** Marka politikası (madde 32e), yönetişim, güvenlik bildirim süreci, davranış kuralları, imza kök anahtarı hiyerarşisi (madde 34) ve EON Modül ABI İstisnası çatı adına yazılır. Böylece ikinci ürün geldiğinde yeniden yazılmaları gerekmez — bunlar sonradan uyumlulaştırılması en pahalı belgelerdir.
 - **c) Kaynak taahhüdü yoktur.** Bu madde **[E]** etiketlidir ve öyle kalacaktır. EON Stream v1 çıkmadan (madde 41'deki v1 tanımı) hiçbir kernel veya dağıtım işine kaynak ayrılmaz. Çatının varlığı bir vaat değil, bir kapı. Tek kişilik bir ekibin ikinci ürüne başlaması, birincinin bitmemesinin en yaygın sebebidir.
+
+**43. EON Office: üçüncü ürün ailesi, EON Stream v1'den önce. [K — v0.8'de eklendi]**
+
+**Karar — proje sahibinin kararı (19 Kasım 2026):** EON Office bugün başlıyor, EON Stream `v1` beklenmeden. İlk iş uygulamalar değil, **ortak temel**: `eon-office-spec` (sözleşmeler), `eon-office-core` (yerel çekirdek hizmeti) ve `eon-office-sdk` (uygulamaların bağlandığı istemci). Uygulamalar ancak core tamamlanma ölçütlerini karşıladıktan ve yol haritası (`eon-docs/office/roadmap.md`) yazıldıktan sonra, oradaki sırayla başlar.
+
+**Madde 42c ile ilişkisi, açıkça.** 42c kernel ve dağıtım için yazıldı; Office onun kapsamında değil. Ama 42c'nin gerekçesi — *tek kişilik bir ekibin ikinci ürüne başlaması, birincinin bitmemesinin en yaygın sebebidir* — Office'e kelimesi kelimesine uyuyor. Bu madde o gerekçeyi çürütmüyor; **bilerek karşısına yazılıyor** ve bedelini aşağıda sayıyor.
+
+**Maliyeti, açıkça:**
+
+- **EON Stream `v1` gecikir.** `v1`'e kalan kurulum paketi, imzalama ve arayüzün klavye/ekran okuyucu yarısı (madde 35) Office ile aynı saatlerden pay alır. Office çalışması bu işlerden önce gelmez: bir `v0.X` sürümü ile Office çalışması çakışırsa sürüm kazanır.
+- **Bakım yüzeyi büyür.** Bugün üç yeni depo; yol haritasında yirmiden fazla uygulama. "Boş depo açılmaz" kuralı (aşağıda) bu yükü sınırlamak için var.
+- **Office'in bulut tarafı madde 30'a tabidir.** Senkron sunucusu, kurum hesapları, e-posta, toplantı — bunların hepsi kişisel veri işlemek demektir. Proje, Faz L1 kapısı açılmadan **hiçbir Office hizmetini kendisi işletmez**; yerel ve kendi sunucusunda kurulum (self-hosted) önce gelir. "EON bulutu" seçeneği bu kapıya kadar yoktur.
+- **Microsoft eşdeğerliği bir yöndür, taahhüt değil.** Yol haritası her ürünü ölçülebilir kabul ölçütüne bağlar; belgelenmiş ama yazılmamış bir özellik hiçbir tabloda "hazır" sayılmaz.
+
+**Sınırlar (bağlayıcı):**
+
+- **a) Ayrı core.** `eon-office-core`, `eon-stream-core`'a bağımlı değildir ve tersi de yoktur. Paylaşılan şey kod değil, **çatı düzeyindeki kararlardır** (madde 42b): imza ve iptal hiyerarşisi (34 — Office için ayrı anahtar amacı), telemetri yok (36), asgari veri (31), erişilebilirlik (35), yerelleştirme ve çevrimdışı (40), güncelleme güvenliği (39).
+- **b) Her uygulama ayrı süreç, ayrı depo.** Uygulamalar core'a belgelenmiş, sürümlü bir protokolle (yerel JSON-RPC) bağlanır; birbirinin iç yapısına değil, birbirinin **yayımladığı yöntemlere** core üzerinden ulaşır. Bir uygulamanın çökmesi diğerini düşürmez — bu bir söz değil, süreç sınırının sonucudur ve testle gösterilir.
+- **c) Uygulamaya özgü işlev core'a girmez.** Core'da "not", "hücre", "e-posta" diye bir kavram yoktur; depolama, olay, arama, bildirim, zamanlama ve erişim denetimi vardır.
+- **d) Boş depo açılmaz.** Bir uygulamanın deposu, o uygulamanın ilk çalışan sürümüyle birlikte açılır. Yol haritasında adı olmak depo açmak için yeterli değildir.
+- **e) Yapay zekâ isteğe bağlıdır.** Hiçbir uygulamanın temel işlevi bir yapay zekâ sağlayıcısına bağlı olamaz. Varsayılan sağlayıcı **yoktur**; kullanıcı seçer (yerel model dahil). Sağlayıcıya giden her veri, gitmeden önce kullanıcıya gösterilebilir olmalıdır (madde 36'nın çökme raporu kuralıyla aynı ilke). Bir ajan, uygulamanın izin sistemini atlayamaz.
+- **f) Güvenlik iddiası testle yapılır.** EON Security / Defender sınıfı ürünler kendi tespit motorunu iddia etmez; yerleşik ve denetlenmiş araçlarla (ör. işletim sisteminin kendi koruması, ClamAV, osquery) bütünleşir. Uzaktan erişim ürünleri, cihaz başındaki kişinin açık ve oturum başına onayı olmadan çalışmaz.
+
+**Marka (madde 32 ile uyum):** "EON Office" ürün ailesinin adıdır; uygulamalar kullanıcıya **EON Notes**, **EON Writer** gibi görünür, depoları `eon-office-<bileşen>` kalıbını izler (`eon-office-notes`). Çatı-ürün-bileşen sırası korunur: ürün *Office*, bileşen *notes*. **[A]** "EON Notes" gibi adların ayrı ayrı marka ve alan adı müsaitliği madde 32g ile birlikte kontrol edilir.
+
+**Lisans (madde 33'ün kalıbı, onayı madde 33'e bağlı):** spec `Apache-2.0`, core `GPL-3.0-or-later` + EON Modül ABI İstisnası, SDK `MIT`, sunucu `AGPL-3.0-or-later`, uygulamalar `GPL-3.0-or-later`.
+
+**Teknoloji:** Rust; masaüstü uygulamalarda Tauri (madde 2'nin gerekçesi aynen geçerli); core, uygulamaların bağlandığı yerel bir hizmet sürecidir ve GUI bağımlılığı taşımaz. Ayrıntı ve gerekçe `eon-office-spec/docs/architecture.md`'de.
 
 ---
 
