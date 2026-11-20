@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.12 · **Son güncelleme:** 21 Kasım 2026
+> **Durum:** Taslak v0.13 · **Son güncelleme:** 21 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses).
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses). **v0.13 madde 47'yi ekliyor**: EON DNS.
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -29,6 +29,7 @@
 - **EON Download Manager:** Dosya hizmeti. Internet Download Manager'ın sevilen her şeyini yapan, bireylere her zaman ücretsiz indirme yöneticisi; kendi motoru, kendi sözleşmeleri, kendi tarayıcı eklentisi (madde 44).
 - **Ses ürünü (adı [A]):** Müzik ve ses için ayrı bir ürün. **[E]** — kapsamı ve adı yazılmadan depo açılmaz (madde 45a, 43d).
 - **EON Office:** Bağımsız uygulamalardan oluşan bir üretkenlik ve iş yazılımı ailesi (EON Notes, EON Writer, EON Sheets…). Uygulamalar tek bir pakete gömülmez; her biri ayrı depo, ayrı kurulum, ayrı sürüm. Ortak altyapı `eon-office-core`'dadır ve EON Stream'in core'una bağlı değildir (madde 43).
+- **EON DNS:** Şifreli DNS ve filtreleme; kişinin seçtiği çözümleyiciye, cihazda denetlenen ve günlüğü cihazda kalan biçimde. Ardından kişinin getirdiği bir uca tünel (madde 47).
 - **EON Account:** Bütün EON ürünleri için tek hesap. Kullanıcı adı ve parola yeter; e-posta ve telefon isteğe bağlıdır. Sunucu parolayı da kullanıcının izleme ilerlemesini de göremez (madde 46).
 
 ### Neden ortak çatı, ayrı ürün adı [K]
@@ -676,6 +677,28 @@ Proje sahibinin kararı (20 Kasım 2026): EON ürünleri için tek bir hesap. Ar
 - İlerlemesi cihazdan cihaza gider; bu sırada sunucu da onu işleten de ne izlediğini bilemez.
 - Bir ihlalde çalınacak parola ya da izleme geçmişi yoktur.
 - Topluluk sunucuları kendi parola veritabanlarını tutmak zorunda kalmaz.
+
+**47. EON DNS: şifreli DNS, cihazda filtreleme; ardından kişinin seçtiği uca tünel. [K — v0.13'te eklendi]**
+
+Proje sahibinin isteği (20 Kasım 2026): Cloudflare'in 1.1.1.1 / WARP uygulamasının yaptığı her şeyi yapan, daha iyi görünen bir ürün. Araştırma ve analiz: `dns/research.md`; plan: `dns/plan.md`.
+
+- **a) Kopyalanamayan ve kopyalanmayan.** WARP'ın asıl varlığı Cloudflare'in küresel ağıdır. EON'un ağı yoktur ve madde 30'daki kapı açılmadan altyapı işletmez. Cloudflare'in WARP uçlarına üçüncü taraf bir istemciyle kaydolmak başkasının kullanım koşullarına dayanır; **EON DNS bunu yapmaz.**
+- **b) Cihazda yapılan her şey, daha iyisiyle.** Herhangi bir çözümleyiciye (Cloudflare, Quad9, Mullvad, AdGuard, DNS0 ya da kişinin kendi sunucusu) DoH, DoT ya da DoQ ile şifreli DNS. Birden çok çözümleyici yarıştırılır. DNSSEC cihazda doğrulanır. Açık listelerle cihazda filtreleme yapılır: kötü amaçlı yazılım, reklam ve izleyici, yetişkin içerik; buna kişinin kendi kuralları eklenir ve her engelin sebebi gösterilir. Çözümleyici karşılaştırması bu bağlantıdan gerçek ölçümle yapılır. İki kip vardır: kendi yerel çözümleyicimiz ya da Windows 11'in kendi şifreli DNS'i.
+- **c) Günlük cihazda ve kapalı başlar.** Telemetri yoktur (madde 36). Sorgu günlüğü yalnızca bellekte tutulur, varsayılan olarak kapalıdır, tek tuşla silinir. Cihazdan sorguların kendisinden başka hiçbir şey çıkmaz.
+- **d) Hiçbir zaman DNS'siz bırakmaz.** Kapatma, çıkış ve çökme sonrası ilk açılış, ağ bağdaştırıcılarının önceki ayarını geri yükler.
+- **e) Tünel ikinci dilimdir.** Tünel, kişinin getirdiği bir uca (kendi sunucusu ya da bir sağlayıcının WireGuard yapılandırması) gider ve 1.1.1.1 uygulamasında olmayan bir kill switch ile gelir. EON'un işlettiği bir uç yoktur.
+- **f) Depo.** `eon-dns-app` (`GPL-3.0-or-later` + EON Modül ABI İstisnası): motor kütüphanesi, pencere, tepsi. Kendine ait bir sözleşme doğduğunda `-spec`, EON'un işleteceği bir çözümleyici gündeme geldiğinde (madde 30'dan sonra) sunucu deposu açılır; boş depo açılmaz (43d).
+- **g) İlk alfa `v0.0.0`'dır**: şifreli DNS yarısı.
+
+**Maliyet:**
+
+- Dördüncü ürün ailesi, EON Stream `v1`'den önce (madde 42c'nin uyarısı büyür).
+- Sistem DNS'ini değiştirmek yönetici izni ister. Hatalı bir geri yükleme bilgisayarı ağsız bırakabilir; bu yüzden geri yükleme kendi başına test edilir ve çökmeden sonra onarılır.
+- Hickory DNS'in kendi ikili dosyası "üretim için önerilmez" diyor. Kütüphanelerini kullanıyoruz ve test ediyoruz, ama olgunlaşmamış bir bağımlılık taşıyoruz.
+- Filtre listeleri üçüncü tarafların emeğidir; yanlış engeller olur. Bu yüzden her engelin sebebi gösterilir ve tek tuşla izin verilir.
+- Tünel bir sürücü (`wireguard-nt`) ve ayrı bir güvenlik incelemesi gerektirir; ayrı bir dilim olmasının sebebi budur.
+
+**Kazanç:** WARP'ın tek şirkete bağlı kalan DNS yarısının açık, denetlenebilir ve kişinin kontrolünde bir karşılığı; engellenen her şeyin görünür olması; EON'un ilkelerini (telemetri yok, hesap gerekmez, kaynak açık) somut gösteren bir ürün daha.
 
 ---
 

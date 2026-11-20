@@ -2,6 +2,27 @@
 
 ## [Unreleased]
 
+### Plan v0.13 — 21 November 2026
+
+One new item, madde 47. This branch is stacked on v0.12 (pull request #6).
+
+- **madde 47: EON DNS.** Encrypted DNS to any resolver the person chooses (DoH, DoT or
+  DoQ), with several raced and DNSSEC checked on the device. Filtering also runs on the
+  device, from open lists plus the person's own rules, and every block shows its reason.
+  The log is kept in memory, off by default.
+  - **Two modes:** EON's own local resolver, or Windows 11's built-in encrypted DNS.
+  - **Never leaves the computer without DNS:** turning off, quitting and the first start
+    after a crash all restore the earlier settings.
+  - **The tunnel comes second:** it goes to an endpoint the person brings, with a kill
+    switch. EON runs no endpoint, and does not use Cloudflare's WARP endpoints.
+  - Research, analysis and plan are in `dns/`.
+- **What it costs, stated in the item:**
+  - a fourth product family before EON Stream v1;
+  - administrator rights to change the system's DNS;
+  - a young DNS library;
+  - third-party lists with false positives;
+  - a driver for the tunnel.
+
 ### Plan v0.12 — 21 November 2026
 
 No new item. This branch is stacked on v0.11 (pull request #5).

@@ -19,6 +19,7 @@ EON is an umbrella (madde 32, 42). Under it, **every service is its own product*
 | Files | **EON Download Manager** | `eon-download-manager-spec`, `-app` | the engine crate in `eon-download-manager-app` |
 | Productivity | **EON Office** | `eon-office-spec`, `-core`, `-sdk`, `-launcher`, `-marketplace`, `-notes`, `-tasks`, `-contacts`, `-calendar` | `eon-office-core` |
 | One account | **EON Account** | `eon-account-spec`, `-client`, `-server` | `eon-account-client`, a library every application may link (madde 46) |
+| Name resolution | **EON DNS** | `eon-dns-app` | the engine crate in `eon-dns-app` (madde 47) |
 | Audio | not yet named | none until it has a first working version (madde 43d) | — |
 
 What follows from the rule:
@@ -118,5 +119,6 @@ meet through `eon-office://` links and published data, never by calling each oth
 | The decisions | [plan/eon-plan.md](../plan/eon-plan.md) (Turkish) |
 | EON Download Manager | [download-manager/](../download-manager/) — research, plan, status |
 | EON Account | [account/](../account/) — research, plan |
+| EON DNS | [dns/](../dns/) — research, plan |
 | EON Office | [office/](../office/) — roadmap, Microsoft parity audit, design notes, status |
 | EON Stream | the READMEs and changelogs of `eon-stream-app`, `-core`, `-engine` |

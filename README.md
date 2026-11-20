@@ -38,6 +38,7 @@ Both exist so the same arguments are not relitigated every six months.
 | `office/` | EON Office: roadmap, Microsoft parity audit, design notes, status (madde 43). |
 | `download-manager/` | EON Download Manager: research, plan, status (madde 44). |
 | `account/` | EON Account: research and plan (madde 46). |
+| `dns/` | EON DNS: research and plan (madde 47). |
 | `policies/` | Terms, privacy, content policy, moderation and notice process, Edu institution agreement — each semver'd with an effective date (madde 11). Not written yet. |
 | `docs/` (guides) | User guides, institution deployment guides, per-role guides (madde 17) — to come. |
 
