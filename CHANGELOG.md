@@ -2,6 +2,50 @@
 
 ## [Unreleased]
 
+### Plan v0.10 — 20 November 2026
+
+One new item, madde 45. This branch also carries v0.8 (madde 43, pull request #2) and v0.9 (madde 44, pull request #3).
+
+- **madde 45: every service is its own product.** Files, audio and streaming are no longer modules of one application: each has its own repositories, its own core and its own application. EON Stream is video (and stays EON Edu's core); files are EON Download Manager; audio becomes a separate product, deferred, its name and scope to be researched. A product may use another product's core only where that is more efficient than duplicating it, and no core grows for another product's needs.
+- **What it costs, stated in the item:** some infrastructure is written per product, more repositories to maintain, and the shared-engine benefit of madde 28 stays between Stream and Edu.
+- Records added where the old plan said otherwise: the vision, the priority order, madde 3, 15a, 41, phase 2, rejected alternatives, open items.
+
+### Plan v0.9 — 20 November 2026
+
+One new item, madde 44 (43 is EON Office, v0.8, pull request #2).
+
+- **madde 44: EON Download Manager.** A download manager that does what people value in
+  Internet Download Manager, free for individuals, open source, on Windows, Linux and
+  macOS. No subscription or licence code in the application, ever; organisations may later
+  buy lifetime licences through a separate marketplace repository. No site-specific video
+  extraction and nothing DRM-protected. Research, analysis and plan in
+  `download-manager/`.
+- **What it costs, stated in the item:** a third product family before EON Stream v1,
+  which madde 42c warns against; Stream's installer and signing keys wait meanwhile.
+
+### Plan v0.8 — 19 November 2026
+
+One new item number: **madde 43**.
+
+- **madde 43, EON Office: a third product family, started before EON Stream `v1`.** The
+  owner's decision. The first work is the shared foundation — `eon-office-spec`,
+  `eon-office-core`, `eon-office-sdk` — and the roadmap; applications follow in the
+  roadmap's order. EON Office has its own core and does not depend on EON Stream's.
+- **It is written against madde 42c's reasoning, on purpose.** 42c covers the kernel and
+  the distribution, not Office, but its reason — a one-person team starting a second
+  product is the most common reason the first is never finished — applies word for word.
+  The item does not argue it away; it states the cost.
+- **What it costs, stated in the item.** EON Stream `v1` (installer, signing, the keyboard
+  and screen-reader half of madde 35) shares the same hours, and a `v0.X` release wins any
+  clash. The maintenance surface grows; "no empty repositories" limits it. Every hosted
+  Office service is behind madde 30's Faz L1 gate, so local and self-hosted come first and
+  there is no EON cloud until then. Microsoft parity is a direction, not a commitment.
+- **The vision line changes** from "one roof, one core, two products" to name Office's own
+  core; the old line is recorded beside the new one.
+- **`office/`** holds the EON Office roadmap (products, merges and splits, waves with
+  measurable gates, acceptance criteria), the Microsoft audit with a coverage and parity
+  matrix whose every claim is labelled verified or not, and the project status.
+
 ### Plan v0.7 — 17 November 2026
 
 No new item numbers. v0.7 changes the player-strategy half of madde 2.

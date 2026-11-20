@@ -36,6 +36,7 @@ Both exist so the same arguments are not relitigated every six months.
 | `plan/eon-plan.md` | The numbered decisions. Start here. |
 | `policies/` | Terms, privacy, content policy, moderation and notice process, Edu institution agreement — each semver'd with an effective date (madde 11) |
 | `docs/` | User guides, institution deployment guides, per-role guides (madde 17) |
+| `office/` | EON Office (madde 43): the roadmap, the Microsoft audit and parity matrix, and the project status |
 
 ## Policies are versioned, in the open
 
