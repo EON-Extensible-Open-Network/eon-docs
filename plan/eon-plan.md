@@ -578,7 +578,7 @@ Bunlar bu planın kapsamında **değil** ve bu maddenin amacı onları planlamak
 
 **43. EON Office: üçüncü ürün ailesi, EON Stream v1'den önce. [K — v0.8'de eklendi]**
 
-**Karar — proje sahibinin kararı (19 Kasım 2026):** EON Office bugün başlıyor, EON Stream `v1` beklenmeden. İlk iş uygulamalar değil, **ortak temel**: `eon-office-spec` (sözleşmeler), `eon-office-core` (yerel çekirdek hizmeti) ve `eon-office-sdk` (uygulamaların bağlandığı istemci). Uygulamalar ancak core tamamlanma ölçütlerini karşıladıktan ve yol haritası (`eon-docs/office/roadmap.md`) yazıldıktan sonra, oradaki sırayla başlar.
+**Karar — proje sahibinin kararı (19 Kasım 2026):** EON Office bugün başlıyor, EON Stream `v1` beklenmeden. İlk iş uygulamalar değil, **ortak temel**: `eon-office-spec` (sözleşmeler), `eon-office-core` (yerel çekirdek hizmeti — *19 Kasım kaydıyla: bir kütüphane, bkz. Teknoloji*) ve `eon-office-sdk` (uygulamaların bağlandığı istemci). Uygulamalar ancak core tamamlanma ölçütlerini karşıladıktan ve yol haritası (`eon-docs/office/roadmap.md`) yazıldıktan sonra, oradaki sırayla başlar.
 
 **Madde 42c ile ilişkisi, açıkça.** 42c kernel ve dağıtım için yazıldı; Office onun kapsamında değil. Ama 42c'nin gerekçesi — *tek kişilik bir ekibin ikinci ürüne başlaması, birincinin bitmemesinin en yaygın sebebidir* — Office'e kelimesi kelimesine uyuyor. Bu madde o gerekçeyi çürütmüyor; **bilerek karşısına yazılıyor** ve bedelini aşağıda sayıyor.
 
@@ -592,7 +592,7 @@ Bunlar bu planın kapsamında **değil** ve bu maddenin amacı onları planlamak
 **Sınırlar (bağlayıcı):**
 
 - **a) Ayrı core.** `eon-office-core`, `eon-stream-core`'a bağımlı değildir ve tersi de yoktur. Paylaşılan şey kod değil, **çatı düzeyindeki kararlardır** (madde 42b): imza ve iptal hiyerarşisi (34 — Office için ayrı anahtar amacı), telemetri yok (36), asgari veri (31), erişilebilirlik (35), yerelleştirme ve çevrimdışı (40), güncelleme güvenliği (39).
-- **b) Her uygulama ayrı süreç, ayrı depo.** Uygulamalar core'a belgelenmiş, sürümlü bir protokolle (yerel JSON-RPC) bağlanır; birbirinin iç yapısına değil, birbirinin **yayımladığı yöntemlere** core üzerinden ulaşır. Bir uygulamanın çökmesi diğerini düşürmez — bu bir söz değil, süreç sınırının sonucudur ve testle gösterilir.
+- **b) Her uygulama ayrı süreç, ayrı depo.** *(19 Kasım kaydı: protokol ve hizmet kalktı; uygulamalar core kütüphanesini bağlar ve ortak klasör, `eon-office://` bağlantıları ve yayımlanmış özetler üzerinden buluşur — bkz. Teknoloji ve `office/design/2026-11-19-library-core.md`. Aşağıdaki cümle ilk tasarımı anlatır.)* Uygulamalar core'a belgelenmiş, sürümlü bir protokolle (yerel JSON-RPC) bağlanır; birbirinin iç yapısına değil, birbirinin **yayımladığı yöntemlere** core üzerinden ulaşır. Bir uygulamanın çökmesi diğerini düşürmez — bu bir söz değil, süreç sınırının sonucudur ve testle gösterilir.
 - **c) Uygulamaya özgü işlev core'a girmez.** Core'da "not", "hücre", "e-posta" diye bir kavram yoktur; depolama, olay, arama, bildirim, zamanlama ve erişim denetimi vardır.
 - **d) Boş depo açılmaz.** Bir uygulamanın deposu, o uygulamanın ilk çalışan sürümüyle birlikte açılır. Yol haritasında adı olmak depo açmak için yeterli değildir.
 - **e) Yapay zekâ isteğe bağlıdır.** Hiçbir uygulamanın temel işlevi bir yapay zekâ sağlayıcısına bağlı olamaz. Varsayılan sağlayıcı **yoktur**; kullanıcı seçer (yerel model dahil). Sağlayıcıya giden her veri, gitmeden önce kullanıcıya gösterilebilir olmalıdır (madde 36'nın çökme raporu kuralıyla aynı ilke). Bir ajan, uygulamanın izin sistemini atlayamaz.

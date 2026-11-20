@@ -42,7 +42,7 @@ manifest, unless it says *merged* — those decisions are explained in §3.
 | Repository | What | Status | Wave |
 |---|---|---|---|
 | `eon-office-spec` | Contracts: protocol, manifest, capabilities, sync, versioning | **v0 published** | 0 |
-| `eon-office-core` | Local core service | **0.1.0 published, tested** | 0 |
+| `eon-office-core` | Core library (a service until 19 Nov; see `design/2026-11-19-library-core.md`) | **0.1.0 published, tested** | 0 |
 | `eon-office-sdk` | Client library + reference integration | **0.1.0 published, tested** | 0 |
 | `eon-office-launcher` | **EON Launcher**: the owner's shell — install, grant/revoke, launch, unified notifications, unified search, preferences, recent items | Next | 0 |
 | `eon-office-marketplace` | Signed Git index of applications; discovery, install, update, compatibility | Next | 0 |

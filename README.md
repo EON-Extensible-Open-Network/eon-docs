@@ -46,7 +46,6 @@ EON is an umbrella; every service under it is its own product with its own repos
 core and application (madde 45): **EON Stream** (video) and **EON Edu** (schools, on Stream's
 core), **EON Download Manager** (files), **EON Office** (productivity), and an audio product
 still to be named.
-| `office/` | EON Office (madde 43): the roadmap, the Microsoft audit and parity matrix, and the project status |
 
 ## Policies are versioned, in the open
 
