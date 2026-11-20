@@ -2,7 +2,7 @@
 
 The **project plan**, the versioned policies, and the guides.
 
-[![Status](https://img.shields.io/badge/status-Faz%200%20·%20active-f59e0b)](plan/eon-plan.md)
+[![Status](https://img.shields.io/badge/status-alpha%20·%20active-f59e0b)](plan/eon-plan.md)
 [![License](https://img.shields.io/badge/license-CC--BY--SA--4.0-3b82f6)](LICENSE)
 
 ---
@@ -34,8 +34,18 @@ Both exist so the same arguments are not relitigated every six months.
 | Path | What |
 |---|---|
 | `plan/eon-plan.md` | The numbered decisions. Start here. |
-| `policies/` | Terms, privacy, content policy, moderation and notice process, Edu institution agreement — each semver'd with an effective date (madde 11) |
-| `docs/` | User guides, institution deployment guides, per-role guides (madde 17) |
+| `docs/architecture.md` | How EON is put together, in English: one product per service (madde 45), the shape every product follows, the rules they all keep. |
+| `office/` | EON Office: roadmap, Microsoft parity audit, design notes, status (madde 43). |
+| `download-manager/` | EON Download Manager: research, plan, status (madde 44). |
+| `policies/` | Terms, privacy, content policy, moderation and notice process, Edu institution agreement — each semver'd with an effective date (madde 11). Not written yet. |
+| `docs/` (guides) | User guides, institution deployment guides, per-role guides (madde 17) — to come. |
+
+## The products
+
+EON is an umbrella; every service under it is its own product with its own repositories,
+core and application (madde 45): **EON Stream** (video) and **EON Edu** (schools, on Stream's
+core), **EON Download Manager** (files), **EON Office** (productivity), and an audio product
+still to be named.
 | `office/` | EON Office (madde 43): the roadmap, the Microsoft audit and parity matrix, and the project status |
 
 ## Policies are versioned, in the open
