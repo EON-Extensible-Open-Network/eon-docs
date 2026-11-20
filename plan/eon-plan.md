@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.7 · **Son güncelleme:** 17 Kasım 2026
+> **Durum:** Taslak v0.9 · **Son güncelleme:** 20 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde).
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.9 madde 44'ü ekliyor** (EON Download Manager); 43 numarası v0.8'de EON Office'e ayrıldı.
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -564,6 +564,18 @@ Bunlar bu planın kapsamında **değil** ve bu maddenin amacı onları planlamak
 - **a) Adlandırma alanı ayrılmıştır.** İsimlendirme kalıbı `eon-<ürün>-<bileşen>` (madde 32a). Gelecek bir ürün, mevcut depoların hiçbirini yeniden adlandırmaya gerek duymadan bu kalıba oturur. `eon-docs` ve `.github` bilinçli olarak ürün adı taşımaz; ilk günden çatı düzeyindedir.
 - **b) Çatı düzeyindeki kararlar ürüne özgü yazılmaz.** Marka politikası (madde 32e), yönetişim, güvenlik bildirim süreci, davranış kuralları, imza kök anahtarı hiyerarşisi (madde 34) ve EON Modül ABI İstisnası çatı adına yazılır. Böylece ikinci ürün geldiğinde yeniden yazılmaları gerekmez — bunlar sonradan uyumlulaştırılması en pahalı belgelerdir.
 - **c) Kaynak taahhüdü yoktur.** Bu madde **[E]** etiketlidir ve öyle kalacaktır. EON Stream v1 çıkmadan (madde 41'deki v1 tanımı) hiçbir kernel veya dağıtım işine kaynak ayrılmaz. Çatının varlığı bir vaat değil, bir kapı. Tek kişilik bir ekibin ikinci ürüne başlaması, birincinin bitmemesinin en yaygın sebebidir.
+
+**44. EON Download Manager: bireylere ücretsiz bir indirme yöneticisi. [K — v0.9'da eklendi]**
+
+Proje sahibinin kararı (20 Kasım 2026): EON'un bir sonraki ürünü, Internet Download Manager'ın (IDM) sevilen her şeyini yapan, **bireysel kullanıcıya tamamen ücretsiz**, açık kaynak ve arayüzü güzel bir indirme yöneticisi. Araştırma ve analiz: `download-manager/research.md`; plan: `download-manager/plan.md`.
+
+- **a) Kapsam.** Dinamik segmentasyon ve bağlantı yeniden kullanımı, her şeyden sonra kaldığı yerden devam, adres yenileme, tarayıcıdan devralma (eklenti + native messaging), sayfanın kendi yüklediği videoyu (HLS, doğrudan medya) indirme, kategoriler, kuyruk, zamanlayıcı, pano izleme, hız sınırı, SHA-256 doğrulama. Windows, Linux, macOS.
+- **b) İçerik kaynağı değil, araç.** Siteye özgü çıkarıcı (YouTube vb.) yoktur; DRM'li veya korumalı akış reddedilir. Madde 9'un ruhu burada da geçerli: EON bir araç dağıtır, içerik kaynağı dağıtmaz.
+- **c) Para modeli.** Bireyden para istenmez, hiçbir zaman. Kurumlara ileride ömür boyu lisans satılabilir; bu iş `eon-download-manager-marketplace` deposunda, sonra yapılır. **Uygulama deposunda abonelik veya lisans kodu bulunmaz** — devre dışı bırakılmış hali de. Bu kural madde 36'daki telemetri kuralı gibi okunur: yokluk, kapalılık değil.
+- **d) Depolar.** `eon-download-manager-spec` (Apache-2.0: tarayıcı devir mesajları, devam durumu dosyası), `eon-download-manager-app` (GPL-3.0-or-later + EON Modül ABI İstisnası: motor kütüphanesi, pencere, tarayıcı eklentisi). Marketplace deposu ilk çalışan sürümüyle açılır, boş depo açılmaz.
+- **e) İlk alfa `v0.0.0`'dır.** Sonraki numaralandırma sahibin tercihiyle belirlenir.
+
+**Maliyet.** Bu, EON Stream v1'den önce açılan **üçüncü** ürün ailesidir (madde 43'ten sonra) ve madde 42c'nin uyardığı riski bilerek büyütür: tek kişilik bir ekipte her yeni ürün, öncekilerin bitmesini geciktirir. EON Office uygulamaları sahibin değerlendirmesiyle şimdilik bekletiliyor; EON Stream'in kalan `v1` işleri (kurulum paketi, imza anahtarları) bu süre boyunca ilerlemez. Kazanç: geniş bir kitleye hemen dokunan, EON'un ilkelerini (ücretsiz, açık, telemetrisiz) somut gösteren bir ürün; tarayıcı eklentisi ve native messaging altyapısı EON Stream'in ileride ihtiyaç duyacağı bir parçadır. Tarayıcı mağazalarında yayın sahibin geliştirici hesaplarını, imzalı dağıtım ise madde 30 ve 34'ü bekler; o zamana kadar eklenti elle yüklenir ve Windows'ta Akıllı Uygulama Denetimi imzasız indirmeleri engelleyebilir.
 
 ---
 
