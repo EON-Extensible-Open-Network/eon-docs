@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+### Plan v0.9 — 20 November 2026
+
+One new item, madde 44 (43 is EON Office, v0.8, pull request #2).
+
+- **madde 44: EON Download Manager.** A download manager that does what people value in
+  Internet Download Manager, free for individuals, open source, on Windows, Linux and
+  macOS. No subscription or licence code in the application, ever; organisations may later
+  buy lifetime licences through a separate marketplace repository. No site-specific video
+  extraction and nothing DRM-protected. Research, analysis and plan in
+  `download-manager/`.
+- **What it costs, stated in the item:** a third product family before EON Stream v1,
+  which madde 42c warns against; Stream's installer and signing keys wait meanwhile.
+
 ### Plan v0.7 — 17 November 2026
 
 No new item numbers. v0.7 changes the player-strategy half of madde 2.
