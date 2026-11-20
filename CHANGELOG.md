@@ -2,6 +2,28 @@
 
 ## [Unreleased]
 
+### Plan v0.11 — 20 November 2026
+
+One new item, madde 46. This branch is stacked on v0.10 (pull request #4).
+
+- **madde 46: EON Account.** One account for every EON product.
+  - A username and a password are enough; e-mail and phone are optional.
+  - Sign-in uses OPAQUE, so the password never reaches the server.
+  - A signed-in person's watch progress and scores travel in a vault encrypted on the
+    device. The server cannot read it, so madde 31's ban on collecting watch history holds.
+  - Other services get a signed assertion with a different pseudonym for each service.
+  - The server publishes what it keeps, and every account can export and delete itself.
+  - First start asks the person to sign in, and "continue as a guest" is always a full
+    answer.
+  - The project runs no server until madde 30's L1 gate. Research, analysis and plan are in
+    `account/`.
+- **What it costs, stated in the item:**
+  - Data in the vault cannot be recovered without the password or the recovery key.
+  - The OPAQUE library's audit predates the version we use.
+  - Password stretching runs on the device.
+  - There are three more repositories, and EON Stream's `v1` work still waits.
+- Records added to madde 7 and 31, the vision and the open items.
+
 ### Plan v0.10 — 20 November 2026
 
 One new item, madde 45. This branch also carries v0.8 (madde 43, pull request #2) and v0.9 (madde 44, pull request #3).

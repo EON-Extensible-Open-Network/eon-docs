@@ -37,6 +37,7 @@ Both exist so the same arguments are not relitigated every six months.
 | `docs/architecture.md` | How EON is put together, in English: one product per service (madde 45), the shape every product follows, the rules they all keep. |
 | `office/` | EON Office: roadmap, Microsoft parity audit, design notes, status (madde 43). |
 | `download-manager/` | EON Download Manager: research, plan, status (madde 44). |
+| `account/` | EON Account: research and plan (madde 46). |
 | `policies/` | Terms, privacy, content policy, moderation and notice process, Edu institution agreement — each semver'd with an effective date (madde 11). Not written yet. |
 | `docs/` (guides) | User guides, institution deployment guides, per-role guides (madde 17) — to come. |
 
@@ -45,7 +46,7 @@ Both exist so the same arguments are not relitigated every six months.
 EON is an umbrella; every service under it is its own product with its own repositories,
 core and application (madde 45): **EON Stream** (video) and **EON Edu** (schools, on Stream's
 core), **EON Download Manager** (files), **EON Office** (productivity), and an audio product
-still to be named.
+still to be named. **EON Account** is the one account across all of them (madde 46).
 
 ## Policies are versioned, in the open
 
