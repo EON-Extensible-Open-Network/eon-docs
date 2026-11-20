@@ -21,15 +21,24 @@ to the application through the extension (`tools/browser-check.mjs`).
 
 **The owner's call (20 November):** no public launch until beta; alpha development continues.
 
-## Next, in the order the owner gave
+## The owner's queued requests (20 November)
 
-1. **Catching browser downloads when clicked** — the owner's test found it not working outside
-   the automated check; diagnose on their machine first.
-2. **Settings that apply while a download runs** — connections per download, downloads at the
-   same time and the speed limit change the running transfer in place, without losing data.
-3. **Format choice** — keep the original or ask; when asking, convert, keep audio only or
-   video only, or save a GIF as a picture.
-4. **Downloading from video and audio platforms** from a link, within the boundary of madde 9
-   and with no DRM circumvention; madde 44b to be updated.
+1. **Catching browser downloads when clicked: done** (pushed). The window registers the
+   browser host at every start, and a first-start walkthrough opens the browser's
+   extensions page and shows "Connected" once the extension answers. Checked in real Edge.
+2. **Settings that apply while a download runs: done** (pushed). Connections, downloads
+   at the same time and the speed limit change the running transfer in place. A file
+   downloaded across 8 → 2 → 6 connections still matched its SHA-256.
+3. **Format choice: written, waiting on one test.** Keep the original, or ask. Asking
+   offers sound only, a silent picture, MP4/MKV, and a GIF as a still picture or a video,
+   all through FFmpeg.
+4. **The video or sound a page plays: written, waiting on the same test.** It goes
+   through a general extractor. The test is the real-network one: it fetches and checks
+   the helpers, downloads a short page as video and as sound, and converts a GIF.
 
-Then: EON Account (a new item in the plan).
+   Both (3) and (4) are on the branch `feat/formats-and-pages`. The test was not run
+   here, because this environment's permissions refuse running downloaded programs. Run
+   it with `cargo test --test media -- --ignored` in `engine/`, with `EON_DM_MEDIA_URL`
+   set to a short public page. Madde 44b is updated in plan v0.12.
+
+Then EON Account (madde 46). It is written and in EON Stream `v0.31`/`v0.32`.

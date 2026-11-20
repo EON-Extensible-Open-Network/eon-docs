@@ -2,6 +2,24 @@
 
 ## [Unreleased]
 
+### Plan v0.12 — 21 November 2026
+
+No new item. This branch is stacked on v0.11 (pull request #5).
+
+- **madde 44b, rewritten in neutral terms.**
+  - EON Download Manager can download the video or sound a page plays, through general
+    open-source helper programs (an extractor and FFmpeg).
+  - The helpers are fetched when first needed and checked against the SHA-256 their own
+    release publishes. They are never bundled.
+  - DRM-protected streams are refused, and DRM is never circumvented.
+  - No platform is named in any material.
+  - The owner takes the legal side, and the question goes on madde 13's list.
+- **What it costs, stated in the item:**
+  - a runtime supply-chain dependency (a checksum from the same release does not protect
+    against a compromised release);
+  - an extractor that breaks as sites change (refreshed weekly);
+  - a terms-of-service risk that silence reduces but does not remove.
+
 ### Plan v0.11 — 20 November 2026
 
 One new item, madde 46. This branch is stacked on v0.10 (pull request #4).
