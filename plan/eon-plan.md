@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.9 · **Son güncelleme:** 20 Kasım 2026
+> **Durum:** Taslak v0.10 · **Son güncelleme:** 20 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager).
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması.
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -14,16 +14,20 @@
 
 ## Vizyon
 
-**Tek çatı; EON Stream ile EON Edu için tek core, EON Office için kendi core'u (madde 43).**
+**Tek çatı, ayrı ürünler; her hizmetin kendi deposu, kendi core'u, kendi uygulaması (madde 45). Yalnızca EON Stream ile EON Edu bir core'u paylaşır.**
 
+> **Kayıt (v0.10):** v0.8 ve v0.9'da bu satır "Tek çatı; EON Stream ile EON Edu için tek core, EON Office için kendi core'u" idi. Madde 45 ile ayrılık istisna değil kural oldu: dosya ve ses de EON Stream'in modülü değil, kendi ürünü.
+>
 > **Kayıt (v0.8):** Bu satır v0.7'ye kadar "Tek çatı, tek core, iki ürün" idi. EON Stream ve EON Edu için doğru olmaya devam ediyor; EON Office, aynı core'u paylaşmayan üçüncü bir ürün ailesi olarak eklendi.
 
 **EON** (*Extensible Open Network*) bir ürün değil, **çatıdır**. Sloganı projenin ne olduğunu tanımlar: *An open ecosystem for everyone.* Çatı bilerek ürün adından geniş tutuldu — ileride kendi kernel'i ya da kendi Linux dağıtımı gelirse bunlar yeniden markalaşmaya gerek kalmadan EON altına oturur (bkz. madde 32 ve 42).
 
 Çatının altındaki ürünler bugün:
 
-- **EON Stream:** Açık kaynak, kâr amacı gütmeyen, modüler bir görüntüleme uygulaması (video, dosya, müzik). Stremio eklenti protokolüyle uyumlu; community tabanlı eklenti sistemiyle genişler. **Core'un kendisi budur.**
+- **EON Stream:** Açık kaynak, kâr amacı gütmeyen, modüler bir **akış (video)** uygulaması. Stremio eklenti protokolüyle uyumlu; community tabanlı eklenti sistemiyle genişler. EON Edu'nun da core'udur. *(v0.10'a kadar "video, dosya, müzik" idi; dosya ve ses madde 45 ile ayrı ürün oldu.)*
 - **EON Edu:** Aynı core'un, aynı depodan derlenen kurumsal ürünü. Okullar ve uzaktan eğitim için sıkı kısıtlanmış; üzerine yalnızca Edu'ya özel modüller biner.
+- **EON Download Manager:** Dosya hizmeti. Internet Download Manager'ın sevilen her şeyini yapan, bireylere her zaman ücretsiz indirme yöneticisi; kendi motoru, kendi sözleşmeleri, kendi tarayıcı eklentisi (madde 44).
+- **Ses ürünü (adı [A]):** Müzik ve ses için ayrı bir ürün. **[E]** — kapsamı ve adı yazılmadan depo açılmaz (madde 45a, 43d).
 - **EON Office:** Bağımsız uygulamalardan oluşan bir üretkenlik ve iş yazılımı ailesi (EON Notes, EON Writer, EON Sheets…). Uygulamalar tek bir pakete gömülmez; her biri ayrı depo, ayrı kurulum, ayrı sürüm. Ortak altyapı `eon-office-core`'dadır ve EON Stream'in core'una bağlı değildir (madde 43).
 
 ### Neden ortak çatı, ayrı ürün adı [K]
@@ -50,7 +54,9 @@ Planlama bu üç kalemi ayrı ayrı sayar; yoksa Edu'nun iş yükü sistematik o
 
 ### Öncelik sırası
 
-Video → Dosya → Müzik (müzik şimdilik askıda, madde 41).
+~~Video → Dosya → Müzik (müzik şimdilik askıda, madde 41).~~
+
+> **Kayıt (v0.10):** Bu sıra, video, dosya ve müziğin EON Stream'in içinde modül olduğu plan içindi. Madde 45 ile her biri ayrı ürün: EON Stream'in kapsamı videodur, dosya EON Download Manager'dır, ses ayrı ve ertelenmiş bir üründür. Ürünler arasındaki sıra proje sahibinin önceliğidir ve durum tablosunda (Açık konular) tutulur.
 
 ### Kapsam notu: sözleşme-önce, ama v0 kararsız [K]
 
@@ -137,6 +143,8 @@ Gerekçe (düzeltildi): asıl kazanç indirme boyutu değil — libmpv ve torren
 
 **3. Her şey modül. [K]**
 Core yalnızca modül yöneticisi, ayarlar ve güncelleyiciden oluşur. Video, müzik, dosya, marketplace, creator'lar, materyal paketi görüntüleyicisi ve arayüz editörü ayrı modüllerdir: her birinin manifesti, sürümü, bağımlılıkları ve imzası vardır. İlk açılışta kullanıcı kurmak istediği modülleri seçer. Base video kurulumunda yalnızca görüntüleyici ve eklenti ekleme bulunur; marketplace ve creator'lar isteğe bağlı indirilir.
+
+> **Kayıt (v0.10):** "Her şey modül" her ürünün **kendi içinde** geçerlidir. Müzik ve dosya artık EON Stream modülü değil, ayrı ürünler (madde 45); Stream'de modül olarak kalanlar video, marketplace, creator'lar, materyal paketi görüntüleyicisi ve arayüz editörüdür.
 
 **Kural:** Birinci taraf modüllerimiz, community eklentilerinin kullandığı API'nin aynısını kullanır. Bu kural **test edilebilir** olmalıdır: birinci taraf bir modül API'de olmayan bir ayrıcalık kullanıyorsa CI hata verir. Aksi halde kural iyi niyet beyanı olarak kalır ve zamanla erir.
 
@@ -327,7 +335,7 @@ Değişmez kurallar:
 
 **15. Creator modülleri (her biri isteğe bağlı). [K]**
 
-- **a)** Türe göre ayrı creator'lar: video, müzik, dosya ve materyal paketi. Paketleme, manifest üretimi, imzalama, doğrulama ve yayınlama ortak bir **creator-core**'da durur.
+- **a)** Türe göre ayrı creator'lar: video, müzik, dosya ve materyal paketi. Paketleme, manifest üretimi, imzalama, doğrulama ve yayınlama ortak bir **creator-core**'da durur. *(Kayıt, v0.10: müzik ve dosya creator'ları, o türler EON Stream'den ayrıldığı için ilgili ürünlerin işidir — madde 45; EON Stream'de video ve materyal paketi creator'ları kalır.)*
 - **b)** İzin listesi mantığı: her creator yalnızca kendi türüne ait formatları kabul eder (ör. dosya creator'ı mp4/mp3 kabul etmez). Tür kontrolü **uzantıya değil dosya içeriğine** (MIME / imza baytları) bakılarak yapılır.
 - **c)** Akış: dosya seç → tür kontrolü → manifest otomatik doldurulur (kullanıcı isim, açıklama, ikon, kategori düzenler) → doğrulama (şema, API sürümü, kural botu) → imzalı paket → yerel önizleme → yayınla (hak beyanı, moderasyon kuyruğu, marketplace index'i). Paket yayınlanmadan dosya veya URL olarak da paylaşılabilir.
 - **d) Dağıtım: web seed baştan spesifikasyonda. [K — v0.1'den değişti]**
@@ -556,7 +564,7 @@ Bu boyda bir planda kapsamı tutan şey yapılacaklar listesi değil, **yapılma
 - EON Stream'de okul araçları; Edu'da açık marketplace (madde 26).
 - Sosyal ağ özellikleri (takip, profil akışı, birebir mesajlaşma) EON Stream tarafında.
 - DRM'li ticari akış servisleri desteği.
-- Müzik modülü **şimdilik** — askıda, kaldırılmış değil.
+- Müzik modülü **şimdilik** — askıda, kaldırılmış değil. *(Kayıt, v0.10: artık EON Stream'in modülü olarak değil, ayrı bir ses ürünü olarak; madde 45a.)*
 
 **42. Çatının geleceği: EON'un diğer ürünleri. [E]**
 
@@ -612,6 +620,29 @@ Proje sahibinin kararı (20 Kasım 2026): EON'un bir sonraki ürünü, Internet 
 
 **Maliyet.** Bu, EON Stream v1'den önce açılan **üçüncü** ürün ailesidir (madde 43'ten sonra) ve madde 42c'nin uyardığı riski bilerek büyütür: tek kişilik bir ekipte her yeni ürün, öncekilerin bitmesini geciktirir. EON Office uygulamaları sahibin değerlendirmesiyle şimdilik bekletiliyor; EON Stream'in kalan `v1` işleri (kurulum paketi, imza anahtarları) bu süre boyunca ilerlemez. Kazanç: geniş bir kitleye hemen dokunan, EON'un ilkelerini (ücretsiz, açık, telemetrisiz) somut gösteren bir ürün; tarayıcı eklentisi ve native messaging altyapısı EON Stream'in ileride ihtiyaç duyacağı bir parçadır. Tarayıcı mağazalarında yayın sahibin geliştirici hesaplarını, imzalı dağıtım ise madde 30 ve 34'ü bekler; o zamana kadar eklenti elle yüklenir ve Windows'ta Akıllı Uygulama Denetimi imzasız indirmeleri engelleyebilir.
 
+**45. Her hizmet ayrı ürün: akış, dosya ve ses ayrı; her birinin kendi deposu, core'u ve uygulaması. [K — v0.10'da eklendi]**
+
+Proje sahibinin kararı (20 Kasım 2026): planın ilk hâlinde EON Stream, video, dosya ve müziği tek uygulamada modül olarak topluyordu (madde 3; Öncelik sırası "Video → Dosya → Müzik"). Bu artık geçerli değil. **Dosya, ses ve akış ayrı hizmetlerdir**: her biri ayrı ürün, ayrı depo seti (`-spec`, core ya da motor, `-app`), ayrı core, ayrı uygulama ve ayrı sürüm hattıdır. Sahibin ifadesiyle: "genel olarak verimlilik ve modülerlik taraftarıyım."
+
+- **a) Hizmetler.**
+  - **Akış (video): EON Stream** — `eon-stream-*`. Stremio eklentileri, torrent akışı, mpv. EON Edu bu core'un üzerinde kalır; madde 22 ve 28 değişmez.
+  - **Dosya: EON Download Manager** — `eon-download-manager-*` (madde 44). EON Stream'in planlanan "dosya modülü" buraya taşınır; Faz 2'deki dosya modülü kalemi düşer.
+  - **Ses:** ayrı bir ürün. Adı ve kapsamı **[A]**, kendisi **[E]**. Madde 41'deki askıdaki müzik modülünün yerine geçer; artık Stream'in modülü değil, kendi ürünüdür. Adı ve kapsamı yazılmadan deposu açılmaz (43d).
+  - **Üretkenlik: EON Office** (madde 43), zaten kendi core'uyla.
+- **b) Core paylaşımı yalnızca verimliyse.** Bir ürün başka bir ürünün core'unu ancak kodu çoğaltmaktan daha az iş ve daha az risk getiriyorsa kullanır. Paylaşım bir bağımlılık kararıdır; gerekçesi, bağımlılığın beyan edildiği yerde yazılır (madde 37). Varsayılan ayrılıktır: **hiçbir core başka bir ürünün ihtiyacı için genişletilmez** — ihtiyaç varsa ihtiyaç duyan ürün kendi koduna yazar ya da paylaşılabilir küçük bir kütüphane ayrı depo olarak çıkar.
+- **c) Ortak olan kod değil, sözleşme ve çatı kararlarıdır:** lisans kalıbı (33), telemetri yokluğu (36), imza hiyerarşisi (34), erişilebilirlik (35), yerelleştirme (40), adlandırma (32a, 42a), "boş depo açılmaz" (43d), asgari veri (31).
+- **d) Madde 3 her ürünün kendi içinde geçerlidir.** EON Stream'in core'u modül yöneticisi olarak kalır; ama video dışındaki türler artık Stream modülü değildir.
+- **e) Bir ürünün kullanıcısı diğerini kurmak zorunda değildir.** Ürünler birbirine bağlanacaksa (ör. Stream'deki bir bağlantıyı EON Download Manager'a vermek), bu belgelenmiş bir sözleşmeyle olur — ortak bir süreçle ya da birbirinin iç yapısına bağlanarak değil.
+
+**Maliyet, açıkça:**
+
+- Altyapının bir kısmı — güncelleyici, imza doğrulama, ayarlar, yerelleştirme, pencere iskeleti — ürün başına yeniden yazılır ya da kopyalanır. (b) bunu sınırlar, sıfırlamaz. Bir güvenlik düzeltmesi birden fazla depoda yapılmak zorunda kalabilir; bu yük, ortak sözleşmeler ve aynı CI kalıpları ile hafifletilir ama ortadan kalkmaz.
+- Depo sayısı artar (bugün 21). Her birinin CI'ı, lisans kapısı ve sürüm hattı bakım ister; tek kişilik ekipte bu, madde 42c'nin uyardığı yükün parçasıdır.
+- Madde 28'deki "tek motor, tek öğrenme" faydası yalnızca EON Stream ile EON Edu arasında kalır; dosya ve ses kullanıcıları bu ortaklıktan yararlanmaz.
+- Kullanıcı için tek uygulama yerine birkaç uygulama: kurulum, tanıtım ve destek ürün başına yapılır.
+
+**Kazanç:** her ürün tek başına anlaşılır, test edilir, sürümlenir ve gerekirse bırakılabilir; bir ürünün gecikmesi diğerini bekletmez; kullanıcı yalnızca ihtiyacı olanı kurar; bir ürünün mimari hatası diğerine sızmaz. EON Office'te "core bir uygulama değil, kodun çekirdeği" ilkesiyle (madde 43, 19 Kasım kaydı) zaten sınanmış yol budur.
+
 ---
 
 ## Faz planı
@@ -631,7 +662,7 @@ Proje sahibinin kararı (20 Kasım 2026): EON'un bir sonraki ürünü, Internet 
 v1 tanımındaki 8 kalem, fazlası değil. Marketplace yok, hesap yok, creator yok, Edu yok.
 
 **Faz 2 — Genişleme** *(hâlâ backend yok, hâlâ Faz L0)*
-Dosya modülü; materyal paketi görüntüleyicisi (madde 16); creator-core + video/dosya/paket creator'ları (madde 15); Git tabanlı marketplace index (madde 8); moderasyon çekirdeği kapalı flag ile kurulu (madde 6).
+~~Dosya modülü;~~ *(v0.10: dosya ayrı ürün — madde 45)* materyal paketi görüntüleyicisi (madde 16); creator-core + video/paket creator'ları (madde 15); Git tabanlı marketplace index (madde 8); moderasyon çekirdeği kapalı flag ile kurulu (madde 6).
 
 **Faz 3 — Edu pilot** *(ön koşul: Faz L1 kapısı — madde 30)*
 Roller ve izin setleri (17); doğrulama zinciri + pilot okul sınırı (18); kurum sunucusu + HTTPS materyal dağıtımı (25); duyuru ve yorum (19'un pilot kapsamı); kurum kataloğu (27c); Edu derleme profili + CI sembol kontrolü (22); okul araçlarından yoklama ve ödev (20); veri koruma etki değerlendirmesi ve kurum sözleşmesi (31).
@@ -659,6 +690,7 @@ Madde 10, 14.
 | Pilotta Matrix + LiveKit | Tek başına ürün büyüklüğünde işletme yükü; madde 23'teki denetim gereksinimiyle E2EE çelişkisi (madde 19). |
 | v1'de kod çalıştıran yerel eklentiler | Gerçek sandbox olmadan güvenlik iddiası dürüst olmaz; bildirimsel katman ihtiyacın çoğunu karşılar (madde 4). |
 | DMCA tarzı otomatik karşı-bildirim | Yargı yeri seçilmeden başka bir rejimin mekanizmasını kopyalamak, korumasını almadan yükümlülüğünü üstlenmek olur (madde 12e). |
+| Video, dosya ve müzik tek uygulamada (ilk plan) | Bir türün gecikmesi hepsini bekletir; kullanıcı istemediği türü de kurar; core, en karmaşık türün ihtiyaçlarına göre büyür. Ayrı ürünlerin bedeli madde 45'te yazılı. |
 | Telemetri ile ürün ölçümü | Edu'da öğrenci verisi riski, EON Stream'de güven maliyeti; takas bilinçli (madde 36). |
 
 ---
@@ -702,4 +734,4 @@ Kalan: **kurulum paketi, imzalama anahtarları** ve arayüzün hâlâ uçbirime 
 - [ ] Sohbet gerçekten gerekli mi; gerekirse Matrix mi (madde 19)
 - [ ] Android oynatıcı arka ucu (madde 2)
 - [ ] Edu'da P2P hızlandırıcı gerekli mi (madde 25)
-- [ ] Müzik modülü (askıda, madde 41)
+- [ ] Ses ürünü: adı ve kapsamı (madde 45a) — [A]; ürünün kendisi [E]

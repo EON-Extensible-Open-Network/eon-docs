@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Plan v0.10 — 20 November 2026
+
+One new item, madde 45. This branch also carries v0.8 (madde 43, pull request #2) and v0.9 (madde 44, pull request #3).
+
+- **madde 45: every service is its own product.** Files, audio and streaming are no longer modules of one application: each has its own repositories, its own core and its own application. EON Stream is video (and stays EON Edu's core); files are EON Download Manager; audio becomes a separate product, deferred, its name and scope to be researched. A product may use another product's core only where that is more efficient than duplicating it, and no core grows for another product's needs.
+- **What it costs, stated in the item:** some infrastructure is written per product, more repositories to maintain, and the shared-engine benefit of madde 28 stays between Stream and Edu.
+- Records added where the old plan said otherwise: the vision, the priority order, madde 3, 15a, 41, phase 2, rejected alternatives, open items.
+
 ### Plan v0.9 — 20 November 2026
 
 One new item, madde 44 (43 is EON Office, v0.8, pull request #2).
