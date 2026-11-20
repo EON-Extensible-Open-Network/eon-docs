@@ -84,6 +84,9 @@ The extension (Manifest V3, Chromium and Firefox from one source):
 - **Video:** watches what the page itself loads — HLS playlists, direct media files above a
   size — and shows a *Download video* pill over the playing `<video>`, in a shadow root so
   page styles cannot reach it. No site-specific extraction.
+  *(Superseded, 21 November 2026, plan v0.12: a page given as a link can be downloaded
+  through general helper programs fetched and checksum-checked on first use; nothing
+  DRM-protected. See madde 44b.)*
 
 Transport: **native messaging**. The browser starts `eon-download-manager` with the
 extension's origin as its argument; in that mode it reads the one message, writes it to a

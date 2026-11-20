@@ -87,6 +87,8 @@ open source, on all three systems.
   it from a button. **No site-specific extractors and nothing protected** — the same line
   IDM draws for "legal reasons", and EON's own madde 9 spirit: we ship a tool, not a
   content source.
+  *(Revised by the owner on 21 November 2026, plan v0.12, madde 44b: a page's video or
+  sound can be downloaded through general helper programs; DRM is still refused.)*
 - Clipboard watching, categories with folders, queue, scheduler, shut-down-when-done.
 
 **Where we beat it:**
