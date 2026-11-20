@@ -18,6 +18,7 @@ EON is an umbrella (madde 32, 42). Under it, **every service is its own product*
 | Schools | **EON Edu** | built from `eon-stream-app`; `eon-edu-server` | shares EON Stream's core — the one deliberate sharing (madde 22, 28) |
 | Files | **EON Download Manager** | `eon-download-manager-spec`, `-app` | the engine crate in `eon-download-manager-app` |
 | Productivity | **EON Office** | `eon-office-spec`, `-core`, `-sdk`, `-launcher`, `-marketplace`, `-notes`, `-tasks`, `-contacts`, `-calendar` | `eon-office-core` |
+| One account | **EON Account** | `eon-account-spec`, `-client`, `-server` | `eon-account-client`, a library every application may link (madde 46) |
 | Audio | not yet named | none until it has a first working version (madde 43d) | — |
 
 What follows from the rule:
@@ -86,6 +87,23 @@ V3 for Chromium and Firefox). The browser hand-off and the resume state are cont
 `eon-download-manager-spec` (madde 44). Free for individuals; no licensing code in the
 application, ever.
 
+### EON Account
+
+One account for all of EON, built so that it reveals as little about the person as it can
+(madde 46).
+
+- **Sign-up** needs a username and a password. An e-mail address and a phone number are
+  optional.
+- **Sign-in** uses OPAQUE, so the password never reaches the server.
+- **The vault.** A signed-in person's progress and scores are stored on the server in a
+  vault encrypted on the device, and the server cannot read it.
+- **Other services** receive a signed assertion carrying a pseudonym that differs from one
+  service to the next.
+- **Transparency.** The server publishes what it keeps (`/v0/transparency`). Every account
+  can export everything about itself and delete itself.
+- **The project runs no server** until madde 30's L1 gate is met. The applications ship
+  with the address empty.
+
 ### EON Office
 
 Separate applications on `eon-office-core`, a library that opens a shared folder per person:
@@ -99,5 +117,6 @@ meet through `eon-office://` links and published data, never by calling each oth
 |---|---|
 | The decisions | [plan/eon-plan.md](../plan/eon-plan.md) (Turkish) |
 | EON Download Manager | [download-manager/](../download-manager/) — research, plan, status |
+| EON Account | [account/](../account/) — research, plan |
 | EON Office | [office/](../office/) — roadmap, Microsoft parity audit, design notes, status |
 | EON Stream | the READMEs and changelogs of `eon-stream-app`, `-core`, `-engine` |

@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.10 · **Son güncelleme:** 20 Kasım 2026
+> **Durum:** Taslak v0.11 · **Son güncelleme:** 20 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması.
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account).
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -29,6 +29,7 @@
 - **EON Download Manager:** Dosya hizmeti. Internet Download Manager'ın sevilen her şeyini yapan, bireylere her zaman ücretsiz indirme yöneticisi; kendi motoru, kendi sözleşmeleri, kendi tarayıcı eklentisi (madde 44).
 - **Ses ürünü (adı [A]):** Müzik ve ses için ayrı bir ürün. **[E]** — kapsamı ve adı yazılmadan depo açılmaz (madde 45a, 43d).
 - **EON Office:** Bağımsız uygulamalardan oluşan bir üretkenlik ve iş yazılımı ailesi (EON Notes, EON Writer, EON Sheets…). Uygulamalar tek bir pakete gömülmez; her biri ayrı depo, ayrı kurulum, ayrı sürüm. Ortak altyapı `eon-office-core`'dadır ve EON Stream'in core'una bağlı değildir (madde 43).
+- **EON Account:** Bütün EON ürünleri için tek hesap. Kullanıcı adı ve parola yeter; e-posta ve telefon isteğe bağlıdır. Sunucu parolayı da kullanıcının izleme ilerlemesini de göremez (madde 46).
 
 ### Neden ortak çatı, ayrı ürün adı [K]
 
@@ -178,6 +179,7 @@ v0.2'de eklenen kurallar:
 
 **7. Hesaplar isteğe bağlı. [K]**
 Görüntüleyici hesapsız çalışır ve hesapsız **tam işlevlidir**. Your feed, puanlama ve yayınlama, marketplace modülüyle gelen ayrı bir girişle yapılır. Hesap sistemi, veri koruma yükümlülüğünün fiilen başladığı noktadır (madde 31).
+> **Kayıt (v0.11):** Hesap artık ürün başına değil, bütün EON için tek: **EON Account** (madde 46). İlk açılışta "giriş yap / hesap oluştur / misafir olarak devam et" sorulur; misafir tam bir cevaptır ve soru kendiliğinden geri gelmez. Bu maddenin özü değişmez: hesapsız kullanım tam işlevlidir. Topluluk özellikleri hesap ister.
 
 **8. Marketplace ucuz başlar. [K]**
 İlk aşamada index bir Git deposunda tutulur, yayın PR ile olur. Bu aşamada barındırma büyük ölçüde depo sağlayıcısındadır (madde 29, 30/L0). Puanlama, arama, öne çıkanlar, sıralama ve feed'ler (your feed / global feed) geldiğinde gerçek bir backend'e geçilir — ve o geçiş madde 30'daki kapıya tabidir.
@@ -303,6 +305,7 @@ Cevaplar geldiğinde ilgili maddeler güncellenir ve **[A]** etiketleri **[K]**'
 
 - **Asla toplanmayanlar:** TC kimlik numarası (madde 21), izleme/oynatma geçmişi, öğrenci performans verisi (bizim tarafımızda), cihaz parmak izi, reklam kimliği.
 - **Yerelde kalanlar:** eklenti listesi, kaldığı yer/ilerleme, ayarlar, materyal paketi ilerlemesi (madde 16b). Hesapsız kullanımda hiçbir şey dışarı çıkmaz (madde 7).
+- **Kayıt (v0.11) — şifreli kasa.** EON Account'a giriş yapan kişinin ilerlemesi ve puanları cihazlar arasında taşınır; ama sunucuya **yalnızca cihazda şifrelenmiş hâlde** gider ve anahtar sunucuda hiç bulunmaz (madde 46b). Sunucu okuyamadığı veriyi saklar; bu, izleme geçmişi *toplamak* değildir ve bu maddedeki yasak aynen geçerlidir. Kasaya sunucu tarafında okunabilir bir dizin, özet ya da istatistik eklemek bu maddeyi çiğnemektir.
 - **Marketplace hesabı (Faz L1):** yalnızca e-posta + kullanıcı adı + yayınlar. Aydınlatma metni, rıza kayıtları (madde 11), erişim/silme/taşıma hakları için **self-servis** akış, her veri türü için süre belirten **saklama ve imha politikası**, veri ihlali bildirim prosedürü (kuruma ve ilgili kişiye, mevzuattaki sürede).
 - **Yurt dışına aktarım:** varsayılan **yok**; sunucular Türkiye'de (madde 24). Bir hizmet zorunlu olarak yurt dışındaysa (ör. LLM moderasyon sağlayıcısı — madde 6) bu **açıkça dokümante edilir**, aktarılan veri asgariye indirilir ve gereken hukuki mekanizma kurulur. **Öğrenci verisi hiçbir koşulda yurt dışı bir hizmete gönderilmez** — moderasyon LLM'i dahil.
 - **Edu:** kurum veri sorumlusu, biz veri işleyen (madde 29 / Rol C). Kurumla veri işleme sözleşmesi imzalanır. Edu için **veri koruma etki değerlendirmesi** yapılır ve kurumla paylaşılır; çocuk verisi işlendiği için bu isteğe bağlı sayılmaz.
@@ -643,6 +646,36 @@ Proje sahibinin kararı (20 Kasım 2026): planın ilk hâlinde EON Stream, video
 
 **Kazanç:** her ürün tek başına anlaşılır, test edilir, sürümlenir ve gerekirse bırakılabilir; bir ürünün gecikmesi diğerini bekletmez; kullanıcı yalnızca ihtiyacı olanı kurar; bir ürünün mimari hatası diğerine sızmaz. EON Office'te "core bir uygulama değil, kodun çekirdeği" ilkesiyle (madde 43, 19 Kasım kaydı) zaten sınanmış yol budur.
 
+**46. EON Account: bütün EON için tek, anonimlik öncelikli hesap. [K — v0.11'de eklendi]**
+
+Proje sahibinin kararı (20 Kasım 2026): EON ürünleri için tek bir hesap. Araştırma ve analiz: `account/research.md`; plan: `account/plan.md`. Sahibin istekleri ve karşılıkları:
+
+- **a) Anonimlik esas.** Hesap için kullanıcı adı ve parola yeter. E-posta ve telefon **isteğe bağlıdır**; eklenirse kurtarma ve giriş için kullanılır, sunucuda şifreli tutulur. Parola sunucuya hiç gitmez, özeti bile gitmez: giriş **OPAQUE** (RFC 9807) ile yapılır. Sunucu IP adresi, tarayıcı/istemci bilgisi ya da istek günlüğü yazmaz; hız sınırları yalnızca bellekte tutulur.
+- **b) İlerleme ve puanlar sunucuda, ama okunamaz.** Misafirin her şeyi cihazında kalır. Giriş yapan kişinin izleme ilerlemesi ve puanları **cihazda şifrelenmiş bir kasada** sunucuya gider; anahtar parolasından ve yalnızca kendisinde olan bir kurtarma anahtarından türetilir. Sunucu kasanın yalnızca boyutunu ve son değişme zamanını bilir. Madde 31'deki "izleme geçmişi toplanmaz" kuralı bu yüzden bozulmaz (madde 31'deki kayıt).
+- **c) Kurtarma, dürüstçe.** Kurtarma anahtarı varsa her şey korunur. Yalnızca doğrulanmış e-posta/telefon varsa parola yenilenir, ama kasa boş başlar. İkisi de yoksa hesap kurtarılamaz. Bu, kayıt ekranında hesap açılmadan önce söylenir.
+- **d) Tek hesap.** Bir e-posta zaten bir hesaba aitse ikinci hesap açılmaz; o adrese gelen mesaj hangi hesapla giriş yapılacağını söyler. Yanıt herkese aynıdır, bu yüzden bir adresin kayıtlı olup olmadığı dışarıdan öğrenilemez.
+- **e) Diğer hizmetler.** EON uygulamaları sunucuyla doğrudan konuşur. Başka bir hizmet (ör. başkasının işlettiği bir topluluk sunucusu) imzalı bir doğrulama alır (madde 34'ün biçimi: JCS üzerinde Ed25519). Bu doğrulamada her hizmete farklı bir takma kimlik yer alır; iki hizmet kullanıcılarını birbiriyle eşleştiremez. Kullanıcı adı yalnızca kişi o hizmetle paylaşmayı seçerse gider.
+- **f) Misafir modu ve topluluk.** Uygulama ilk açılışta giriş ister; "misafir olarak devam et" her zaman seçeneklerden biridir (madde 7). Topluluk özellikleri hesap ister.
+- **g) Şeffaflık.** Sunucu neyi, neden, ne kadar süre tuttuğunu ve kimin okuyabildiğini makinece okunur bir belge olarak yayınlar (`/v0/transparency`). Belge şemayla aynı sabitlerden üretilir; listede olmayan bir tablo testte hata verir. Her hesap tutulan her şeyi dışa aktarabilir ve kendini tamamen silebilir. **Uygulamalarımıza ait olmayan hiçbir şeyin verisi tutulmaz.**
+- **h) Depolar.** `eon-account-spec` (`Apache-2.0`): sözleşme ve kriptografi. `eon-account-client` (`MIT`): her uygulamanın bağladığı kütüphane. `eon-account-server` (`AGPL-3.0-or-later`): referans sunucu.
+- **i) Sunucu yazılır, işletilmez.** Madde 30'daki Faz L1 kapısı karşılanana kadar projenin işlettiği bir EON Account sunucusu **yoktur**. Uygulamalarda sunucu adresi boş başlar; kapı açıldığı gün varsayılan adres yazılır ve hesap hazırdır.
+- **j) [A] 5651 ve trafik kaydı.** Sunucu bugün trafik bilgisi tutmayacak şekilde yazılır. Yer sağlayıcı sayılıp sayılmadığı ve hangi trafik bilgisinin saklanması gerektiği madde 13'teki avukat sorularına eklenir. Saklama gerekiyorsa bu bir plan kararıyla eklenir ve şeffaflık belgesinde yayınlanır; sessizce eklenmez.
+
+**Maliyet, açıkça:**
+
+- **Kurtarılamayan veri.** Parolasını unutan ve kurtarma anahtarı olmayan kişinin kasası geri gelmez; destek ekibi de getiremez. Anonimliğin bedeli budur ve kişiye önceden söylenir.
+- **Denetlenmemiş sürüm.** `opaque-ke`'nin denetimi 2021'de, `v4`'ten önce yapıldı. Kriptografiyi kendimiz yazmıyoruz, ama kullandığımız sürüm denetlenmedi; bu, madde 37'deki tehdit modeline yazılır.
+- **İstemci yükü.** Parola esnetme (Argon2id, 64 MiB) cihazda çalışır. Zayıf cihazda giriş bir saniyeye yaklaşabilir.
+- **Yeni bir yüzey.** Hesap sistemi, veri koruma yükümlülüğünün fiilen başladığı yerdir (madde 7, 31). Sunucu yazılmış olsa da işletilmesi tüzel kişiliği, hukuki incelemeyi ve madde 31'deki aydınlatma ve imha metinlerini bekler.
+- **Daha fazla iş.** Üç depo daha, ve EON Stream'in topluluk istemcisinin doğrulamalara taşınması. EON Stream'in `v1` işleri bu sürede yine ilerlemez (madde 44'teki maliyetle aynı).
+
+**Kazanç:**
+
+- Kişi kendini tanıtmadan, tek bir adla bütün EON'u kullanır.
+- İlerlemesi cihazdan cihaza gider; bu sırada sunucu da onu işleten de ne izlediğini bilemez.
+- Bir ihlalde çalınacak parola ya da izleme geçmişi yoktur.
+- Topluluk sunucuları kendi parola veritabanlarını tutmak zorunda kalmaz.
+
 ---
 
 ## Faz planı
@@ -735,3 +768,4 @@ Kalan: **kurulum paketi, imzalama anahtarları** ve arayüzün hâlâ uçbirime 
 - [ ] Android oynatıcı arka ucu (madde 2)
 - [ ] Edu'da P2P hızlandırıcı gerekli mi (madde 25)
 - [ ] Ses ürünü: adı ve kapsamı (madde 45a) — [A]; ürünün kendisi [E]
+- [ ] EON Account sunucusu için 5651 trafik kaydı sorusu madde 13'teki avukat listesine (madde 46j)
