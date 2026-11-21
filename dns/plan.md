@@ -118,6 +118,18 @@ The owner chose all three ways to tunnel:
 - CI brings a real WARP tunnel up on the Windows runner and checks that Cloudflare's trace
   page says `warp=on`.
 
+**Verified on the owner's machine (21 November 2026).** With WARP on:
+- Roblox signed in, and its pages and pictures loaded.
+- The owner played a live multiplayer game.
+
+The same test found three problems, all fixed in `v0.0.3`:
+- An adapter that came up later kept the router's DNS. That router answers blocked names
+  with the operator's block page.
+- Old settings files were read as the newest version.
+- A tunnel went slow after some minutes: TLS took 3–9 s, against 0.1 s on the direct
+  line, and rebuilding it fixed this. The service now rebuilds a tunnel that fails two
+  checks in a row.
+
 **Not yet**
 - A kill switch.
 - MASQUE (WARP's newer protocol).
