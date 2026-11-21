@@ -10,7 +10,7 @@ SPDX-FileCopyrightText: 2026 EON contributors
 | Repository | Version | CI | Notes |
 |---|---|---|---|
 | `eon-download-manager-spec` | contracts v0 | green | hand-off and resume-state schemas; 10 valid and 14 invalid examples |
-| `eon-download-manager-app` | `v0.0.2`, prerelease | green on Windows, Linux, macOS | release downloaded after publishing: checksums match, the Windows binary passes `--selftest` |
+| `eon-download-manager-app` | `v0.0.3`, prerelease | green on Windows, Linux, macOS | release downloaded after publishing: checksums match, the Windows binary passes `--selftest` |
 
 **Tested:** 32 engine tests against a local HTTP server — multi-connection splitting byte for
 byte, resume after a simulated power cut (mutation-checked), pause and resume, a server without
@@ -34,6 +34,10 @@ to the application through the extension (`tools/browser-check.mjs`).
    second-copy route failed under Firefox. Since `v0.0.2` the window reads the inbox itself,
    and the host answers *ok* only once the window has the hand-off. Verified in a real
    Firefox 160, with the window running and with it closed.
+   **Sound (22 November, `v0.0.3`):** a video caught on a page was silent when the site
+   sends sound as a separate playlist. Both halves are now downloaded and joined. The sheet
+   always asks: picture and sound, picture only, or sound only. Page downloads with Turkish
+   letters in the name no longer fail after finishing.
 2. **Settings that apply while a download runs: done** (pushed). Connections, downloads
    at the same time and the speed limit change the running transfer in place. A file
    downloaded across 8 → 2 → 6 connections still matched its SHA-256.
