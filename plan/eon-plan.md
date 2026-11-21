@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.13 · **Son güncelleme:** 21 Kasım 2026
+> **Durum:** Taslak v0.14 · **Son güncelleme:** 21 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses). **v0.13 madde 47'yi ekliyor**: EON DNS.
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses). **v0.13 madde 47'yi ekliyor**: EON DNS. **v0.14 yeni madde eklemiyor**; madde 2'nin platform yarısını değiştiriyor (EON Stream her masaüstü platformunda yayınlanıyor, Android telefon ve TV ertelenmişlikten çıkıyor).
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -141,7 +141,20 @@ Gerekçe (düzeltildi): asıl kazanç indirme boyutu değil — libmpv ve torren
 **Oynatıcının yeri — değişti (plan v0.7) [K]:** Önceki karar: `v1`'de görüntü mpv'nin kendi penceresinde, arayüzün videonun üzerine binmesi `v1` sonrasında libmpv gömmeyle. Yeni karar: **görüntü `v0.16`'dan itibaren EON Stream penceresinin içinde** — proje sahibinin kararı. Yol libmpv gömme değil ve `v1` kararının asıl yarısı duruyor: mpv hâlâ **ayrı süreç**, hâlâ JSON IPC ile sürülüyor; yalnızca `--wid` ile pencerenin tutamacı veriliyor ve resmini pencerenin çocuğu olarak çiziyor. Oynatıcı denetimleri, mpv yüzeyinden **sonra** eklenen şeffaf ikinci bir webview (`player.html`); katalog webview'ı oynatma süresince gizleniyor. z-order sorunu Win32 API'ye inmeden sıralamayla çözüldü, uygulama kodunda `unsafe` yok. Bir film açık değilken hiçbir oynatma denetimi görünmüyor.
 
 **Maliyeti, açıkça:** Yalnızca Windows'ta ölçüldü (alt pencere sırası oynatma sırasında gerçekten okunarak). macOS (NSView) ve Linux'ta (X11/Wayland) `--wid` ayrı ayrı doğrulanmadan bu karar oralara taşınmış sayılmaz; tutamaç alınamayan platformda mpv eskisi gibi kendi penceresini açar. Tauri'nin **`unstable` özelliği** açıldı (bir pencerede iki webview için): kararlı olmayan bir API'ye bağımlılık, Tauri sürüm yükseltmelerinde kırılabilir ve her yükseltmede elle denenmesi gerekir. Madde 4'teki "arayüzün erişebildiği her şey bir modülün erişebileceği şeydir" yüzeyi bir sayfa büyüdü; aynı komut kümesini kullanıyor, yeni ağ izni yok. Oynatıcının pencere içi davranışının otomatik testi yok: ekran yakalamayla doğrulanıyor.
-- **Android [E]:** libmpv'nin Android derleme zinciri ayrı bir projedir. Mobilde `media3` / ExoPlayer değerlendirilir; oynatıcı soyutlaması (`PlayerBackend` arayüzü) baştan iki implementasyonu kaldıracak şekilde yazılır.
+- **Android [K — v0.14, önce E idi]:** libmpv'nin Android derleme zinciri ayrı bir projedir. Mobilde `media3` / ExoPlayer değerlendirilir; oynatıcı soyutlaması (`PlayerBackend` arayüzü) baştan iki implementasyonu kaldıracak şekilde yazılır.
+  > **Kayıt (21 Kasım 2026, sahibin kararı — plan v0.14):** Sahip, EON Stream'in çalışabileceği her platformda yayınlanmasını istedi. Ardından depolama kullanımının en zayıf Android TV'de çalışacak kadar küçültülmesini, sonra da Android TV ve telefon desteğini istedi. Karar:
+  > 1. Masaüstü yayınları CI'dan çıkar: Windows x86_64 ve ARM64, Linux x86_64 ve ARM64, macOS Apple Silicon ve Intel. Her biri yayınlanmadan önce kendi koşucusunda `--selftest`'ten geçer.
+  > 2. Görüntünün pencere içinde olması yalnız Windows'ta doğrulandı. Linux ve macOS'ta mpv kendi penceresini açar. `--wid` macOS'ta süreçler arasında çalışmaz, çünkü NSView bir işaretçidir. Linux/X11'de çalışabilir ama doğrulanmadı.
+  > 3. Android (telefon ve TV) alfa hattında gelir. Oynatıcı ayrı bir arka uçtur (yukarıdaki `PlayerBackend`). Arayüz kumandayla (D-pad) ve dokunmayla kullanılır.
+  > 4. iOS dışarıda kalır.
+  >
+  > **Bedeli:**
+  > - CI süresi ve bakım yüzeyi kabaca üç katına çıkar.
+  > - macOS ve Linux sürümleri imzasızdır; Gatekeeper ve dağıtım paketleri ayrı iştir.
+  > - Pencere içi görüntü yalnız Windows'ta vardır.
+  > - Android için ikinci bir oynatıcı ve kumanda arayüzü yazılır, ve her davranış üç yüzeyde karşılanır.
+  >
+  > v1 tanımı (Windows + Linux) değişmez. Diğer platformlar v1'in koşulu değil, alfa hattının ek çıktısıdır.
 
 **3. Her şey modül. [K]**
 Core yalnızca modül yöneticisi, ayarlar ve güncelleyiciden oluşur. Video, müzik, dosya, marketplace, creator'lar, materyal paketi görüntüleyicisi ve arayüz editörü ayrı modüllerdir: her birinin manifesti, sürümü, bağımlılıkları ve imzası vardır. İlk açılışta kullanıcı kurmak istediği modülleri seçer. Base video kurulumunda yalnızca görüntüleyici ve eklenti ekleme bulunur; marketplace ve creator'lar isteğe bağlı indirilir.
@@ -564,7 +577,7 @@ Bu boyda bir planda kapsamı tutan şey yapılacaklar listesi değil, **yapılma
 - Kendi video kodek veya oynatıcı motorunu yazmak (mpv kullanılır).
 - Stremio'nun hesap sistemi, kütüphane senkronizasyonu veya bulut servisleriyle entegre olmak.
 - Kendi eklenti protokolünü icat edip Stremio uyumluluğunu bırakmak.
-- iOS (App Store kısıtları ayrı bir projedir), akıllı TV platformları, tarayıcı sürümü.
+- iOS (App Store kısıtları ayrı bir projedir), Android dışındaki akıllı TV platformları (Tizen, webOS), tarayıcı sürümü. Android TV v0.14'te bu listeden çıktı (madde 2).
 - EON Stream'de okul araçları; Edu'da açık marketplace (madde 26).
 - Sosyal ağ özellikleri (takip, profil akışı, birebir mesajlaşma) EON Stream tarafında.
 - DRM'li ticari akış servisleri desteği.
@@ -791,7 +804,7 @@ Kalan: **kurulum paketi, imzalama anahtarları** ve arayüzün hâlâ uçbirime 
 - [ ] **Edu pilot okul sayısı üst sınırı — somut bir sayı yaz** (madde 18)
 - [ ] Finansman yolu ve ilk hibe başvurusu (madde 38)
 - [ ] Sohbet gerçekten gerekli mi; gerekirse Matrix mi (madde 19)
-- [ ] Android oynatıcı arka ucu (madde 2)
+- [ ] Android oynatıcı arka ucu (madde 2) — v0.14'ten beri alfa hattında, telefon ve TV
 - [ ] Edu'da P2P hızlandırıcı gerekli mi (madde 25)
 - [ ] Ses ürünü: adı ve kapsamı (madde 45a) — [A]; ürünün kendisi [E]
 - [ ] EON Account sunucusu için 5651 trafik kaydı sorusu madde 13'teki avukat listesine (madde 46j)
