@@ -10,7 +10,7 @@ SPDX-FileCopyrightText: 2026 EON contributors
 | Repository | Version | CI | Notes |
 |---|---|---|---|
 | `eon-download-manager-spec` | contracts v0 | green | hand-off and resume-state schemas; 10 valid and 14 invalid examples |
-| `eon-download-manager-app` | `v0.0.1`, prerelease | green on Windows, Linux, macOS | release downloaded after publishing: checksums match, the Windows binary passes `--selftest` |
+| `eon-download-manager-app` | `v0.0.2`, prerelease | green on Windows, Linux, macOS | release downloaded after publishing: checksums match, the Windows binary passes `--selftest` |
 
 **Tested:** 32 engine tests against a local HTTP server — multi-connection splitting byte for
 byte, resume after a simulated power cut (mutation-checked), pause and resume, a server without
@@ -26,6 +26,14 @@ to the application through the extension (`tools/browser-check.mjs`).
 1. **Catching browser downloads when clicked: done** (pushed). The window registers the
    browser host at every start, and a first-start walkthrough opens the browser's
    extensions page and shows "Connected" once the extension answers. Checked in real Edge.
+   **Firefox (22 November, `v0.0.2`):** release Firefox installs only Mozilla-signed
+   add-ons, so the extension is signed on addons.mozilla.org as *unlisted* (in no
+   catalogue). `v0.0.1`'s signed `.xpi` is on its release. The `firefox` workflow signs
+   later versions once the owner adds `AMO_JWT_ISSUER` / `AMO_JWT_SECRET`. Installed in the
+   owner's Firefox, it caught downloads, but the window never received them: the host's
+   second-copy route failed under Firefox. Since `v0.0.2` the window reads the inbox itself,
+   and the host answers *ok* only once the window has the hand-off. Verified in a real
+   Firefox 160, with the window running and with it closed.
 2. **Settings that apply while a download runs: done** (pushed). Connections, downloads
    at the same time and the speed limit change the running transfer in place. A file
    downloaded across 8 → 2 → 6 connections still matched its SHA-256.
