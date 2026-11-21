@@ -95,6 +95,36 @@ loop as EON Download Manager.
 - **Apply and restore** are tested on the CI runner, where changing an adapter is
   harmless. They are never tested on the owner's machine without asking.
 
+## Changed on 21 November 2026: the tunnel comes now
+
+The owner tested Roblox and could not get in. In Turkey, Roblox is blocked at the
+connection, by the name the browser sends in the clear (SNI). A TLS handshake to the right
+address is reset within 50–100 ms (measured). Encrypted DNS cannot get past that, and
+splitting the ClientHello got through only half the time on this network.
+
+The owner chose all three ways to tunnel:
+
+- **Cloudflare's free WARP network.** EON DNS registers a device the way the 1.1.1.1 app
+  does. Measured here: a WireGuard handshake in 17–30 ms, and data through the tunnel.
+- **A WireGuard configuration the person brings.**
+- **An EON tunnel server.** The contract is in `engine/src/tunnel/eon.rs`, and the client is
+  ready for the day a server runs.
+
+**How it works**
+- WireGuard's signed `wireguard-nt` driver carries the packets.
+- The EON DNS service holds the administrator rights. It is installed once, with one
+  consent prompt.
+- The connection chooser sits right under the switch, and changing it reconnects.
+- CI brings a real WARP tunnel up on the Windows runner and checks that Cloudflare's trace
+  page says `warp=on`.
+
+**Not yet**
+- A kill switch.
+- MASQUE (WARP's newer protocol).
+- Excluding domains from the tunnel; excluding addresses works.
+- A proxy mode.
+- Captive-portal handling.
+
 ## Then
 
 1. **The tunnel.** WireGuard to an endpoint the person brings, using `wireguard-nt` on
