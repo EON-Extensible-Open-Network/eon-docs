@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.14 · **Son güncelleme:** 21 Kasım 2026
+> **Durum:** Taslak v0.15 · **Son güncelleme:** 21 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses). **v0.13 madde 47'yi ekliyor**: EON DNS. **v0.14 yeni madde eklemiyor**; madde 2'nin platform yarısını değiştiriyor (EON Stream her masaüstü platformunda yayınlanıyor, Android telefon ve TV ertelenmişlikten çıkıyor).
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses). **v0.13 madde 47'yi ekliyor**: EON DNS. **v0.14 yeni madde eklemiyor**; madde 2'nin platform yarısını değiştiriyor (EON Stream her masaüstü platformunda yayınlanıyor, Android telefon ve TV ertelenmişlikten çıkıyor). **v0.15 madde 48'i ekliyor**: EON Converter.
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -30,6 +30,7 @@
 - **Ses ürünü (adı [A]):** Müzik ve ses için ayrı bir ürün. **[E]** — kapsamı ve adı yazılmadan depo açılmaz (madde 45a, 43d).
 - **EON Office:** Bağımsız uygulamalardan oluşan bir üretkenlik ve iş yazılımı ailesi (EON Notes, EON Writer, EON Sheets…). Uygulamalar tek bir pakete gömülmez; her biri ayrı depo, ayrı kurulum, ayrı sürüm. Ortak altyapı `eon-office-core`'dadır ve EON Stream'in core'una bağlı değildir (madde 43).
 - **EON DNS:** Şifreli DNS ve filtreleme; kişinin seçtiği çözümleyiciye, cihazda denetlenen ve günlüğü cihazda kalan biçimde. Ardından kişinin getirdiği bir uca tünel (madde 47).
+- **EON Converter:** Her dosyayı dönüşebileceği her biçime çeviren dönüştürücü. Çekirdeği bir kütüphanedir; EON Download Manager da aynı çekirdekle indirmeyi istenen biçimde teslim eder (madde 48).
 - **EON Account:** Bütün EON ürünleri için tek hesap. Kullanıcı adı ve parola yeter; e-posta ve telefon isteğe bağlıdır. Sunucu parolayı da kullanıcının izleme ilerlemesini de göremez (madde 46).
 
 ### Neden ortak çatı, ayrı ürün adı [K]
@@ -714,6 +715,30 @@ Proje sahibinin isteği (20 Kasım 2026): Cloudflare'in 1.1.1.1 / WARP uygulamas
 - Tünel bir sürücü (`wireguard-nt`) ve ayrı bir güvenlik incelemesi gerektirir; ayrı bir dilim olmasının sebebi budur.
 
 **Kazanç:** WARP'ın tek şirkete bağlı kalan DNS yarısının açık, denetlenebilir ve kişinin kontrolünde bir karşılığı; engellenen her şeyin görünür olması; EON'un ilkelerini (telemetri yok, hesap gerekmez, kaynak açık) somut gösteren bir ürün daha.
+
+---
+
+**48. EON Converter: her dosyayı dönüşebileceği her biçime çeviren dönüştürücü; çekirdeği EON Download Manager'a da hizmet eder. [K — v0.15'te eklendi]**
+
+Proje sahibinin isteği (22 Kasım 2026): "Aklına gelebilecek her türlü dosyayı dönüşebileceği her türlü dosyaya dönüştürebilen" bir uygulama. Örnekler: TXT'den PDF'e, PDF'ten Markdown'a hatasız, videodan GIF'e, GIF'ten videoya, "hepsi". Çekirdek modüler olacak ve sonra EON Download Manager'a eklenecek: bir şey indirilirken o dosyanın olabileceği bütün biçimler seçenek olarak sunulacak. İstenen biçim kaynakta yoksa kişiye bir kez sorulacak, sonra içerik en verimli dönüşen biçimde indirilip istenen biçime çevrilecek. Araştırma ve analiz: `converter/research.md`; plan: `converter/plan.md`.
+
+- **a) Yönlendirici, motor değil.** Hiçbir tek program her şeyi çevirmez; ciddi her dönüştürücü bir yönlendiricidir. EON Converter dosyanın ne olduğunu içeriğinden anlar ve hedefe giden en ucuz dönüşüm zincirini bulur. Her adımı kanıtlanmış bir motor yapar: FFmpeg, Pandoc, Typst, PDFium, ImageMagick ve çekirdeğin kendi Rust dönüşümleri. LibreOffice ve Calibre kuruluysa onlar da kullanılır. "Her biçim", bu motorların okuyup yazabildiklerinin birleşimidir: birkaç yüz biçim.
+- **b) Kayıp dürüstçe söylenir.** Bazı dönüşümler doğası gereği bir şey kaybeder. PDF bir sayfa tarifidir; Markdown'a çevrildiğinde metin, başlık ve listeler gelir, tablo ve sütunlar yaklaşık gelir. Taranmış PDF'te OCR olmadan metin yoktur. GIF 256 renktir. Uygulama "hatasız" sözü vermez; kayıp olan adımı çalıştırmadan önce gösterir.
+- **c) Motorlar ilk ihtiyaçta indirilir, paketlenmez.** Her biri kendi projesinin yayın sayfasından gelir; sürümü ve SHA-256'sı koda sabitlenir (madde 37). Yalnızca resim ve veri çeviren biri hiçbir şey indirmez. Yönetici kurulumu isteyen LibreOffice ile Calibre indirilmez, yalnızca kuruluysa kullanılır.
+- **d) Korumalı içerik çevrilmez.** DRM'li medya ve e-kitap reddedilir (madde 44b'nin ilkesi).
+- **e) Depolar.** `eon-converter-core` kütüphanedir: biçim tablosu, içerikten tanıma, yönlendirme grafiği, motorlar ve iş takibi. Pencere bağımlılığı yoktur. `eon-converter-app` pencere ve komut satırıdır. İkisi de `GPL-3.0-or-later` + EON Modül ABI İstisnası taşır. Boş depo açılmaz (43d); ikisi de çalışan ilk sürümle açılır.
+- **f) EON Download Manager ikinci dilimdir.** DM çekirdeğe git `rev` ile bağlanır. Ekleme penceresi, dosyanın olabileceği her biçimi listeler. İstenen biçim kaynakta yoksa şu sorulur: "Bu içeriğin özgün biçimi X. Y istiyorsunuz. Z olarak indirilip EON Converter tarafından otomatik dönüştürülecek. Devam edilsin mi?" Seçenekler Devam, İptal ve "Bir daha sorma"dır. Kaynak, çekirdeğin en ucuz yolu seçtiği biçimdir; örneğin MOV için MP4 indirilir ve yeniden kodlanmadan kabı değiştirilir. Bu dilim madde 44'te ayrıca kayda geçer.
+- **g) İlk alfa `v0.0.0`'dır**: araştırmadaki her ailede dönüştüren uygulama, yayınlanmış ve doğrulanmış.
+
+**Maliyet:**
+
+- Beşinci ürün ailesi, EON Stream `v1`'den önce (madde 42c'nin uyarısı yine büyür).
+- Yedi dış motor, yedi ayrı tedarik zinciri taahhüdüdür. Her sürüm yükseltmesi yeni bir SHA-256 sabitlemesi ve yeniden test demektir.
+- İlk ihtiyaçta indirme bir defalık bekleme getirir: FFmpeg yaklaşık 190 MB açılır, Pandoc 44 MB'tır. Bunun karşılığında uygulama küçük kalır.
+- LibreOffice kurulu değilse Word düzeni Typst üzerinden PDF'e birebir geçmeyebilir. Bu, kayıp olarak gösterilir.
+- Kalite iddiası bir test matrisine bağlıdır. Her biçim ailesinden gerçek dosyalarla CI'da çalışan dönüşümler bakım ister.
+
+**Kazanç:** Çevrimiçi dönüştürücülere dosya yüklemeden, reklamsız, hesapsız, cihazda çalışan tek bir dönüştürücü; EON Download Manager'ın her indirmeyi istenen biçimde teslim edebilmesi; motorları ve rotası açık, kaybı önceden söyleyen bir araç.
 
 ---
 
