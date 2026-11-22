@@ -70,7 +70,7 @@ were exploited in the wild.
 | Reading 40 formats | 7-Zip's own decoders for each | 7-Zip itself (`7zz`), fetched the first time such a file is opened and pinned by SHA-256, as EON Converter fetches its engines. A separate program, so its licence (LGPL + unRAR restriction) does not combine with ours |
 | Recovery records | RAR-only Reed–Solomon data inside the archive | **PAR2 recovery volumes for any archive** — an open, documented standard that QuickPar, MultiPar and par2cmdline read too |
 | Repair | WinRAR rebuilds from the recovery record | Repair from PAR2 volumes; for ZIP, rebuilding the central directory from the local headers |
-| Multi-threading | Both split work across cores | Zstandard and LZMA2 multi-threaded; several files compressed in parallel for ZIP |
+| Multi-threading | Both split work across cores | LZMA2 and Zstandard multi-threaded; several ZIP entries at once is planned (parity.md) |
 | Shell integration | COM shell extension DLL | Classic context-menu entries under the user's own registry key (no administrator rights). Windows 11's top-level menu needs a signed sparse package, which waits for EON's signing keys (madde 30) |
 
 ## The one thing that cannot be matched, and why
