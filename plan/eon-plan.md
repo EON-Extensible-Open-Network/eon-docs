@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.15 · **Son güncelleme:** 21 Kasım 2026
+> **Durum:** Taslak v0.16 · **Son güncelleme:** 22 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses). **v0.13 madde 47'yi ekliyor**: EON DNS. **v0.14 yeni madde eklemiyor**; madde 2'nin platform yarısını değiştiriyor (EON Stream her masaüstü platformunda yayınlanıyor, Android telefon ve TV ertelenmişlikten çıkıyor). **v0.15 madde 48'i ekliyor**: EON Converter.
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses). **v0.13 madde 47'yi ekliyor**: EON DNS. **v0.14 yeni madde eklemiyor**; madde 2'nin platform yarısını değiştiriyor (EON Stream her masaüstü platformunda yayınlanıyor, Android telefon ve TV ertelenmişlikten çıkıyor). **v0.15 madde 48'i ekliyor**: EON Converter. **v0.16 madde 49'u ekliyor**: EON Zip.
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -31,6 +31,7 @@
 - **EON Office:** Bağımsız uygulamalardan oluşan bir üretkenlik ve iş yazılımı ailesi (EON Notes, EON Writer, EON Sheets…). Uygulamalar tek bir pakete gömülmez; her biri ayrı depo, ayrı kurulum, ayrı sürüm. Ortak altyapı `eon-office-core`'dadır ve EON Stream'in core'una bağlı değildir (madde 43).
 - **EON DNS:** Şifreli DNS ve filtreleme; kişinin seçtiği çözümleyiciye, cihazda denetlenen ve günlüğü cihazda kalan biçimde. Ardından kişinin getirdiği bir uca tünel (madde 47).
 - **EON Converter:** Her dosyayı dönüşebileceği her biçime çeviren dönüştürücü. Çekirdeği bir kütüphanedir; EON Download Manager da aynı çekirdekle indirmeyi istenen biçimde teslim eder (madde 48).
+- **EON Zip:** Arşivleyici. 7-Zip ve WinRAR'ın yapıp onun yapamadığı hiçbir şey kalmaması hedeftir; tek istisna RAR oluşturmaktır, çünkü biçim RARLAB'ındır (madde 49).
 - **EON Account:** Bütün EON ürünleri için tek hesap. Kullanıcı adı ve parola yeter; e-posta ve telefon isteğe bağlıdır. Sunucu parolayı da kullanıcının izleme ilerlemesini de göremez (madde 46).
 
 ### Neden ortak çatı, ayrı ürün adı [K]
@@ -739,6 +740,29 @@ Proje sahibinin isteği (22 Kasım 2026): "Aklına gelebilecek her türlü dosya
 - Kalite iddiası bir test matrisine bağlıdır. Her biçim ailesinden gerçek dosyalarla CI'da çalışan dönüşümler bakım ister.
 
 **Kazanç:** Çevrimiçi dönüştürücülere dosya yüklemeden, reklamsız, hesapsız, cihazda çalışan tek bir dönüştürücü; EON Download Manager'ın her indirmeyi istenen biçimde teslim edebilmesi; motorları ve rotası açık, kaybı önceden söyleyen bir araç.
+
+**49. EON Zip: 7-Zip ve WinRAR'ın yapabildiği her şeyi yapan, ikisinin de yapmadığı işleri ekleyen arşivleyici. [K — v0.16'da eklendi]**
+
+Proje sahibinin isteği (22 Kasım 2026): WinRAR ve 7-Zip'in topluluk tarafından neden sevildiği, iyi yanları ve bunları nasıl yaptıkları incelenecek. İkisinin yapıp bizim yapamadığımız tek bir şey kalmayacak. Üstüne, ikisinin de yapmadığı ama yararlı olacak özellikler eklenecek ve yeni nesil, temiz bir görünümle sunulacak. Araştırma ve analiz: `zip/research.md`; tam yetenek tablosu: `zip/parity.md`; plan: `zip/plan.md`.
+
+- **a) Ölçüt yetenek tablosudur.** `zip/parity.md`, 7-Zip ve WinRAR'ın her yeteneğini bir satır olarak tutar; EON Zip'in o satırdaki durumu (hangi sürümde var, hangi sürüme planlı ya da neden yapılamaz) iş yapılan PR'da güncellenir. "Hiçbir şey kalmasın" sözü bu tabloyla izlenir, ilk sürümle değil.
+- **b) RAR oluşturulamaz; bu açıkça söylenir.** RAR biçimi RARLAB'ındır. unRAR lisansı, kodunun RAR uyumlu bir sıkıştırıcı yapmakta kullanılmasını yasaklar ve hiçbir özgür program RAR oluşturmaz (7-Zip de oluşturmaz). EON Zip RAR ve RAR5 açar, çıkarır ve tek adımda 7z ya da ZIP'e çevirir. RAR kullanma sebeplerinin her biri için açık bir karşılık sunulur: katı sıkıştırma (7z), kurtarma verisi (PAR2), değişikliği gösteren karma bildirimi.
+- **c) Yerel biçimler saf Rust'tır.** 7z, ZIP (AES-256 dahil), TAR ve gzip/bzip2/xz/zstd çekirdekte, bağımsız kütüphanelerle oluşturulur ve açılır. 7-Zip'in tek başına okuduğu biçimler (RAR, ISO, CAB, MSI, WIM, DMG, VHD ve diğerleri) 7-Zip'in kendisiyle (`7zz`) açılır. 7-Zip ilk ihtiyaçta kendi yayınından indirilir ve SHA-256 ile sabitlenir (madde 37). Ayrı bir program olduğundan lisansı (LGPL + unRAR kısıtı) bizimkiyle birleşmez.
+- **d) Güvenlik çekirdektedir ve kapatılamaz.** İkisinde de vahşi doğada kullanılmış açıklar oldu (WinRAR CVE-2023-38831 ve CVE-2025-8088, 7-Zip CVE-2025-0411 ve CVE-2025-11001). Hedef klasörün dışına yazan yollar ve bağlantılar her zaman reddedilir. Windows'un "internetten geldi" işareti iç içe arşivler dahil korunur. Program, betik ve çift uzantılı dosyalar çıkarmadan önce gösterilir. Arşiv bombasında durulup sorulur.
+- **e) İkisinin yapmadıkları:** dağınıklık yapmayan akıllı çıkarma; çıkarmadan önizleme ve arama; her biçim için açık standart PAR2 kurtarma verisi; eski ZIP'lerde Türkçe ve diğer dillerdeki dosya adlarının kod sayfasının kendiliğinden tanınması; sıkıştırmadan önce her yöntemin beklenen boyutu; zaten sıkışık dosyaların boşuna sıkıştırılmaması; paylaşılabilir karma bildirimi; sözle anlatılan sağlık raporu. Hepsi Windows, Linux ve macOS'ta aynı pencerede, Türkçe ve İngilizce, ücretsiz, hesapsız, telemetrisiz.
+- **f) Depolar.** `eon-zip-core` kütüphanedir, pencere bağımlılığı yoktur. `eon-zip-app` pencere ve komut satırıdır. İkisi de `GPL-3.0-or-later` + EON Modül ABI İstisnası taşır ve çalışan ilk sürümle açılır (43d).
+- **g) Sağ tık menüsü.** Windows'ta kullanıcının kendi kayıt anahtarına, yönetici izni olmadan, klasik menü olarak eklenir. Windows 11'in üst düzey menüsü imzalı bir seyrek paket ister; bu, imza anahtarları olunca gelir (madde 30).
+- **h) İlk alfa `v0.0.0`'dır.** `zip/parity.md`'de `v0.0.0` diye işaretlenmiş her satırı yapan, yayınlanmış ve doğrulanmış sürüm.
+
+**Maliyet:**
+
+- Altıncı ürün ailesi, EON Stream `v1`'den önce (madde 42c'nin uyarısı yine büyür).
+- Arşivleyici, internetten gelen dosyaları açan bir programdır; saldırganların ilk hedeflerinden biridir. Güvenlik kuralları ve testleri sürekli bakım ister; bir açık, kullanıcının bilgisayarına yazılan bir zararlı demektir.
+- 7-Zip'e bağlı biçimler, bir dış programın sürüm takibini ve yeniden sabitlemesini getirir.
+- Yetenek tablosu söz verir: tablodaki her ⏳ satırı ileride yapılması gereken iştir; yapılmazsa tablo dürüstçe güncellenmelidir.
+- RAR oluşturamamak, RAR isteyen birinin isteğini karşılamaz; bu bir kayıptır ve açıkça söylenir.
+
+**Kazanç:** Ücretsiz, açık kaynaklı, reklamsız ve rahatsız etmeyen; 7-Zip'in sıkıştırmasını ve biçim genişliğini, WinRAR'ın kurtarma ve onarım güvencesini aynı yerde sunan; ikisinin de güvenlik açıklarının sınıfını baştan kapatan, her platformda aynı görünen bir arşivleyici.
 
 ---
 
