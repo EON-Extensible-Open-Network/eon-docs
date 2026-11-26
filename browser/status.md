@@ -37,5 +37,9 @@ SPDX-FileCopyrightText: 2026 EON contributors
 - **Select boxes, context menus, file pickers and dialogs** are not shown yet (Servo hands
   them to the embedder; v0.0.1).
 - List updates after consent, bookmarks in the interface, downloads — v0.0.1.
-- YouTube, sign-in, forms and video compatibility: to measure on a connection without
-  the owner's tunnel (madde 50j).
+- **YouTube fails to connect in Servo** ("client error (SendRequest)" within 400 ms)
+  while `curl` reaches it on the same machine at the same time. On this machine
+  `www.youtube.com` resolves to IPv6 addresses; `curl` falls back to IPv4, Servo does not
+  seem to (no "Happy Eyeballs"). `i.ytimg.com`, which has IPv4, loads. To confirm on a
+  plain connection and report upstream (madde 50j). GitHub's sign-in form and
+  DuckDuckGo (in Turkish) load.

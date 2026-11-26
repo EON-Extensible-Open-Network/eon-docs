@@ -165,9 +165,9 @@ mature:
 7. **Separate products stay separate** (madde 45): downloads go to EON Download Manager,
    the tunnel to EON DNS, sync to EON Account's sealed vault.
 
-**Left open for the plan:** WebExtensions. Servo has none, and madde 4 forbids
-code-executing plugins until a sandbox design exists. Built-in blocking does the job people
-install extensions for most; v1 ships without extensions, and that is written as a decision.
+**WebExtensions** were first left out (Servo has none; madde 4). On 26 November the owner
+asked for other browsers' extensions to work; madde 50h was amended and the staged runtime
+is designed in [extensions.md](extensions.md).
 
 **Not included, with the reason:** the Turkish ad list `turk-adlist` (hosts format,
 CC BY-SA 3.0) has not been updated since December 2023.

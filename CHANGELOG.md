@@ -15,15 +15,22 @@ One new item, madde 50. This branch is stacked on v0.16 (madde 49, EON Zip).
     `adblock` engine and lists shipped with the release; tracking parameters stripped in
     normal windows; HTTPS-only; Global Privacy Control.
   - **The core is engine-independent and never touches the network**; the app fetches.
-  - No WebExtensions (madde 4); downloads to EON Download Manager, sync through EON
-    Account (madde 45, 46).
+  - Other browsers' extensions in stages, on EON's own core (madde 50h, amended 27 Nov
+    at the owner's request; `browser/extensions.md`). Downloads to EON Download
+    Manager, sync through EON Account (madde 45, 46).
+  - **Tor in the browser** through Arti: a circuit per site, renewed, "New identity";
+    a proxy server the person brings uses the same route (madde 50k).
+  - **Parity with Tor Browser, Opera, Firefox, Chrome and Edge** is tracked row by row
+    in `browser/parity.md` (madde 50l).
   - Research, analysis and the roadmap are in `browser/`.
 - **What it costs, stated in the item:**
   - a seventh product family before EON Stream v1;
   - sites will break, and there is no DRM;
   - no sandbox or site isolation on Windows yet;
   - Servo's API breaks monthly, and Servo accepts no AI-written contributions;
-  - about 100 MB on disk, so "light" is measured as memory, start time and idle traffic.
+  - about 100 MB on disk, so "light" is measured as memory, start time and idle traffic;
+  - extensions are years of work to full compatibility, and an approved extension can
+    read what it was allowed to; Tor adds a network stack and is not Tor Browser.
 
 ### Plan v0.13 — 21 November 2026
 
