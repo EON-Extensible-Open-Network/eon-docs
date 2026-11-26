@@ -132,12 +132,11 @@ profile.visit(&url, title, now)?;  profile.suggest("wik")?;  // history with ful
 
 ## The interface (in the app, after the core)
 
-Designed with the design skills before its code. **How it is drawn is open [A]:** either
-HTML/CSS/JS rendered by Servo itself in a privileged view, talking to Rust through a
-private `eon:` protocol handler (one engine, the same no-Node, no-bundler interface as EON
-Stream), or `egui` drawn around the page as servoshell does (proven, all Rust). A prototype
-of each decides it in `browser/design.md`, by start time, memory and how it looks. What
-people love and ask for, in order of how often it came up in the research:
+**How it is drawn — decided by a prototype ([design.md](design.md)):** HTML/CSS/JS rendered
+by Servo itself in its own view above the page, talking to the browser through
+`https://ui.eon.invalid/cmd`, a host that never resolves and that pages cannot reach. One
+engine, the same no-Node, no-bundler interface as EON Stream. What people love and ask
+for, in order of how often it came up in the research:
 
 1. **Vertical tabs** with a compact horizontal option; tab groups; pinned tabs.
 2. **Spaces** (Arc, Zen, Vivaldi): separate sets of tabs, each with its own container of
@@ -156,8 +155,8 @@ Each line is a release; each release ships (CLAUDE.md, "every alpha build ships"
 | Version | Repository | What it adds |
 |---|---|---|
 | `v0.0.0` | core | Blocking (network, cosmetic, scriptlets) over `adblock`, the list catalogue and its update/verify cycle, link cleaning, HTTPS upgrade, address-bar parsing and search engines, site settings, history with full-text search, bookmarks, sessions, user-agent policy. Unit tests and a test that the core has no network client. |
-| `v0.0.0` | app | Servo window on Windows, Linux and macOS; tabs; address bar; back, forward, reload; the core wired in (every request through `Shield`, every navigation through `navigate`); history and bookmarks; a private window; `--selftest` that loads local test pages offscreen and checks blocking, cleaning and upgrading by screenshot; release with SHA-256 sums on three platforms. |
-| `v0.0.1` | app | The designed interface: vertical tabs, command bar, the shield panel, settings, first-start search-engine choice. Downloads (handed to EON Download Manager when installed, madde 44; otherwise saved by the app). |
+| `v0.0.0` | app | Servo window on Windows, Linux and macOS; tabs; address bar with history suggestions; back, forward, reload; the core wired in (every request through `Shield`, every navigation through `navigate`, element hiding in two steps); the browser's own pages, including the first search-engine choice and the harmful-site and no-HTTPS pages; the session restored; a private window; `--selftest` (26 checks offscreen, no network); the day's lists inside each release; SHA-256 sums. |
+| `v0.0.1` | app | **Video and audio** (Servo's GStreamer back end, packaged per platform) and **WebGL** (ANGLE's translator needs libclang at build time). The designed interface: vertical tabs, command bar, the shield panel, settings, light theme. List updates from their publishers after the one-time consent. Bookmarks in the interface (the core has them). Downloads (handed to EON Download Manager when installed, madde 44; otherwise saved by the app). ARM64 builds. |
 | `v0.0.2` | core + app | Fingerprinting protections (madde 50e), per-site JIT switch, third-party storage measured and closed as far as Servo allows, permissions prompts. |
 | `v0.0.3` | app | Spaces, split view, peek, sleeping tabs, reader view, import from Firefox and Chrome. |
 | `v0.0.4` | core + app | Sync through EON Account's sealed vault (madde 46b): the server stores what it cannot read. |
