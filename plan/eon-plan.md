@@ -3,10 +3,10 @@
 > **EON — Extensible Open Network**
 > *An open ecosystem for everyone.*
 >
-> **Durum:** Taslak v0.16 · **Son güncelleme:** 22 Kasım 2026
+> **Durum:** Taslak v0.17 · **Son güncelleme:** 26 Kasım 2026
 >
 > **Doküman kuralları**
-> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses). **v0.13 madde 47'yi ekliyor**: EON DNS. **v0.14 yeni madde eklemiyor**; madde 2'nin platform yarısını değiştiriyor (EON Stream her masaüstü platformunda yayınlanıyor, Android telefon ve TV ertelenmişlikten çıkıyor). **v0.15 madde 48'i ekliyor**: EON Converter. **v0.16 madde 49'u ekliyor**: EON Zip.
+> - Madde numarası kalıcı kimliktir, **konumsal değildir**. Bir kararın içeriği değişirse madde güncellenir, numarası değişmez. Yeni kararlar sıradaki boş numarayı alır (v0.2: 29–41, v0.3: 42), bölüm içindeki fiziksel sırası okuma kolaylığına göre seçilir. **v0.5 yeni madde eklemiyor**; açık olan maddeleri kapatıyor (madde 1'in torrent yarısı, madde 34'ün kanonik serileştirmesi) ve Faz 0 çıktılarını işaretliyor. **v0.6 de yeni madde eklemiyor**; madde 2'nin zamanlama yarısını değiştiriyor (arayüz `v1` yerine alfa hattında, `v0.14`'te geldi) ve sekiz kalemin durumunu güncelliyor. **v0.7 de yeni madde eklemiyor**; madde 2'nin oynatıcı stratejisini değiştiriyor (görüntü `v0.16`'dan itibaren uygulama penceresinin içinde). **v0.8 bir madde ekliyor (43)**: EON Office ürün ailesi, EON Stream `v1`'den önce başlıyor. **v0.9 madde 44'ü ekliyor** (EON Download Manager). **v0.10 madde 45'i ekliyor**: dosya, ses ve akış ayrı ürünler; her hizmetin kendi deposu, core'u ve uygulaması. **v0.11 madde 46'yı ekliyor**: bütün EON için tek, anonimlik öncelikli hesap (EON Account). **v0.12 yeni madde eklemiyor**; madde 44b'yi değiştiriyor (sayfanın oynattığı video ve ses). **v0.13 madde 47'yi ekliyor**: EON DNS. **v0.14 yeni madde eklemiyor**; madde 2'nin platform yarısını değiştiriyor (EON Stream her masaüstü platformunda yayınlanıyor, Android telefon ve TV ertelenmişlikten çıkıyor). **v0.15 madde 48'i ekliyor**: EON Converter. **v0.16 madde 49'u ekliyor**: EON Zip. **v0.17 madde 50'yi ekliyor**: EON Browser.
 > - Her maddenin bir durum etiketi vardır: **[K] Kararlaştı** · **[A] Araştırılacak** · **[E] Ertelendi**. Etiketi [A] olan bir madde karar değil, yönlendirilmiş sorudur.
 > - Hukuk ve marka maddeleri (11–14, 29–32) **hukuki tavsiye değildir**; madde 13'teki avukat incelemesi tamamlanana kadar tamamı taslaktır ve tek başına dayanak yapılmaz.
 
@@ -32,6 +32,7 @@
 - **EON DNS:** Şifreli DNS ve filtreleme; kişinin seçtiği çözümleyiciye, cihazda denetlenen ve günlüğü cihazda kalan biçimde. Ardından kişinin getirdiği bir uca tünel (madde 47).
 - **EON Converter:** Her dosyayı dönüşebileceği her biçime çeviren dönüştürücü. Çekirdeği bir kütüphanedir; EON Download Manager da aynı çekirdekle indirmeyi istenen biçimde teslim eder (madde 48).
 - **EON Zip:** Arşivleyici. 7-Zip ve WinRAR'ın yapıp onun yapamadığı hiçbir şey kalmaması hedeftir; tek istisna RAR oluşturmaktır, çünkü biçim RARLAB'ındır (madde 49).
+- **EON Browser:** Web tarayıcısı. Chromium'a ve Windows'un motoruna değil, Rust ile yazılmış açık kaynaklı Servo motoruna dayanır; reklam ve izleyici engelleme yerleşiktir, telemetri ve yapay zekâ yoktur, ilk açılışta tek bir istek yapmaz. Windows, Linux ve macOS (madde 50).
 - **EON Account:** Bütün EON ürünleri için tek hesap. Kullanıcı adı ve parola yeter; e-posta ve telefon isteğe bağlıdır. Sunucu parolayı da kullanıcının izleme ilerlemesini de göremez (madde 46).
 
 ### Neden ortak çatı, ayrı ürün adı [K]
@@ -764,6 +765,34 @@ Proje sahibinin isteği (22 Kasım 2026): WinRAR ve 7-Zip'in topluluk tarafında
 
 **Kazanç:** Ücretsiz, açık kaynaklı, reklamsız ve rahatsız etmeyen; 7-Zip'in sıkıştırmasını ve biçim genişliğini, WinRAR'ın kurtarma ve onarım güvencesini aynı yerde sunan; ikisinin de güvenlik açıklarının sınıfını baştan kapatan, her platformda aynı görünen bir arşivleyici.
 
+**50. EON Browser: Chromium'a ve Windows'un motoruna dayanmayan, mahremiyeti varsayılan yapan, hafif bir tarayıcı. [K — v0.17'de eklendi]**
+
+Proje sahibinin isteği (26 Kasım 2026): insanların hangi tarayıcıyı neden sevdiği, hangisinin neyi iyi ve neyi kötü yaptığı ve insanların mahremiyetine önem veren mükemmel tarayıcının nasıl olması gerektiği araştırılacak; ardından tarayıcımızın çekirdeği için yol haritası yazılıp geliştirilecek. Hafif ve en iyisi olacak. Çalışma sırasında iki şart eklendi: **"mümkünse kendi motorumuz ya da tamamen açık kaynaklı ve herkesin sevdiği bir şey olsun; insanlar Windows'tan ve Chromium'dan nefret ediyor"** ve **yalnızca Windows değil, bütün platformlar**. Araştırma ve analiz: `browser/research.md`; plan ve yol haritası: `browser/plan.md`; durum: `browser/status.md`.
+
+- **a) Motor Servo'dur.** Rust ile yazılmış, MPL-2.0 lisanslı, Google'dan ve Apple'dan bağımsız, Linux Foundation Europe çatısındaki motor; Nisan 2026'dan beri crates.io'da gömülebilir bir kütüphane, her ay sürüm ve altı ayda bir LTS hattı. Sistem webview'ı (Windows'ta WebView2; Microsoft'un kapatılamayan zorunlu tanılama verisi madde 36 ile çelişir), CEF ve her Chromium çatalı sahibin şartıyla elendi. Gecko'nun masaüstünde gömme yolu yoktur; Firefox'a yama uygulanmış bir çatal olur ve dürüst yedek olarak kalır. Sıfırdan motor yazmak tek kişilik bir ekip için mümkün değildir. "Kendi motorumuz" burada şu anlama gelir: kendimiz derleyip yayınladığımız, kodunu okuyup yamaladığımız ve geliştirilmesine katkı verdiğimiz bir motor. 26 Kasım'da sahibin makinesinde `servo 0.8.0` clang olmadan derlendi; Wikipedia, Google araması, GitHub ve Reddit ekran dışında doğru çizildi, istek kancası izleyicileri engelledi.
+- **b) Bütün masaüstü platformları ilk sürümden.** Windows, Linux ve macOS; x86_64 ve ARM64. Her sürüm CI'da üçü için derlenir ve yayınlanır.
+- **c) Çekirdek motordan bağımsızdır ve ağa kendisi çıkmaz.** `eon-browser-core` engelleme, bağlantı temizleme, HTTPS'e yükseltme, adres çubuğu, arama motorları, site ayarları, geçmiş, yer imleri, oturum ve parmak izi politikasını taşıyan bir kütüphanedir; Servo'ya, pencereye ve bir HTTP istemcisine bağımlı değildir. Liste güncellemesini uygulamanın verdiği bir indirme işleviyle yapar. Motor değişse de politika kalır.
+- **d) Sözleşme motordan önce gelir.** Telemetri yoktur. Kişi bir sayfa açana kadar tarayıcı **hiçbir istek yapmaz** (ilk açılış, boşta bekleme, adres çubuğuna yazma); bu, temiz bir profille CI'da test edilir. Yapay zekâ özelliği, sponsorlu kutucuk, satış ortaklığı bağlantısı, satılmış varsayılan arama motoru ve sorulmadan kurulan bileşen yoktur. Her koruma varsayılan olarak açıktır ve her biri kapatılabilir.
+- **e) Varsayılanlar Firefox'un Standard'ı değil, Strict'idir.** Yerleşik reklam ve izleyici engelleme (Brave'in `adblock` motoru; EasyList, EasyPrivacy, uBlock Origin listeleri, çerez bildirimleri), normal pencerede de izleme parametrelerinin silinmesi ve yönlendirme sarmalayıcılarının atlanması, yalnızca HTTPS, üçüncü taraf durumunun bölümlenmesi ya da engellenmesi, Global Privacy Control. Do Not Track gönderilmez (parmak izine bir bit ekler). Arama önerileri kapalıdır; arama motoru ilk açılışta sorulur. Listeler sürümle birlikte gelir (GPL-3.0 uyumlu); kaynaklarından güncellenmesi bir kez sorulur.
+- **f) Parmak izi tekdüzelikle değil, normalleştirmeyle korunur.** Yeni bir tarayıcının Tor gibi bir kalabalığı yoktur. Kullanıcı aracısı aynı sistemdeki Firefox ESR'nin dizesiyle aynıdır, Servo simgesi çıkarılır. Çekirdek sayısı 4 ya da 8 gösterilir, gerisi siteye göre rastgeleleştirilir; dil ve saat dilimine uyumluluk için dokunulmaz. Hangisinin hangi siteyi bozduğu ölçülerek ilerlenir.
+- **g) Ayrı ürünler ayrı kalır (madde 45).** İndirmeler kuruluysa EON Download Manager'a devredilir, tünel EON DNS'in işidir, senkron EON Account'un mühürlü kasasından geçer (madde 46b).
+- **h) WebExtensions yoktur.** Servo'da yoktur ve madde 4, sandbox tasarımı olmadan kod çalıştıran eklentiyi yasaklar. İnsanların eklentiye en çok ihtiyaç duyduğu iş olan engelleme yerleşiktir.
+- **i) Depolar.** `eon-browser-core` (kütüphane) ve `eon-browser-app` (Servo ve pencere). İkisi de `GPL-3.0-or-later` + EON Modül ABI İstisnası taşır ve çalışan ilk sürümle açılır (43d). Tauri kullanılmaz: Tauri, Windows'ta WebView2 demektir.
+- **j) Sürümler.** Çekirdek ve uygulama `v0.0.0` ile başlar; yol haritası `browser/plan.md`'dedir. Uyumluluk listesi (`browser/compat.md`) en çok kullanılan sitelerin her Servo sürümünde nasıl çizildiğini kaydeder.
+
+**Maliyet:**
+
+- Yedinci ürün ailesi, EON Stream `v1`'den önce (madde 42c'nin uyarısı yine büyür). Tarayıcı, ailenin en büyük ve bakımı en uzun sürecek ürünüdür.
+- **Siteler bozulacak.** Servo üç büyük motordan gençtir. Giriş, form, video (MSE) ve uzun ömürlü web uygulamaları henüz ölçülmedi. DRM yoktur; Netflix ve benzerleri oynamaz. Bu açıkça söylenir; gizlice Chromium'a düşen bir yedek yoktur.
+- **Windows'ta sandbox ve site izolasyonu yok.** Servo kendisini "olduğu gibi, güvenlik garantisi olmadan" sunar. Kötü niyetli bir sayfanın ele geçirdiği içerik süreci Chrome ya da Firefox'taki gibi kapatılamaz. Her sürüm notu bunu yazar; JIT siteye göre kapatılabilir.
+- Servo'nun API'si her ay kırılır. Uygulama Servo'yu tam sürümüyle sabitler; kararlı kanal bir LTS hattını izler.
+- Servo, yapay zekâyla yazılmış katkı kabul etmez; EON'un yukarı akışa göndereceği düzeltmeler elle yazılır.
+- Diskte yaklaşık 100 MB'tır (bir sistem webview'ı 15 MB olurdu). "Hafif" bu yüzden bellek, açılış süresi, boşta işlemci ve sıfır arka plan trafiği olarak tanımlanır, ölçülür ve her sürümle yayınlanır.
+- Ailenin geri kalanı Tauri'dir; tarayıcı değildir. Arayüzün nasıl çizileceği (Servo'nun kendisinde HTML mi, egui mi) prototiple karara bağlanacak açık bir sorudur [A].
+- Servo'nun insan ve para tabanı incedir: ayda yaklaşık 8 bin dolar düzenli bağış alır, ve Servo üzerine kurulu Verso Ekim 2025'te insan gücü ve finansman yetmediği için arşivlendi. Çekirdeğin motordan bağımsız olması bu riskin karşılığıdır.
+
+**Kazanç:** Chromium'a, Google'a, Apple'a ve Microsoft'a dayanmayan; telemetrisi, yapay zekâsı ve reklamı olmayan; korumaları kutudan çıktığı gibi açık ve her birini kişinin kapatabildiği; ilk açılışta tek bir istek yapmayan ve bunu testle kanıtlayan; her masaüstü platformunda aynı olan, Rust ile yazılmış bir tarayıcı. Ana akım tarayıcıların 2025–2026'da güven kaybettiği her noktada tersini yapan ve bunların hiçbiri için motorun olgunlaşmasını beklemeyen bir ürün.
+
 ---
 
 ## Faz planı
@@ -857,3 +886,5 @@ Kalan: **kurulum paketi, imzalama anahtarları** ve arayüzün hâlâ uçbirime 
 - [ ] Edu'da P2P hızlandırıcı gerekli mi (madde 25)
 - [ ] Ses ürünü: adı ve kapsamı (madde 45a) — [A]; ürünün kendisi [E]
 - [ ] EON Account sunucusu için 5651 trafik kaydı sorusu madde 13'teki avukat listesine (madde 46j)
+- [ ] EON Browser: arayüz Servo'nun içinde HTML mi, egui mi — prototiple karar (madde 50, [A])
+- [ ] EON Browser: YouTube, giriş, form ve video uyumluluğunu tünelsiz bir bağlantıda ölç (madde 50j)

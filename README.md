@@ -39,6 +39,9 @@ Both exist so the same arguments are not relitigated every six months.
 | `download-manager/` | EON Download Manager: research, plan, status (madde 44). |
 | `account/` | EON Account: research and plan (madde 46). |
 | `dns/` | EON DNS: research and plan (madde 47). |
+| `converter/` | EON Converter: research, plan, design, status (madde 48). |
+| `zip/` | EON Zip: research, parity table, plan, design, status (madde 49). |
+| `browser/` | EON Browser: research, plan and roadmap, status (madde 50). |
 | `policies/` | Terms, privacy, content policy, moderation and notice process, Edu institution agreement — each semver'd with an effective date (madde 11). Not written yet. |
 | `docs/` (guides) | User guides, institution deployment guides, per-role guides (madde 17) — to come. |
 
