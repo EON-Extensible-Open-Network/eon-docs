@@ -37,9 +37,10 @@ SPDX-FileCopyrightText: 2026 EON contributors
 - **Select boxes, context menus, file pickers and dialogs** are not shown yet (Servo hands
   them to the embedder; v0.0.1).
 - List updates after consent, bookmarks in the interface, downloads — v0.0.1.
-- **YouTube fails to connect in Servo** ("client error (SendRequest)" within 400 ms)
-  while `curl` reaches it on the same machine at the same time. On this machine
-  `www.youtube.com` resolves to IPv6 addresses; `curl` falls back to IPv4, Servo does not
-  seem to (no "Happy Eyeballs"). `i.ytimg.com`, which has IPv4, loads. To confirm on a
-  plain connection and report upstream (madde 50j). GitHub's sign-in form and
+- **YouTube fails inside Servo's HTTP client** ("client error (SendRequest)" within
+  400 ms). It is not the network: `curl` through the browser's own route proxy gets 200
+  from `www.youtube.com` at the same moment, and the connection is established before
+  the request fails — so it is at the HTTP level in Servo 0.8 (HTTP/2 is the first
+  suspect). An earlier guess here (IPv6 without fallback) was wrong: the host also
+  resolves to IPv4. To reduce and report upstream (madde 50j). GitHub's sign-in form and
   DuckDuckGo (in Turkish) load.
