@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: 2026 EON contributors
 
 # EON Browser — parity with Tor Browser, Opera, Firefox, Chrome and Edge
 
-**27 November 2026.** The owner's bar (26 Nov): *"make sure we have everything Tor,
+**27 November 2026.** (v0.0.1 was tagged but not published; its contents shipped as v0.0.2.) The owner's bar (26 Nov): *"make sure we have everything Tor,
 Opera, Firefox, Chrome and Edge offer."* This table is how that promise is kept: every
 capability of those five is a row, and each row says where EON Browser stands. It is
 updated in the same pull request as the work (as `zip/parity.md` is for EON Zip).
@@ -28,10 +28,10 @@ Who has it: **T** Tor Browser · **O** Opera · **F** Firefox · **C** Chrome ·
 | Fingerprinting protection | T (uniformity), F (FPP), E (strict) | ⚠ `v0.0.0` user agent and GPC; ⏳ `v0.0.2` normalisation and per-site randomisation (madde 50f); Tor-level uniformity needs Tor Browser's crowd — ✗ |
 | Global Privacy Control | F (private), T | ✓ `v0.0.0` script side; the header needs a Servo API (upstream) |
 | Private window | all | ✓ `v0.0.0` — memory only, nothing written |
-| **Tor network, new identity, new circuit per site** | **T** | ✓ `v0.0.1` — Arti (the Tor Project's Rust Tor) in its own process beside the browser: each site its own circuit, renewed every 10 minutes, "New identity" (`Ctrl+Shift+U`) drops every circuit and clears every cookie. check.torproject.org in EON Browser: "configured to use Tor". ⚠ hides the IP, does not make one as anonymous as Tor Browser (fingerprint) — said on the route page |
-| Onion services (`.onion`) | T, (Brave) | ✓ `v0.0.1` — Arti's onion-service client, on the Tor route |
+| **Tor network, new identity, new circuit per site** | **T** | ✓ `v0.0.2` — Arti (the Tor Project's Rust Tor) in its own process beside the browser: each site its own circuit, renewed every 10 minutes, "New identity" (`Ctrl+Shift+U`) drops every circuit and clears every cookie. check.torproject.org in EON Browser: "configured to use Tor". ⚠ hides the IP, does not make one as anonymous as Tor Browser (fingerprint) — said on the route page |
+| Onion services (`.onion`) | T, (Brave) | ✓ `v0.0.2` — Arti's onion-service client, on the Tor route |
 | Tor bridges (obfs4, Snowflake, meek) for censored networks | T | ⏳ `v0.0.3` — Arti's pluggable-transport client with the Tor Project's transport binaries |
-| Built-in "VPN" (a proxy) | O, E (Secure Network, Cloudflare) | ✓ `v0.0.1` — the route setting: Tor, or a proxy server the person brings (HTTP `CONNECT`, with credentials); an EON relay plugs in the same way when one exists (madde 30) |
+| Built-in "VPN" (a proxy) | O, E (Secure Network, Cloudflare) | ✓ `v0.0.2` — the route setting: Tor, or a proxy server the person brings (HTTP `CONNECT`, with credentials); an EON relay plugs in the same way when one exists (madde 30) |
 | Security level (JavaScript and JIT off) | T (Safer/Safest), E (enhanced security) | ⏳ `v0.0.2` — per-site JavaScript and JIT switches (the core has them) |
 | Safe Browsing (phishing and malware warnings) | C, F, E, O | ✓ `v0.0.0` — uBlock Origin's badware list, warning page, local only; ⏳ local phishing lists. Never a remote lookup |
 | Site isolation, sandbox | C, F, E, O, T | ✗ for now — Servo has no Windows sandbox and no site isolation (madde 50 cost); follows Servo |
@@ -55,8 +55,8 @@ Who has it: **T** Tor Browser · **O** Opera · **F** Firefox · **C** Chrome ·
 | Pinned tabs | all | ⏳ `v0.0.1` |
 | Address-bar search, keywords, history suggestions | all | ✓ `v0.0.0` — `@w`, `@ddg`…; suggestions from local history only |
 | Search engine choice | all | ✓ `v0.0.0` — asked, never sold |
-| Bookmarks, bookmarks bar, import/export | all | ⚠ core `v0.0.0`; ⏳ `v0.0.1` in the window; import `v0.0.3` |
-| History page | all | ⏳ `v0.0.1` (the core has it) |
+| Bookmarks, bookmarks bar, import/export | all | ✓ `v0.0.2` — star in the bar, `Ctrl+D`, `eon:bookmarks`; ⏳ bookmarks bar and folders in the window, import `v0.0.4` |
+| History page | all | ✓ `v0.0.2` — `eon:history` (`Ctrl+H`): by day, searchable, forget the last hour / today / everything |
 | Import from other browsers | all | ⏳ `v0.0.3` |
 | Command palette | O (2025), E | ⏳ `v0.0.1` |
 | Speed dial / new-tab shortcuts | O, E, C, F | ⏳ `v0.0.2` — local only, no sponsored tiles |
@@ -82,7 +82,7 @@ Who has it: **T** Tor Browser · **O** Opera · **F** Firefox · **C** Chrome ·
 
 | Capability | Who | EON Browser |
 |---|---|---|
-| Chrome Web Store extensions | C, E, O | ⏳ phased — the WebExtensions runtime (madde 50h as amended). ✓ `v0.0.1` stage 1: install a CRX3, XPI or folder with the permissions shown first; `declarativeNetRequest` rules run in the shield (the real uBlock Origin Lite: 117,636 rules); content scripts and styles; web-accessible files only. `v0.0.3` storage, messaging, background pages, popups; then `tabs`, `contextMenus`, `webRequest`. ⚠ full compatibility is years of work, as Orion's took |
+| Chrome Web Store extensions | C, E, O | ⏳ phased — the WebExtensions runtime (madde 50h as amended). ✓ `v0.0.2` stage 1: install a CRX3, XPI or folder with the permissions shown first; `declarativeNetRequest` rules run in the shield (the real uBlock Origin Lite: 117,636 rules); content scripts and styles; web-accessible files only. `v0.0.3` storage, messaging, background pages, popups; then `tabs`, `contextMenus`, `webRequest`. ⚠ full compatibility is years of work, as Orion's took |
 | Firefox add-ons (AMO) | F, T | same runtime; the same phases |
 | Edge Add-ons, Opera add-ons | E, O | same runtime |
 | Built-in sidebar apps / messengers | O, E | ⏳ `v0.0.3` — a web panel of any site, no partner apps |
