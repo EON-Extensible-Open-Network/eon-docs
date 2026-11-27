@@ -6,41 +6,51 @@ SPDX-FileCopyrightText: 2026 EON contributors
 # EON Browser — status
 
 **As of 27 November 2026.** Plan madde 50; [research](research.md), [plan](plan.md),
-[design](design.md).
+[design](design.md), [parity](parity.md), [extensions](extensions.md).
 
 | Repository | Version | CI | Notes |
 |---|---|---|---|
-| `eon-browser-core` | `v0.0.0` (library) | green on Windows, Linux, macOS, including the real default lists | blocking, link cleaning, HTTPS-only, address bar, search engines, profile, user agent; no engine, no GUI, no network client |
-| `eon-browser-app` | `v0.0.0` in progress | builds, lints and tests on Windows, Linux, macOS; self-test step being fixed | Servo 0.8.0; the bar drawn by Servo; tabs, history, session, private window; `--selftest` 26/26 locally |
+| `eon-browser-core` | `v0.0.0` tagged; extensions stage 1 on `main` | green on Windows, Linux, macOS, with the real default lists | blocking, link cleaning, HTTPS-only, address bar, search engines, profile, user agent; extension packages, manifests, permissions in words, match patterns, `declarativeNetRequest` → the shield. No engine, no GUI, no network client |
+| `eon-browser-app` | `v0.0.0` published (prerelease); `v0.0.1` on `main` | green on Windows, Linux, macOS (Windows without the offscreen self-test, see below) | Servo 0.8.0; the bar drawn by Servo; tabs, history, session, private window; the route (Tor through Arti, or a proxy server); extensions stage 1; `--selftest` 37 checks |
 
-## Measured
+## Verified
 
-- **Blocking** (core, real lists, release build): compile 107 ms, from cache 18 ms,
-  **5.2 µs per request**; Google Analytics, Tag Manager, AdSense, DoubleClick, Meta Pixel,
-  Hotjar and Bing's tracker blocked, CDNs, fonts and Wikimedia not.
-- **The release build** (Windows 11, lists inside): 126 MB on disk; the window is up
-  **1.1 s** after launch; BBC News renders with **11 trackers blocked**; one process,
-  **380 MB working set / 575 MB private** with that one page. That is not light yet — on
-  par with the big browsers for one heavy page, not below them. Memory is a target for
-  v0.0.x, measured the same way each release.
-- **Self-test**: 26 checks through the real engine offscreen against pages the browser
-  serves itself. Emptying the rules makes six fail, as they should.
+- **v0.0.0 published file (Windows)**: SHA-256 matches `SHA256SUMS.txt`; `--selftest`
+  26/26 on this machine; BBC News opens. **Defect found by that check**: the Windows file
+  carried no blocking lists (the release script passed a POSIX path the build could not
+  read). Disclosed in the release notes; fixed in v0.0.1, where the build refuses to finish
+  without lists and the self-test checks they are there.
+- **Tor** (v0.0.1): Arti bootstraps in 2–8 s on the owner's connection;
+  check.torproject.org inside EON Browser says "Congratulations. This browser is configured
+  to use Tor."; a site keeps its exit, another site gets another, New identity changes it;
+  the route process refuses programs without the browser's secret and exits with the
+  browser.
+- **Extensions** (v0.0.1): the real uBlock Origin Lite (CRX3 from the Chrome Web Store)
+  installs; 117,636 of its rules run in the shield, 1,147 are not translated yet
+  (redirects, header changes, and rules with conditions the translator does not know —
+  skipped rather than widened); on BBC News its rules alone block 21 trackers (release
+  build). A debug build compiles that many rules too slowly for BBC's scripts; release
+  builds load them from the cache.
+- **Blocking** (core, real lists): compile 107 ms, from cache 18 ms, **5.2 µs per
+  request**.
+- **The release build** (Windows 11, lists inside): 126 MB; window in **1.1 s**; BBC News
+  11 trackers blocked; **380 MB working set** for that one page — not light yet; memory is
+  a v0.0.x target.
 
 ## Not yet (each is in the roadmap)
 
 - **No sandbox on Windows, no site isolation** (Servo). Not for banking yet.
-- **No video or audio, no WebGL** — v0.0.1.
+- **Windows CI cannot run the offscreen self-test**: Servo's GL layer needs
+  `WGL_NV_DX_interop`, which GPU drivers have and a GPU-less runner does not. Windows
+  releases are self-tested on a real machine. ANGLE (v0.0.2) lifts it.
+- **No video or audio, no WebGL** — v0.0.2.
+- **YouTube fails inside Servo's HTTP client** (`client error (SendRequest)`), not in the
+  network: curl through the browser's own route proxy gets 200 at the same moment.
+  HTTP/2 is the first suspect; to reduce and report upstream (madde 50j).
 - **`Sec-GPC` header not sent**: Servo's embedding API cannot add request headers; the
   script-side `navigator.globalPrivacyControl` is set. Raise upstream.
-- **`Accept-Language`** is Servo's own; there is no preference for it.
-- **Permission prompts**: everything is refused until the prompt exists (v0.0.2).
-- **Select boxes, context menus, file pickers and dialogs** are not shown yet (Servo hands
-  them to the embedder; v0.0.1).
-- List updates after consent, bookmarks in the interface, downloads — v0.0.1.
-- **YouTube fails inside Servo's HTTP client** ("client error (SendRequest)" within
-  400 ms). It is not the network: `curl` through the browser's own route proxy gets 200
-  from `www.youtube.com` at the same moment, and the connection is established before
-  the request fails — so it is at the HTTP level in Servo 0.8 (HTTP/2 is the first
-  suspect). An earlier guess here (IPv6 without fallback) was wrong: the host also
-  resolves to IPv4. To reduce and report upstream (madde 50j). GitHub's sign-in form and
-  DuckDuckGo (in Turkish) load.
+- **Permission prompts**: everything is refused until the prompt exists.
+- **Select boxes, context menus, file pickers and dialogs** are not shown yet.
+- **Extensions**: storage is in memory, no messaging, background pages or pop-ups
+  (stage 2); content scripts share the page's world (Servo has no isolated worlds).
+- List updates after consent, bookmarks in the interface, downloads — v0.0.2.
