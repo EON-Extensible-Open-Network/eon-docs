@@ -61,6 +61,14 @@ Each stage publishes a list of extensions tried and how they behave, the same wa
   any page script runs, so a page cannot call the extension's bridge in its name. That is
   defence in depth, not isolation; when Servo gets isolated worlds, content scripts move
   into them.
+- **Storage and messaging for content scripts wait for isolation.** Without an isolated
+  world, anything handed to a content script — an extension's stored data, or a secret to
+  reach the browser — is also within reach of the page's own scripts (a page can wrap
+  `fetch` before the content script runs). A password manager's data must never be
+  readable by the site it fills. So in stage 2, `chrome.storage` is real only in an
+  extension's own views (background page, pop-up, options), which run on its own origin;
+  content scripts keep the in-memory store until Servo has isolated worlds or EON adds
+  them, and the core's storage (`Profile::ext_storage_*`) is ready for both.
 - **A broad host permission ("read and change all your data on all websites") is shown as
   exactly that**, before installing. After the person approves it, the browser cannot stop
   that extension from reading the pages it was allowed.
