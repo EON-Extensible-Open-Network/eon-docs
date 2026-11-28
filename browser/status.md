@@ -61,10 +61,13 @@ SPDX-FileCopyrightText: 2026 EON contributors
 - **Windows CI cannot run the offscreen self-test**: Servo's GL layer needs
   `WGL_NV_DX_interop`, which GPU drivers have and a GPU-less runner does not. Windows
   releases are self-tested on a real machine. ANGLE (v0.0.2) lifts it.
-- **No video or audio, no WebGL** — v0.0.2.
-- **YouTube fails inside Servo's HTTP client** (`client error (SendRequest)`), not in the
-  network: curl through the browser's own route proxy gets 200 at the same moment.
-  HTTP/2 is the first suspect; to reduce and report upstream (madde 50j).
+- **No video or audio, no WebGL** (GStreamer and LLVM/ANGLE wait for the owner's
+  approval to install). YouTube's pages open; its videos do not play yet.
+- **One line patched in Servo** (v0.0.5, `eon-browser-app/patches/`): hyper's 16 KiB
+  limit for an HTTP/2 response's headers made YouTube fail with `client error
+  (SendRequest)` (the `h2` crate reset the stream, `REQUEST_HEADER_FIELDS_TOO_LARGE`);
+  the limit is now Chrome's 256 KiB. To report upstream (madde 50j) and drop the copy
+  when Servo carries it.
 - **`Sec-GPC` header not sent**: Servo's embedding API cannot add request headers; the
   script-side `navigator.globalPrivacyControl` is set. Raise upstream.
 - **Permission prompts**: everything is refused until the prompt exists.
