@@ -2,6 +2,36 @@
 
 ## [Unreleased]
 
+### Plan v0.17 — 26 November 2026
+
+One new item, madde 50. This branch is stacked on v0.16 (madde 49, EON Zip).
+
+- **madde 50: EON Browser.** A web browser on **Servo**, the Rust engine: not Chromium,
+  not Windows' WebView2 (whose required diagnostic data the app cannot turn off), at the
+  owner's condition. Windows, Linux and macOS from the first release.
+  - **The contract comes before the engine:** no telemetry; no request at all until the
+    person opens a page, tested in CI; no AI, sponsored tiles or affiliate rewriting.
+  - **Firefox's Strict, not its Standard, by default:** built-in blocking with Brave's
+    `adblock` engine and lists shipped with the release; tracking parameters stripped in
+    normal windows; HTTPS-only; Global Privacy Control.
+  - **The core is engine-independent and never touches the network**; the app fetches.
+  - Other browsers' extensions in stages, on EON's own core (madde 50h, amended 27 Nov
+    at the owner's request; `browser/extensions.md`). Downloads to EON Download
+    Manager, sync through EON Account (madde 45, 46).
+  - **Tor in the browser** through Arti: a circuit per site, renewed, "New identity";
+    a proxy server the person brings uses the same route (madde 50k).
+  - **Parity with Tor Browser, Opera, Firefox, Chrome and Edge** is tracked row by row
+    in `browser/parity.md` (madde 50l).
+  - Research, analysis and the roadmap are in `browser/`.
+- **What it costs, stated in the item:**
+  - a seventh product family before EON Stream v1;
+  - sites will break, and there is no DRM;
+  - no sandbox or site isolation on Windows yet;
+  - Servo's API breaks monthly, and Servo accepts no AI-written contributions;
+  - about 100 MB on disk, so "light" is measured as memory, start time and idle traffic;
+  - extensions are years of work to full compatibility, and an approved extension can
+    read what it was allowed to; Tor adds a network stack and is not Tor Browser.
+
 ### Plan v0.13 — 21 November 2026
 
 One new item, madde 47. This branch is stacked on v0.12 (pull request #6).
