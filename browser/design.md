@@ -56,6 +56,39 @@ link"). The active tab is the bar's own surface continuing upward; others are te
 | CSS `mask-image` (seen on Wikipedia: black squares) | Not used in the bar; reported as a compatibility gap |
 | Starting a script evaluation inside another's callback panics (`RefCell` borrowed twice) | Follow-up scripts are queued and run on the next turn |
 
+## v0.0.3: the full window (owner's request, 28 November)
+
+Design system from the UI/UX skill: **flat**, **dense** (density 8/10, 8–32 px spacing),
+**quiet motion** (3/10, 150–200 ms, nothing that moves without a cause, none under
+reduced motion), the EON family palette (the skill's teal proposal was set aside for
+family consistency) and Geist. Every control reachable by keyboard with a visible focus
+ring; icon buttons carry labels; live numbers are written out, never colour alone.
+
+```
+┌──────────┬───────────────────────────────────────────────┬─────────────┐
+│ ＋ New   │ ‹ › ⟳  [🔒 address ………………… ★]   ●Tor  🛡12  ▣ │  Panel      │
+│──────────│───────────────────────────────────────────────│  (docked)   │
+│ ● Tab    │                                               │  Shield     │
+│ ● Tab    │                 the page                      │  Route      │
+│ ☾ Tab    │                                               │  Limiters   │
+│  …       │                                               │  Monitor    │
+│──────────│                                               │             │
+│ 🛡 ⇄ ⏱ 📈│                                               │             │
+└──────────┴───────────────────────────────────────────────┴─────────────┘
+```
+
+- **Vertical tabs** in a sidebar (240 px, collapses to 56 px); a sleeping tab is dimmed
+  with a moon and wakes on click. A horizontal strip remains as an option.
+- **The bar** keeps one surface; the route pill (Direct / Tor / Tor proxy / Proxy) and
+  the shield count stay visible.
+- **Docked panels** on the right, one at a time, the page narrows rather than being
+  covered: **Shield** (count and switch), **Route** (Direct, Tor through Arti, Tor's own
+  proxy at 9050/9150, a SOCKS5 or HTTP server; New identity), **Limiters** (sleep after N
+  minutes, RAM limit, network down/up limit — Opera GX's), **Monitor** (RAM, CPU, down/up
+  speed as a moving line with the current value written, pausable).
+- **Over the page**: address suggestions and the **command bar** (`Ctrl+K`) are drawn by a
+  third, small view composited above the page, so the page is never resized for them.
+
 ## Next (v0.0.1, with the designer's pass)
 
 Vertical tabs as the default with a compact horizontal option, the command bar
