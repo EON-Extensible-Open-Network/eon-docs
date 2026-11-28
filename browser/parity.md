@@ -48,7 +48,10 @@ Who has it: **T** Tor Browser · **O** Opera · **F** Firefox · **C** Chrome ·
 | Capability | Who | EON Browser |
 |---|---|---|
 | Tabs, reopen closed tab, session restore | all | ✓ `v0.0.0` tabs and session; ⏳ `v0.0.1` reopen closed tab |
-| Vertical tabs | E, F, O, C (2026) | ✓ `v0.0.3` — the default; narrow sidebar or tabs across the top as options |
+| Vertical tabs | E, F, O, C (2026) | ✓ `v0.0.3`; since `v0.0.5` an option (menu → *Vertical tabs*), tabs on top being what most people know |
+| Main menu with every action and its shortcut | C, E, F, O | ✓ `v0.0.5` — `⋮` at the right of the bar, `Alt+F` |
+| Site icons in tabs | all | ✓ `v0.0.5` |
+| First-run welcome | C, E, F, O | ✓ `v0.0.5` — three cards on the new tab page, dismissed for good with one click; no account, no import prompt, no sign-in |
 | Tab groups / stacks | C, E, F, O | ⏳ `v0.0.3` |
 | Workspaces / Spaces | O, E | ⏳ `v0.0.3` |
 | Split view | E, C (2026), O, F | ⏳ `v0.0.3` |

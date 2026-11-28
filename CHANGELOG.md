@@ -22,6 +22,8 @@ One new item, madde 50. This branch is stacked on v0.16 (madde 49, EON Zip).
     vertical tabs, docked Shield / Route / Limiters / Monitor panels, a command bar
     (`Ctrl+K`); sleeping tabs; Opera GX's memory and network limiters and monitor; Tor's
     own proxy and SOCKS5 servers on the route (`browser/design.md`, `parity.md`).
+  - **v0.0.5 (28 Nov, the owner's request):** familiar first — tabs on top with site
+    icons, the `⋮` menu, a first-run welcome; YouTube opens (HTTP/2 header limit).
   - **Tor in the browser** through Arti: a circuit per site, renewed, "New identity";
     a proxy server the person brings uses the same route (madde 50k).
   - **Parity with Tor Browser, Opera, Firefox, Chrome and Edge** is tracked row by row

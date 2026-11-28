@@ -94,6 +94,42 @@ buttons, not drop-down lists (Servo 0.8 draws no `<select>` popup); the overlay 
 rectangular (it is copied into the window as a block, so rounded corners would show its
 background).
 
+## v0.0.5: familiar first (owner's request, 28 November)
+
+*"Yeni kullanıcıların çok kolay alışacağı tarzda olsun."* The v0.0.3 window put its tabs
+and tools in a sidebar, which is a choice people must learn. Someone arriving from
+Chrome, Edge or Firefox should find every control where their hands already go, and
+discover what is new from there. The principle (people expect a new product to work like
+the ones they use) is ours; the UI/UX skill's database adds that a first-run guide must
+be skippable, and that every control must work from the keyboard.
+
+```
+┌───────────────────────────────────────────────────────────────────────────┐
+│ [◉ Tab] [◉ Tab] [☾ Tab] [+]                                     Private   │
+│ ‹ › ⟳  [🔒 address …………………………………………… ★]          🛡 12   ● Tor   ⋮          │
+├───────────────────────────────────────────────────────┬───────────────────┤
+│                     the page                          │ (panel, if open)  │
+└───────────────────────────────────────────────────────┴───────────────────┘
+```
+
+- **Tabs across the top, with the site's icon**, `+` right after the last tab, as in
+  every major browser. Vertical tabs stay one click away (menu → *Vertical tabs*).
+- **The menu, `⋮`, at the right end of the bar** — where Chrome, Edge and Firefox keep
+  theirs (`Alt+F` too). Everything is in it with its shortcut: new tab and private
+  window; history, bookmarks, extensions; shield, connection (Tor and proxy), limiters,
+  monitor; zoom; vertical tabs; the command bar; about. Arrow keys, `Enter` and `Esc`
+  work; a click outside closes it. It replaces the sidebar's tool list and the bar's `⌘`
+  button, which Windows users do not recognise.
+- **Plain names**: *Connection* rather than *Route* for Tor and proxies.
+- **A first-run welcome on the new tab page**: three short cards (your tabs and menu
+  are where you expect them; what the shield counts; Tor is one choice away) and **Got
+  it**, which hides it for good. It never blocks the page and can be ignored.
+- What stays: the shield count and connection pill in the bar, docked panels that
+  narrow the page, `Ctrl+K`.
+
+Built as drawn. The site icon comes from Servo's favicon, turned into a 32 px PNG and
+served to the interface on its own host, so the interface still loads nothing from a site.
+
 ## Next
 
 The shield panel listing what was blocked and why; settings; the list-update consent;
