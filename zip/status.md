@@ -5,12 +5,12 @@ SPDX-FileCopyrightText: 2026 EON contributors
 
 # EON Zip — status
 
-**As of 22 November 2026.** Plan madde 49; [research](research.md), [parity](parity.md),
+**As of 28 November 2026.** Plan madde 49; [research](research.md), [parity](parity.md),
 [plan](plan.md), [design](design.md).
 
 | Repository | Version | CI | Notes |
 |---|---|---|---|
-| `eon-zip-core` | `v0.0.0` (tag, library) | green on Windows, Linux, macOS | 7z, ZIP, the tar family and single compressed files, made and read; volumes; hashes; conversion; the path rules in `src/safe.rs` |
+| `eon-zip-core` | `v0.0.0` (tag, library); `0.0.1` on `main` | v0.0.0 green on Windows, Linux, macOS | 7z, ZIP, the tar family and single compressed files, made and read; volumes; hashes; conversion; the path rules in `src/safe.rs`; **`.eonz`, EON Zip's own format** (0.0.1) |
 | `eon-zip-app` | `v0.0.0`, prerelease | green on Windows, Linux, macOS | release downloaded after publishing: checksums match; the Windows binary passes `--selftest`, makes a password-locked 7z of a folder with Turkish names that the real 7-Zip tests as intact, extracts it byte for byte, and opens its window |
 
 **Tested:** in the core, 12 unit and 11 integration tests: every format made and read back
@@ -24,6 +24,19 @@ hand-built hostile ZIP whose climbing names are refused and whose disguised prog
 named before anything is written, a locked 7z, conversion, a new archive the real 7-Zip
 opens, the right-click menu written and removed under a test key, Turkish and the light
 theme. The screenshots were reviewed by eye too.
+
+## `.eonz` (madde 49i, 28 November)
+
+The owner asked for a format of EON Zip's own. The core makes, reads and repairs `.eonz`
+([specification](eonz.md)); the window and command line come next. Built in the
+background (idle priority, two compile jobs) while the owner's brother played. Tests: 19
+unit, 4 for `.eonz` (deduplication; names and contents hidden by the password, wrong and
+missing passwords; 20 KB of damage in the middle, and the header itself, repaired byte for
+byte; damage beyond the recovery data reported as such), and `.eonz` added to the
+every-format round trip. Found while building: the first chunk masks had 13 bits set
+where 18 were meant (chunks averaged 24 KiB, not 64); the masks are now generated from
+their bit count and a test pins them. And a `.eonz` whose header is damaged was reported
+as "not an archive"; it is now recognised by name and reported as damaged and repairable.
 
 ## Found while building
 

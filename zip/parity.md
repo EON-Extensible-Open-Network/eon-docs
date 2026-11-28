@@ -16,6 +16,7 @@ with the reason
 
 | Capability | 7-Zip | WinRAR | EON Zip |
 |---|---|---|---|
+| A format of its own, with its own extension | `.7z` | `.rar` | ✅ core v0.0.1 — **`.eonz`** (madde 49i, `eonz.md`); the window and command line next |
 | Create and extract 7z (LZMA, LZMA2, PPMd, BZip2, BCJ/BCJ2 filters) | ✓ | — / extract | ✅ v0.0.0 |
 | 7z AES-256 encryption | ✓ | — | ✅ v0.0.0 |
 | 7z encrypted file names (header encryption) | ✓ | — | ✅ v0.0.0 |
@@ -42,7 +43,7 @@ with the reason
 | Add, delete, rename inside an existing archive | ✓ | ✓ | ⏳ v0.0.1 |
 | Convert between archive formats | — | ✓ | ✅ v0.0.0 |
 | Self-extracting archives (SFX) | ✓ | ✓ (with icon, text, options) | ⏳ v0.0.2 |
-| Recovery record / recovery volumes | — | ✓ (RAR only) | ⏳ v0.0.1 — PAR2, for any archive |
+| Recovery record / recovery volumes | — | ✓ (RAR only) | ✅ core v0.0.1 inside `.eonz` (Reed-Solomon, repairs without the password) · ⏳ PAR2, for any other archive |
 | Repair a damaged archive | — | ✓ | ⏳ v0.0.1 — from PAR2; ZIP central directory rebuilt |
 | Lock an archive against change | — | ✓ | ⏳ v0.0.2 — a hash manifest that shows any change |
 | Compression profiles | — | ✓ | ⏳ v0.0.1 |
@@ -81,5 +82,9 @@ with the reason
 | Search across the archive's names | ✅ v0.0.0 |
 | Expected size and time for each method, before compressing | ⏳ v0.0.1 |
 | Already-compressed files stored, not recompressed | ✅ v0.0.0 |
+| Content repeated across files stored once (content-defined chunks), not only identical whole files | ✅ core v0.0.1 (`.eonz`) |
+| Decompression on every core (7z's LZMA2 decompresses on one) | ✅ core v0.0.1 (`.eonz`) |
+| Authenticated encryption with a memory-hard key (AES-256-GCM, Argon2id), names always hidden | ✅ core v0.0.1 (`.eonz`) |
+| BLAKE3 for every block, chunk and file, checked without the password | ✅ core v0.0.1 (`.eonz`) |
 | Shareable hash manifest, checked in one click | ⏳ v0.0.1 |
 | Health report in words | ⏳ v0.0.1 |

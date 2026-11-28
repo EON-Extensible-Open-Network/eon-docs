@@ -754,6 +754,7 @@ Proje sahibinin isteği (22 Kasım 2026): WinRAR ve 7-Zip'in topluluk tarafında
 - **f) Depolar.** `eon-zip-core` kütüphanedir, pencere bağımlılığı yoktur. `eon-zip-app` pencere ve komut satırıdır. İkisi de `GPL-3.0-or-later` + EON Modül ABI İstisnası taşır ve çalışan ilk sürümle açılır (43d).
 - **g) Sağ tık menüsü.** Windows'ta kullanıcının kendi kayıt anahtarına, yönetici izni olmadan, klasik menü olarak eklenir. Windows 11'in üst düzey menüsü imzalı bir seyrek paket ister; bu, imza anahtarları olunca gelir (madde 30).
 - **h) İlk alfa `v0.0.0`'dır.** `zip/parity.md`'de `v0.0.0` diye işaretlenmiş her satırı yapan, yayınlanmış ve doğrulanmış sürüm.
+- **i) Kendi biçimimiz: `.eonz`. [K — 28 Kasım'da eklendi]** Proje sahibinin isteği: 7-Zip'in `.7z`'si, WinRAR'ın `.rar`'ı gibi EON Zip'in de kendi uzantısı ve sıkıştırma biçimi olacak. Uzantı `.eonz`'dur ("EON Zip"). `.eon` EON Studio'nundur ve EON şemsiyenin adıdır, `.ezip` adında bir Microsoft Store arşivleyicisi vardır; `.eonz` bulabildiğimiz hiçbir kayıtta yoktur. Biçim yeni bir sıkıştırma *algoritması* değildir (Zstandard'ı ya da LZMA'yı geçen bir algoritma yıllarca araştırma ister); kanıtlanmış parçaları 7z'nin ve RAR'ın sunmadığı bir biçimde birleştiren yeni bir *kaptır*: paralel sıkıştırılıp açılan katı Zstandard blokları, içerikle belirlenen parçalar sayesinde dosyalar arasında tekrar eden içeriğin bir kez saklanması, arşivin içinde Reed-Solomon kurtarma verisi (parolasız onarım), her blok ve dosya için BLAKE3, AES-256-GCM ile Argon2id ve her zaman gizlenen dosya adları. Belirtim `zip/eonz.md`'dedir; sürüm 0 kararsızdır, sürüm 1 düzeni dondurur.
 
 **Maliyet:**
 
@@ -762,6 +763,7 @@ Proje sahibinin isteği (22 Kasım 2026): WinRAR ve 7-Zip'in topluluk tarafında
 - 7-Zip'e bağlı biçimler, bir dış programın sürüm takibini ve yeniden sabitlemesini getirir.
 - Yetenek tablosu söz verir: tablodaki her ⏳ satırı ileride yapılması gereken iştir; yapılmazsa tablo dürüstçe güncellenmelidir.
 - RAR oluşturamamak, RAR isteyen birinin isteğini karşılamaz; bu bir kayıptır ve açıkça söylenir.
+- **(i) Kendi biçim, kendi sorumluluk.** `.eonz`'u bugün yalnızca EON Zip açar; başka programlar açamaz, bu yüzden paylaşılacak dosyada pencere 7z ya da ZIP önerir. Biçim bir kez yayıldıktan sonra her sürüm eski dosyaları okumak zorundadır; sürüm 1'den sonra değiştirmek pahalıdır. Kendi şifreleme düzenimiz bağımsız bir denetimden geçmedi; kullanılan parçalar (AES-256-GCM, Argon2id) standarttır, ama birleştirme bizimdir. Yeni bağımlılıklar: `aes-gcm`, `argon2`, `reed-solomon-simd` (madde 37).
 
 **Kazanç:** Ücretsiz, açık kaynaklı, reklamsız ve rahatsız etmeyen; 7-Zip'in sıkıştırmasını ve biçim genişliğini, WinRAR'ın kurtarma ve onarım güvencesini aynı yerde sunan; ikisinin de güvenlik açıklarının sınıfını baştan kapatan, her platformda aynı görünen bir arşivleyici.
 
