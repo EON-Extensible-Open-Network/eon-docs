@@ -89,8 +89,12 @@ ring; icon buttons carry labels; live numbers are written out, never colour alon
 - **Over the page**: address suggestions and the **command bar** (`Ctrl+K`) are drawn by a
   third, small view composited above the page, so the page is never resized for them.
 
-## Next (v0.0.1, with the designer's pass)
+Built as drawn (v0.0.3). Two departures, both from Servo's limits: choices are rows of
+buttons, not drop-down lists (Servo 0.8 draws no `<select>` popup); the overlay is
+rectangular (it is copied into the window as a block, so rounded corners would show its
+background).
 
-Vertical tabs as the default with a compact horizontal option, the command bar
-(`Ctrl/Cmd+K`), the shield panel (what was blocked and why), settings, the list-update
-consent, downloads, and a light theme following the system.
+## Next
+
+The shield panel listing what was blocked and why; settings; the list-update consent;
+downloads; a light theme following the system; the tab strip's drag to reorder.

@@ -5,13 +5,13 @@ SPDX-FileCopyrightText: 2026 EON contributors
 
 # EON Browser — status
 
-**As of 27 November 2026.** Plan madde 50; [research](research.md), [plan](plan.md),
+**As of 28 November 2026.** Plan madde 50; [research](research.md), [plan](plan.md),
 [design](design.md), [parity](parity.md), [extensions](extensions.md).
 
 | Repository | Version | CI | Notes |
 |---|---|---|---|
 | `eon-browser-core` | `v0.0.0` tagged; extensions stage 1 on `main` | green on Windows, Linux, macOS, with the real default lists | blocking, link cleaning, HTTPS-only, address bar, search engines, profile, user agent; extension packages, manifests, permissions in words, match patterns, `declarativeNetRequest` → the shield. No engine, no GUI, no network client |
-| `eon-browser-app` | `v0.0.0` published (prerelease); `v0.0.1` on `main` | green on Windows, Linux, macOS (Windows without the offscreen self-test, see below) | Servo 0.8.0; the bar drawn by Servo; tabs, history, session, private window; the route (Tor through Arti, or a proxy server); extensions stage 1; `--selftest` 37 checks |
+| `eon-browser-app` | `v0.0.2` published (prerelease); `v0.0.3` on `main` | green on Windows, Linux, macOS (Windows without the offscreen self-test, see below) | Servo 0.8.0; the window drawn by Servo (sidebar, bar, panels, overlay); tabs that sleep, history, bookmarks, session, private window; the route (Tor through Arti, Tor's own proxy, SOCKS5 or HTTP servers) with download/upload limits; memory limit and monitor; command bar; extensions stage 1; `--selftest` 49 checks |
 
 ## Verified
 
@@ -37,6 +37,13 @@ SPDX-FileCopyrightText: 2026 EON contributors
   11 trackers blocked; **380 MB working set** for that one page — not light yet; memory is
   a v0.0.x target.
 
+- **The v0.0.3 window** (debug build, Windows 11, real GPU): the three views composite
+  in place (interface, page, overlay); Wikipedia draws beside the sidebar. Self-test 49/49:
+  the page's place, a SOCKS5 server on 127.0.0.1 given the site's *name* (no local
+  lookup), a tab put to sleep and woken at its address, the monitor's memory reading,
+  limits set by clicking their buttons and kept, `Ctrl+K` running a command found by
+  typing and the panel narrowing the page.
+
 ## Not yet (each is in the roadmap)
 
 - **No sandbox on Windows, no site isolation** (Servo). Not for banking yet.
@@ -50,7 +57,10 @@ SPDX-FileCopyrightText: 2026 EON contributors
 - **`Sec-GPC` header not sent**: Servo's embedding API cannot add request headers; the
   script-side `navigator.globalPrivacyControl` is set. Raise upstream.
 - **Permission prompts**: everything is refused until the prompt exists.
-- **Select boxes, context menus, file pickers and dialogs** are not shown yet.
+- **Select boxes, context menus, file pickers and dialogs** are not shown yet (the
+  interface uses buttons wherever it would have used a drop-down list).
+- **No CPU limiter** (Opera GX has one): slowing Servo's threads would stall pages rather
+  than lighten the browser; the memory limit and sleeping tabs are the levers that work.
 - **Extensions**: storage is in memory, no messaging, background pages or pop-ups
   (stage 2); content scripts share the page's world (Servo has no isolated worlds).
 - List updates after consent, bookmarks in the interface, downloads — v0.0.2.
