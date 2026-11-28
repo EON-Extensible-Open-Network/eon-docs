@@ -25,7 +25,7 @@ Who has it: **T** Tor Browser · **O** Opera · **F** Firefox · **C** Chrome ·
 | Redirect / bounce tracking skipped | F, (Brave) | ✓ `v0.0.0` — known wrappers; ⏳ `v0.0.2` bounce-tracker list |
 | HTTPS-only mode | F, C, E, T | ✓ `v0.0.0` — on by default, per-site exception by choice |
 | Third-party cookies blocked / partitioned | F (Total Cookie Protection), T, O | ⏳ `v0.0.2` — measure what Servo partitions, then close the rest |
-| Fingerprinting protection | T (uniformity), F (FPP), E (strict) | ⚠ `v0.0.0` user agent and GPC; ⏳ `v0.0.2` normalisation and per-site randomisation (madde 50f); Tor-level uniformity needs Tor Browser's crowd — ✗ |
+| Fingerprinting protection | T (uniformity), F (FPP), E (strict) | ⚠ `v0.0.0` GPC; since `v0.0.6` the user agent names Servo honestly (Google's sign-in rejects a disguised engine — madde 50f amended); ⏳ `v0.0.2` normalisation and per-site randomisation (madde 50f); Tor-level uniformity needs Tor Browser's crowd — ✗ |
 | Global Privacy Control | F (private), T | ✓ `v0.0.0` script side; the header needs a Servo API (upstream) |
 | Private window | all | ✓ `v0.0.0` — memory only, nothing written |
 | **Tor network, new identity, new circuit per site** | **T** | ✓ `v0.0.2` — Arti (the Tor Project's Rust Tor) in its own process beside the browser: each site its own circuit, renewed every 10 minutes, "New identity" (`Ctrl+Shift+U`) drops every circuit and clears every cookie. check.torproject.org in EON Browser: "configured to use Tor". ⚠ hides the IP, does not make one as anonymous as Tor Browser (fingerprint) — said on the route page |

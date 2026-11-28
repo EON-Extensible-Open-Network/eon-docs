@@ -11,7 +11,7 @@ SPDX-FileCopyrightText: 2026 EON contributors
 | Repository | Version | CI | Notes |
 |---|---|---|---|
 | `eon-browser-core` | `v0.0.0` tagged; extensions stage 1 on `main` | green on Windows, Linux, macOS, with the real default lists | blocking, link cleaning, HTTPS-only, address bar, search engines, profile, user agent; extension packages, manifests, permissions in words, match patterns, `declarativeNetRequest` → the shield. No engine, no GUI, no network client |
-| `eon-browser-app` | `v0.0.4` published and verified (`v0.0.3` had a Tor defect, disclosed on its release) | green on Windows, Linux, macOS (Windows without the offscreen self-test, see below) | Servo 0.8.0; the window drawn by Servo (sidebar, bar, panels, overlay); tabs that sleep, history, bookmarks, session, private window; the route (Tor through Arti, Tor's own proxy, SOCKS5 or HTTP servers) with download/upload limits; memory limit and monitor; command bar; extensions stage 1; `--selftest` 49 checks |
+| `eon-browser-app` | `v0.0.5` published, verified headless (window checks wait); `v0.0.6` (Google sign-in) on `main` | green on Windows, Linux, macOS (Windows without the offscreen self-test, see below) | Servo 0.8.0; the window drawn by Servo (sidebar, bar, panels, overlay); tabs that sleep, history, bookmarks, session, private window; the route (Tor through Arti, Tor's own proxy, SOCKS5 or HTTP servers) with download/upload limits; memory limit and monitor; command bar; extensions stage 1; `--selftest` 49 checks |
 
 ## Verified
 
@@ -54,6 +54,14 @@ SPDX-FileCopyrightText: 2026 EON contributors
 - **v0.0.4 published file (Windows)**: SHA-256 matches; `--version` 0.0.4-alpha;
   self-test 49/49, 7 lists inside; from a fresh Tor folder, check.torproject.org says
   "Congratulations" within 30 s; BBC News opens directly (354 MB working set).
+
+- **v0.0.5 published file (Windows)**, checked in the background while the owner's
+  brother played (no window opened): SHA-256 matches, `--version` 0.0.5-alpha, self-test
+  54/54, 7 lists inside. YouTube, Tor and the new window in a real window: pending.
+- **Google sign-in (v0.0.6)**: the owner could not reach Gmail ("This browser or app may
+  not be secure"). `--probe-signin` (offscreen, a made-up address) showed the cause: the
+  borrowed Firefox ESR user agent was rejected 3 times in 4, Servo's honest one never.
+  The user agent is now honest (madde 50f amended).
 
 ## Not yet (each is in the roadmap)
 

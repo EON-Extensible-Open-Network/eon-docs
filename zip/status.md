@@ -11,7 +11,7 @@ SPDX-FileCopyrightText: 2026 EON contributors
 | Repository | Version | CI | Notes |
 |---|---|---|---|
 | `eon-zip-core` | `v0.0.0` (tag, library); `0.0.1` on `main` | v0.0.0 green on Windows, Linux, macOS | 7z, ZIP, the tar family and single compressed files, made and read; volumes; hashes; conversion; the path rules in `src/safe.rs`; **`.eonz`, EON Zip's own format** (0.0.1) |
-| `eon-zip-app` | `v0.0.0`, prerelease | green on Windows, Linux, macOS | release downloaded after publishing: checksums match; the Windows binary passes `--selftest`, makes a password-locked 7z of a folder with Turkish names that the real 7-Zip tests as intact, extracts it byte for byte, and opens its window |
+| `eon-zip-app` | `v0.0.1`, prerelease (`.eonz`) | green on Windows, Linux, macOS | release downloaded after publishing: checksums match; the Windows binary passes `--selftest`, makes a password-locked 7z of a folder with Turkish names that the real 7-Zip tests as intact, extracts it byte for byte, and opens its window |
 
 **Tested:** in the core, 12 unit and 11 integration tests: every format made and read back
 byte for byte, passwords (7z with hidden names, ZIP AES-256), volumes, conversion, archives
@@ -26,6 +26,11 @@ opens, the right-click menu written and removed under a test key, Turkish and th
 theme. The screenshots were reviewed by eye too.
 
 ## `.eonz` (madde 49i, 28 November)
+
+**v0.0.1 published and verified (Windows, headless):** SHA-256 matches; `--selftest`
+passes with a password-locked `.eonz` round trip; an archive made by the downloaded
+program, damaged on purpose, is repaired byte for byte. The window check
+(`tools/ui-check.mjs`) waits until the machine is free (it opens a window).
 
 The owner asked for a format of EON Zip's own. The core makes, reads and repairs `.eonz`
 ([specification](eonz.md)); the window and command line come next. Built in the
