@@ -11,7 +11,7 @@ SPDX-FileCopyrightText: 2026 EON contributors
 | Repository | Version | CI | Notes |
 |---|---|---|---|
 | `eon-browser-core` | `v0.0.0` tagged; extensions stage 1 on `main` | green on Windows, Linux, macOS, with the real default lists | blocking, link cleaning, HTTPS-only, address bar, search engines, profile, user agent; extension packages, manifests, permissions in words, match patterns, `declarativeNetRequest` → the shield. No engine, no GUI, no network client |
-| `eon-browser-app` | `v0.0.3` published with a Tor defect (disclosed on the release); `v0.0.4` fixes it | green on Windows, Linux, macOS (Windows without the offscreen self-test, see below) | Servo 0.8.0; the window drawn by Servo (sidebar, bar, panels, overlay); tabs that sleep, history, bookmarks, session, private window; the route (Tor through Arti, Tor's own proxy, SOCKS5 or HTTP servers) with download/upload limits; memory limit and monitor; command bar; extensions stage 1; `--selftest` 49 checks |
+| `eon-browser-app` | `v0.0.4` published and verified (`v0.0.3` had a Tor defect, disclosed on its release) | green on Windows, Linux, macOS (Windows without the offscreen self-test, see below) | Servo 0.8.0; the window drawn by Servo (sidebar, bar, panels, overlay); tabs that sleep, history, bookmarks, session, private window; the route (Tor through Arti, Tor's own proxy, SOCKS5 or HTTP servers) with download/upload limits; memory limit and monitor; command bar; extensions stage 1; `--selftest` 49 checks |
 
 ## Verified
 
@@ -51,6 +51,9 @@ SPDX-FileCopyrightText: 2026 EON contributors
   holds bytes until flushed, a TCP stream does not, so only Tor broke and no test saw it.
   Fixed in v0.0.4 with a unit test that fails without the fix; check.torproject.org in
   the fixed window says "Congratulations".
+- **v0.0.4 published file (Windows)**: SHA-256 matches; `--version` 0.0.4-alpha;
+  self-test 49/49, 7 lists inside; from a fresh Tor folder, check.torproject.org says
+  "Congratulations" within 30 s; BBC News opens directly (354 MB working set).
 
 ## Not yet (each is in the roadmap)
 
