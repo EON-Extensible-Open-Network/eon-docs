@@ -63,7 +63,7 @@ Who has it: **T** Tor Browser · **O** Opera · **F** Firefox · **C** Chrome ·
 | Search engine choice | all | ✓ `v0.0.0` — asked, never sold |
 | Bookmarks, bookmarks bar, import/export | all | ✓ `v0.0.2` — star in the bar, `Ctrl+D`, `eon:bookmarks`; ⏳ bookmarks bar and folders in the window, import `v0.0.4` |
 | History page | all | ✓ `v0.0.2` — `eon:history` (`Ctrl+H`): by day, searchable, forget the last hour / today / everything |
-| Import from other browsers | all | ⏳ `v0.0.3` |
+| Import from other browsers | all | ✓ `v0.0.7` — bookmarks (folders kept) and history from every Chromium- and Firefox-family profile on the computer, on all three platforms; ⏳ passwords with the password store (Chrome and Edge on Windows lock theirs to themselves); ⏳ Safari |
 | Command palette | O (2025), E | ✓ `v0.0.3` — `Ctrl+K`: every action, panel and open tab, by typing; anything else is searched |
 | Side panels | E, O, F | ✓ `v0.0.3` — Shield, Route, Limiters, Monitor docked on the right; the page narrows rather than being covered |
 | Speed dial / new-tab shortcuts | O, E, C, F | ⏳ `v0.0.2` — local only, no sponsored tiles |

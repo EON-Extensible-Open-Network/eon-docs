@@ -11,7 +11,7 @@ SPDX-FileCopyrightText: 2026 EON contributors
 | Repository | Version | CI | Notes |
 |---|---|---|---|
 | `eon-browser-core` | `v0.0.0` tagged; extensions stage 1 on `main` | green on Windows, Linux, macOS, with the real default lists | blocking, link cleaning, HTTPS-only, address bar, search engines, profile, user agent; extension packages, manifests, permissions in words, match patterns, `declarativeNetRequest` → the shield. No engine, no GUI, no network client |
-| `eon-browser-app` | `v0.0.5` published, verified headless (window checks wait); `v0.0.6` (Google sign-in) on `main` | green on Windows, Linux, macOS (Windows without the offscreen self-test, see below) | Servo 0.8.0; the window drawn by Servo (sidebar, bar, panels, overlay); tabs that sleep, history, bookmarks, session, private window; the route (Tor through Arti, Tor's own proxy, SOCKS5 or HTTP servers) with download/upload limits; memory limit and monitor; command bar; extensions stage 1; `--selftest` 49 checks |
+| `eon-browser-app` | `v0.0.6` (Google sign-in) tagged; `v0.0.7` (import from other browsers) on `main` | green on Windows, Linux, macOS (Windows without the offscreen self-test, see below) | Servo 0.8.0; the window drawn by Servo (sidebar, bar, panels, overlay); tabs that sleep, history, bookmarks, session, private window; the route (Tor through Arti, Tor's own proxy, SOCKS5 or HTTP servers) with download/upload limits; memory limit and monitor; command bar; extensions stage 1; `--selftest` 49 checks |
 
 ## Verified
 
@@ -62,6 +62,10 @@ SPDX-FileCopyrightText: 2026 EON contributors
   not be secure"). `--probe-signin` (offscreen, a made-up address) showed the cause: the
   borrowed Firefox ESR user agent was rejected 3 times in 4, Servo's honest one never.
   The user agent is now honest (madde 50f amended).
+
+- **Import (v0.0.7)**: on the owner's computer the core found Chrome, Edge and Firefox (31
+  bookmarks in 3 folders, 38,620 history pages) — counted by an ignored test that prints
+  no address. The self-test imports a Chrome profile laid out per platform.
 
 ## Not yet (each is in the roadmap)
 
